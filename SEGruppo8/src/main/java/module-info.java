@@ -1,8 +1,8 @@
-module com.mycompany.se.gruppo8 {
+module it.unisa.SoftwreEngineering.Gruppo8 {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens com.mycompany.se.gruppo8 to javafx.fxml;
-    exports com.mycompany.se.gruppo8;
+    opens it.unisa.SoftwreEngineering.Gruppo8 to javafx.fxml;
+    exports it.unisa.SoftwreEngineering.Gruppo8;
     requires jcomplex;
 }

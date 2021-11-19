@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package com.mycompany.se.gruppo8;
+package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.ComplexAdder;
 import com.vm.jcomplex.Complex;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

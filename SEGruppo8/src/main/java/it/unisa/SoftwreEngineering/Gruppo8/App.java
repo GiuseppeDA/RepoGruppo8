@@ -1,4 +1,4 @@
-package com.mycompany.se.gruppo8;
+package it.unisa.SoftwreEngineering.Gruppo8;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
