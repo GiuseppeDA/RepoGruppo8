@@ -4,4 +4,5 @@ module com.mycompany.se.gruppo8 {
 
     opens com.mycompany.se.gruppo8 to javafx.fxml;
     exports com.mycompany.se.gruppo8;
+    requires jcomplex;
 }
