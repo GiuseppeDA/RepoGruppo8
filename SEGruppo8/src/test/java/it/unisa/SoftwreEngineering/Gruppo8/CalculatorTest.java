@@ -110,20 +110,6 @@ public class CalculatorTest {
     }
 
     /**
-     * Test of getTop method, of class Calculator.
-     */
-    @Test
-    public void testGetTop() {
-        System.out.println("getTop");
-        Calculator instance = new Calculator();
-        Complex expResult = null;
-        Complex result = instance.getTop();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of checkSize method, of class Calculator.
      */
     @Test
