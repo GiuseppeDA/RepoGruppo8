@@ -115,9 +115,14 @@ public class CalculatorTest {
     public void testSqrt() {
         System.out.println("sqrt");
         Calculator instance = new Calculator();
-        instance.sqrt();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult0 = false;
+        boolean result0 = instance.sqrt();
+        assertEquals(expResult0, result0);
+        
+        instance.insert(1,2);
+        boolean expResult1 = true;
+        boolean result1 = instance.sqrt();
+        assertEquals(expResult1, result1);
     }
 
     /**
@@ -127,9 +132,15 @@ public class CalculatorTest {
     public void testInvert() {
         System.out.println("invert");
         Calculator instance = new Calculator();
-        instance.invert();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult0 = false;
+        boolean result0 = instance.invert();
+        assertEquals(expResult0, result0);
+        
+        instance.insert(1,2);
+        boolean expResult1 = true;
+        boolean result1 = instance.invert();
+        assertEquals(expResult1, result1);
+        
     }
 
     /**
