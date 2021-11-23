@@ -115,13 +115,34 @@ public class CalculatorTest {
     @Test
     public void testCheckSize() {
         System.out.println("checkSize");
-        int a = 0;
         Calculator instance = new Calculator();
-        boolean expResult = false;
-        boolean result = instance.checkSize(a);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1, 2);
+        instance.insert(2, 1);
+        
+        int a = -1;
+        boolean expResult0 = false;
+        boolean result0 = instance.checkSize(a);
+        assertEquals(expResult0, result0);
+        
+        a = 0;
+        boolean expResult1 = false;
+        boolean result1 = instance.checkSize(a);
+        assertEquals(expResult1, result1);
+        
+        a = 1;
+        boolean expResult2 = true;
+        boolean result2 = instance.checkSize(a);
+        assertEquals(expResult2, result2);
+        
+        a = 2;
+        boolean expResult3 = true;
+        boolean result3 = instance.checkSize(a);
+        assertEquals(expResult3, result3);
+        
+        a = 3;
+        boolean expResult4 = false;
+        boolean result4 = instance.checkSize(a);
+        assertEquals(expResult4, result4);
     }
 
     /**
