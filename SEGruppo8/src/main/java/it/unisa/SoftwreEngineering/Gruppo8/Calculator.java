@@ -75,7 +75,7 @@ public class Calculator {
     /**
      *
      */
-    public void insert(int real ,int img){
+    public void insert(double real ,double img){
         throw new UnsupportedOperationException("Not supported yet.");
     } 
 }
