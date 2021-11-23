@@ -11,7 +11,7 @@ import java.util.Stack;
  * @author 39324
  */
 public class Calculator {
-    private Stack<Complex> memory;
+    private Stack<Complex> memory=new Stack<>();
     
     /**
      *Somma i primi due valori in memoria
@@ -74,6 +74,8 @@ public class Calculator {
 
     /**
      *
+     * @param real
+     * @param img
      */
     public void insert(double real ,double img){
         Complex c=new Complex(real,img);
