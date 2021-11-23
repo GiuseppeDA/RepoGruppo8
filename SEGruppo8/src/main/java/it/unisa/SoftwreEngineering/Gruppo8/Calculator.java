@@ -15,9 +15,16 @@ public class Calculator {
     
     /**
      *Somma i primi due valori in memoria
+     * @return true se l'operazione di addizione è andata a buon fine false altrimenti
      */
     public boolean add(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(!checkSize(2))
+            return false;
+        Complex a=memory.pop();
+        Complex b=memory.pop();            
+        Complex c=a.add(b);
+        memory.push(c);
+        return true;
     }
 
     /**
@@ -66,7 +73,7 @@ public class Calculator {
     /**
      *
      * @param a è il numero minimo di oggetti che devono essere presenti nello stack
-     * @return true se il numero di oggetti in memoria non è minore di a, altrimenti false
+     * @return true se il numero di oggetti in memoria non è minore di a, ritorna false se a è negativo o se il numero di operandi è insufficiente
      */
     protected boolean checkSize(int a){
         if (a<=0)
