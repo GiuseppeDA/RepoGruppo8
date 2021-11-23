@@ -69,6 +69,8 @@ public class Calculator {
      * @return true se il numero di oggetti in memoria non è minore di a, altrimenti false
      */
     protected boolean checkSize(int a){
+        if (a<=0)
+            return false;
         return memory.size()>=a;
     }
 
