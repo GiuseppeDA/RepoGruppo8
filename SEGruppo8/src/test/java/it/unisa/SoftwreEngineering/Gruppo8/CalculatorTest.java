@@ -42,7 +42,7 @@ public class CalculatorTest {
      */
     @Test
     public void testAdd() {
-        System.out.println("add");
+        System.out.println("add\n");
         Calculator instance = new Calculator();
         instance.add();
         // TODO review the generated test code and remove the default call to fail.
