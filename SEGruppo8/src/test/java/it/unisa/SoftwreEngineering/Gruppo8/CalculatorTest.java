@@ -44,9 +44,17 @@ public class CalculatorTest {
     public void testAdd() {
         System.out.println("add\n");
         Calculator instance = new Calculator();
-        instance.add();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1,2);
+        boolean expResult0 = false;
+        boolean result0 = instance.add();
+        assertEquals(expResult0, result0);
+        
+        
+        instance.insert(2,1);
+        boolean expResult1 = true;
+        boolean result1 = instance.add();
+        assertEquals(expResult1, result1);
+
     }
 
     /**
