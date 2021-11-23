@@ -14,6 +14,7 @@ public class ComplexAdder {
     private Complex c;
 
     public ComplexAdder(Complex c) {
+        System.out.println("MARIO E' GAY");
         this.c = c;
     }
     
