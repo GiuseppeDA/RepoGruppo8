@@ -28,10 +28,17 @@ public class Calculator {
     }
 
     /**
-     *
+     *Sottrae l'ultimo numero inserito al penultimo numero inserito.
+     * @return true se l'operazione di sottrazione è andata a buon fine false altrimenti
      */
     public boolean subcract(){
-        throw new UnsupportedOperationException("Not supported yet.");
+         if(!checkSize(2))
+            return false;
+        Complex a=memory.pop();
+        Complex b=memory.pop();            
+        Complex c=b.subtract(a);
+        memory.push(c);
+        return true;
     }
 
     /**
