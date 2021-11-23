@@ -145,9 +145,10 @@ public class CalculatorTest {
     public void testInsert() {
         System.out.println("insert");
         Calculator instance = new Calculator();
-        Complex num= new Complex(1,1);
-        instance.insert(num);
-        Complex ris= new Complex(1,1);
+        double real=1;
+        double img=2;
+        instance.insert(real,img);
+        Complex ris= new Complex(1,2);
         assertEquals(ris,instance.getTop());
     }
     
