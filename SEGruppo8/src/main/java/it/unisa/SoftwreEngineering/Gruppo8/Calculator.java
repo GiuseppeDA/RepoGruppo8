@@ -75,7 +75,7 @@ public class Calculator {
     /**
      *
      */
-    public void insert(){
+    public void insert(Complex c){
         throw new UnsupportedOperationException("Not supported yet.");
     } 
 }
