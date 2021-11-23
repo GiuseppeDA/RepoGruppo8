@@ -69,13 +69,13 @@ public class Calculator {
      * @return true se il numero di oggetti in memoria non è minore di a, altrimenti false
      */
     protected boolean checkSize(int a){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return memory.size()>=a;
     }
 
     /**
      *
-     * @param real
-     * @param img
+     * @param real la parte reale del numero complesso da inserire
+     * @param img la parte immaginaria del numero complesso da inserire
      */
     public void insert(double real ,double img){
         Complex c=new Complex(real,img);
