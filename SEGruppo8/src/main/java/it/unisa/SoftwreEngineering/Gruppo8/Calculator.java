@@ -60,7 +60,7 @@ public class Calculator {
      * @return l'oggetto Complex in cima alla memory
      */
     public Complex getTop(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return memory.peek();
     }
 
     /**
@@ -76,6 +76,7 @@ public class Calculator {
      *
      */
     public void insert(double real ,double img){
-        throw new UnsupportedOperationException("Not supported yet.");
+        Complex c=new Complex(real,img);
+        memory.push(c);
     } 
 }
