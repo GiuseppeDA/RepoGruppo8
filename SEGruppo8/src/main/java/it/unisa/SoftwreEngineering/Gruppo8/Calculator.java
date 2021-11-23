@@ -16,42 +16,42 @@ public class Calculator {
     /**
      *Somma i primi due valori in memoria
      */
-    public void add(){
+    public boolean add(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      *
      */
-    public void subcract(){
+    public boolean subcract(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      *
      */
-    public void multiply(){
+    public boolean multiply(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      *
      */
-    public void divide (){
+    public boolean divide (){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      *
      */
-    public void sqrt(){
+    public boolean sqrt(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     /**
      *
      */
-    public void invert (){
+    public boolean invert (){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -75,7 +75,7 @@ public class Calculator {
     /**
      *
      */
-    public void insert(Complex c){
+    public void insert(int real ,int img){
         throw new UnsupportedOperationException("Not supported yet.");
     } 
 }
