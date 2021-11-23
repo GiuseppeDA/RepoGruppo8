@@ -64,9 +64,17 @@ public class CalculatorTest {
     public void testSubcract() {
         System.out.println("subcract");
         Calculator instance = new Calculator();
-        instance.subcract();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1,2);
+        boolean expResult0 = false;
+        boolean result0 = instance.subcract();
+        assertEquals(expResult0, result0);
+        
+        
+        instance.insert(2,1);
+        boolean expResult1 = true;
+        boolean result1 = instance.subcract();
+        assertEquals(expResult1, result1);
+        
     }
 
     /**
@@ -76,9 +84,16 @@ public class CalculatorTest {
     public void testMultiply() {
         System.out.println("multiply");
         Calculator instance = new Calculator();
-        instance.multiply();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1,2);
+        boolean expResult0 = false;
+        boolean result0 = instance.multiply();
+        assertEquals(expResult0, result0);
+        
+        
+        instance.insert(2,1);
+        boolean expResult1 = true;
+        boolean result1 = instance.multiply();
+        assertEquals(expResult1, result1);
     }
 
     /**
