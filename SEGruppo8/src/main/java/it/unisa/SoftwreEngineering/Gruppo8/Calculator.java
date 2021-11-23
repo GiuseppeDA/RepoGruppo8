@@ -42,10 +42,17 @@ public class Calculator {
     }
 
     /**
-     *
+     *Moltiplica i primi due valori in memoria
+     * @return true se l'operazione di moltiplicazione è andata a buon fine false altrimenti
      */
     public boolean multiply(){
-        throw new UnsupportedOperationException("Not supported yet.");
+         if(!checkSize(2))
+            return false;
+        Complex a=memory.pop();
+        Complex b=memory.pop();            
+        Complex c=a.multiply(b);
+        memory.push(c);
+        return true;
     }
 
     /**
