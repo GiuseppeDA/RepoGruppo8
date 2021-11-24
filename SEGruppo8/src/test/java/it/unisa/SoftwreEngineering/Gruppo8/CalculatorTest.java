@@ -135,14 +135,13 @@ public class CalculatorTest {
        assertFalse(result0);
         
         instance.insert(-3,4);
-       // boolean result1 = instance.sqrt();
-        //assertTrue(result1);
+        boolean result1 = instance.sqrt();
+        assertTrue(result1);
         
-       //ComplexNumber ris1= new ComplexNumber(1,2);
-        //assertEquals(ris1,instance.getTop());
+        ComplexNumber ris1= new ComplexNumber(1,2);
+        assertEquals(ris1,instance.getTop());
         
-        //ComplexNumber ris2= new ComplexNumber(-1,-2);
-        //assertEquals(ris2,instance.getTop());
+        
     }
 
     /**
