@@ -20,8 +20,7 @@ public class PrimaryController {
     private Button insButton;
     
     private Calculator calc = new Calculator();
-    
-    private List list = new ArrayList();
+
     
     /*
     private void switchToSecondary() throws IOException {
