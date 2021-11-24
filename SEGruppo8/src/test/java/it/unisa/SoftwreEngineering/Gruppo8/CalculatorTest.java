@@ -53,7 +53,7 @@ public class CalculatorTest {
         boolean result1 = instance.add();
         assertTrue(result1);
         
-        Complex ris= new Complex(3,3);
+        ComplexNumber ris= new ComplexNumber(3,3);
         assertEquals(ris,instance.getTop());
 
     }
@@ -74,6 +74,8 @@ public class CalculatorTest {
         boolean result1 = instance.subcract();
         assertTrue(result1);
         
+        ComplexNumber ris= new ComplexNumber(-1,1);
+        assertEquals(ris,instance.getTop());
     }
 
     /**
@@ -91,6 +93,9 @@ public class CalculatorTest {
         instance.insert(2,1);
         boolean result1 = instance.multiply();
         assertTrue(result1);
+        
+        ComplexNumber ris= new ComplexNumber(0,5);
+        assertEquals(ris,instance.getTop());
     }
 
     /**
@@ -100,9 +105,22 @@ public class CalculatorTest {
     public void testDivide() {
         System.out.println("divide");
         Calculator instance = new Calculator();
-        instance.divide();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        instance.insert(1,2);
+        boolean result0 = instance.divide();
+        assertFalse(result0);
+        
+        
+        instance.insert(2,-1);
+        boolean result1 = instance.divide();
+        assertTrue(result1);
+        
+        ComplexNumber ris= new ComplexNumber(0,1);
+        assertEquals(ris,instance.getTop());
+        
+        instance.insert(0,0);
+        
+        
         
     }
 
@@ -113,12 +131,18 @@ public class CalculatorTest {
     public void testSqrt() {
         System.out.println("sqrt");
         Calculator instance = new Calculator();
-        boolean result0 = instance.sqrt();
-        assertFalse(result0);
+       boolean result0 = instance.sqrt();
+       assertFalse(result0);
         
-        instance.insert(1,2);
-        boolean result1 = instance.sqrt();
-        assertTrue(result1);
+        instance.insert(-3,4);
+       // boolean result1 = instance.sqrt();
+        //assertTrue(result1);
+        
+       //ComplexNumber ris1= new ComplexNumber(1,2);
+        //assertEquals(ris1,instance.getTop());
+        
+        //ComplexNumber ris2= new ComplexNumber(-1,-2);
+        //assertEquals(ris2,instance.getTop());
     }
 
     /**
@@ -135,6 +159,9 @@ public class CalculatorTest {
         boolean result1 = instance.invert();
         assertTrue(result1);
         
+        ComplexNumber ris= new ComplexNumber(-1,-2);
+        assertEquals(ris,instance.getTop());
+
     }
 
     /**
@@ -178,7 +205,7 @@ public class CalculatorTest {
         double real=1;
         double img=2;
         instance.insert(real,img);
-        Complex ris= new Complex(1,2);
+        ComplexNumber ris= new ComplexNumber(1,2);
         assertEquals(ris,instance.getTop());
     }
     
