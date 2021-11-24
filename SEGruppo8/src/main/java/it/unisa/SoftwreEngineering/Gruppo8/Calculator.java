@@ -26,9 +26,9 @@ public class Calculator {
         if(!checkSize(2))
             return false;
         Complex a=memory.pop();
-        Complex b=memory.pop();            
-        Complex c=a.add(b);
-        memory.push(c);
+        Complex b=memory.pop(); 
+        Complex c= a.add(b);
+        insert(c);
         return true;
     }
 
@@ -42,7 +42,7 @@ public class Calculator {
         Complex a=memory.pop();
         Complex b=memory.pop();            
         Complex c=b.subtract(a);
-        memory.push(c);
+        insert(c);
         return true;
     }
 
@@ -56,7 +56,7 @@ public class Calculator {
         Complex a=memory.pop();
         Complex b=memory.pop();            
         Complex c=a.multiply(b);
-        memory.push(c);
+        insert(c);
         return true;
     }
 
@@ -85,8 +85,8 @@ public class Calculator {
      *
      * @return l'oggetto Complex in cima alla memory
      */
-    public Complex getTop(){
-        return memory.peek();
+    public ComplexNumber getTop(){
+        return (ComplexNumber)memory.peek();
     }
 
     /**
@@ -106,7 +106,16 @@ public class Calculator {
      * @param img la parte immaginaria del numero complesso da inserire
      */
     public void insert(double real ,double img){
-        Complex c=new Complex(real,img);
+        Complex c=new ComplexNumber(real,img);
         memory.push(c);
     } 
+
+    /**
+     *
+     * @param x
+     */
+    public void insert (Complex x){
+        Complex c=new ComplexNumber(x.getReal(),x.getImaginary());
+        memory.push(c);
+    }
 }
