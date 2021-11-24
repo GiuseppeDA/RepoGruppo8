@@ -19,6 +19,9 @@ public class ComplexNumber extends Complex {
 
     @Override
     public String toString() {
+        if(getImaginary()>=0){
+             return Double.toString(getReal()) + " + "+Double.toString(getImaginary())+'j';
+        }
         return Double.toString(getReal()) + " "+Double.toString(getImaginary())+'j';
     }
     
