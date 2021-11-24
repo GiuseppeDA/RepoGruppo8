@@ -42,12 +42,12 @@ public class PrimaryController {
         
         try {
             if(real.getText() == null || real.getText().trim().isEmpty())
-                realNum = 0;
+                realNum = 0.0;
             else
                 realNum = Double.parseDouble(real.getText());
             
             if(imag.getText() == null || imag.getText().trim().isEmpty())
-                imagNum = 0;
+                imagNum = 0.0;
             else
                 imagNum = Double.parseDouble(imag.getText());
             
