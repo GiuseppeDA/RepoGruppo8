@@ -11,7 +11,12 @@ import java.util.Stack;
  * @author 39324
  */
 public class Calculator {
-    private Stack<Complex> memory=new Stack<>();
+    private Stack<Complex> memory;
+
+    public Calculator() {
+        memory = new Stack<>();
+    }
+
     
     /**
      *Somma i primi due valori in memoria
