@@ -20,7 +20,7 @@ public class Calculator {
 
     
     /**
-     *Somma i primi due valori in memoria
+     *Somma gli ulltimi due valori in memoria
      * @return true se l'operazione di addizione è andata a buon fine false altrimenti
      */
     public boolean add(){
@@ -34,7 +34,7 @@ public class Calculator {
     }
 
     /**
-     *Sottrae l'ultimo numero inserito al penultimo numero inserito.
+     *Sottrae l'ultimo numero in memoria al penultimo numero in memoria.
      * @return true se l'operazione di sottrazione è andata a buon fine false altrimenti
      */
     public boolean subcract(){
@@ -48,7 +48,7 @@ public class Calculator {
     }
 
     /**
-     *Moltiplica i primi due valori in memoria
+     *Moltiplica gli ultimi  due numeri in memoria
      * @return true se l'operazione di moltiplicazione è andata a buon fine false altrimenti
      */
     public boolean multiply(){
@@ -62,7 +62,9 @@ public class Calculator {
     }
 
     /**
-     *
+     *Divide il penultimo numero in memoria per l'ultimo numero in memora
+     * @throws ImpossibleDivisionException se effettua una disione per 0
+     * @return true se l'operazione di divisione è andata a buon fine false altrimenti
      */
     public boolean divide () throws ImpossibleDivisionException{
         if(!checkSize(2))
@@ -81,7 +83,8 @@ public class Calculator {
     }
 
     /**
-     *
+     *fa la radice quadrata dell'ultimo numero in memoria
+     * @return true se l'operazione di radice quadrata è andata a buon fine false altrimenti
      */
     public boolean sqrt(){
        if(!checkSize(2))
@@ -93,7 +96,8 @@ public class Calculator {
     }
 
     /**
-     *
+     *fa l'inverso dell'ultimo numero in memoria
+     * @return true se l'inversione è andata a buon fine false altrimenti
      */
     public boolean invert (){
        if(!checkSize(1))
@@ -114,7 +118,7 @@ public class Calculator {
     }
 
     /**
-     *
+     *controlla se nella memory ci sono a elementi
      * @param a è il numero minimo di oggetti che devono essere presenti nello stack
      * @return true se il numero di oggetti in memoria non è minore di a, ritorna false se a è negativo o se il numero di operandi è insufficiente
      */
@@ -125,7 +129,7 @@ public class Calculator {
     }
 
     /**
-     *
+     *inserisce un numero complesso nella memory partendo da parte reale e immaginaria
      * @param real la parte reale del numero complesso da inserire
      * @param img la parte immaginaria del numero complesso da inserire
      */
@@ -135,8 +139,8 @@ public class Calculator {
     } 
 
     /**
-     *
-     * @param x
+     *inserisce un numero complesso nella memory partendo da un istanza di Complex
+     * @param x l'oggetto Complex da aggiungere
      */
     public void insert (Complex x){
         Complex c=new ComplexNumber(x.getReal(),x.getImaginary());
