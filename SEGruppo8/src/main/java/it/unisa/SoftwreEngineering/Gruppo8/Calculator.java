@@ -78,7 +78,13 @@ public class Calculator {
      *
      */
     public boolean invert (){
-        throw new UnsupportedOperationException("Not supported yet.");
+       if(!checkSize(1))
+            return false;
+        Complex a=memory.pop();
+        Complex b=new Complex(-1);           
+        Complex c=a.multiply(b);
+        insert(c);
+        return true;
     }
 
     /**
