@@ -28,6 +28,18 @@ public class PrimaryController {
         App.setRoot("secondary");
     }
     */
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button subtractButton;
+    @FXML
+    private Button sqrtButton;
+    @FXML
+    private Button multiplyButton;
+    @FXML
+    private Button divideButton;
+    @FXML
+    private Button invertButton;
     
     
     
@@ -36,5 +48,29 @@ public class PrimaryController {
     private void insertComplex(MouseEvent event) {
         
         memory.getItems().add(real.getText());
+    }
+
+    @FXML
+    private void add(MouseEvent event) {
+    }
+
+    @FXML
+    private void subtract(MouseEvent event) {
+    }
+
+    @FXML
+    private void sqrt(MouseEvent event) {
+    }
+
+    @FXML
+    private void multiply(MouseEvent event) {
+    }
+
+    @FXML
+    private void divide(MouseEvent event) {
+    }
+
+    @FXML
+    private void invert(MouseEvent event) {
     }
 }
