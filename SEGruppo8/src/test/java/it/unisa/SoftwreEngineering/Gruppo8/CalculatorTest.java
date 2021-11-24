@@ -45,15 +45,13 @@ public class CalculatorTest {
         System.out.println("add\n");
         Calculator instance = new Calculator();
         instance.insert(1,2);
-        boolean expResult0 = false;
         boolean result0 = instance.add();
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         
         instance.insert(2,1);
-        boolean expResult1 = true;
         boolean result1 = instance.add();
-        assertEquals(expResult1, result1);
+        assertTrue(result1);
 
     }
 
@@ -65,15 +63,13 @@ public class CalculatorTest {
         System.out.println("subcract");
         Calculator instance = new Calculator();
         instance.insert(1,2);
-        boolean expResult0 = false;
         boolean result0 = instance.subcract();
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         
         instance.insert(2,1);
-        boolean expResult1 = true;
         boolean result1 = instance.subcract();
-        assertEquals(expResult1, result1);
+        assertTrue(result1);
         
     }
 
@@ -85,15 +81,13 @@ public class CalculatorTest {
         System.out.println("multiply");
         Calculator instance = new Calculator();
         instance.insert(1,2);
-        boolean expResult0 = false;
         boolean result0 = instance.multiply();
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         
         instance.insert(2,1);
-        boolean expResult1 = true;
         boolean result1 = instance.multiply();
-        assertEquals(expResult1, result1);
+        assertTrue(result1);
     }
 
     /**
@@ -106,6 +100,7 @@ public class CalculatorTest {
         instance.divide();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -115,14 +110,12 @@ public class CalculatorTest {
     public void testSqrt() {
         System.out.println("sqrt");
         Calculator instance = new Calculator();
-        boolean expResult0 = false;
         boolean result0 = instance.sqrt();
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         instance.insert(1,2);
-        boolean expResult1 = true;
         boolean result1 = instance.sqrt();
-        assertEquals(expResult1, result1);
+        assertTrue(result1);
     }
 
     /**
@@ -132,14 +125,12 @@ public class CalculatorTest {
     public void testInvert() {
         System.out.println("invert");
         Calculator instance = new Calculator();
-        boolean expResult0 = false;
         boolean result0 = instance.invert();
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         instance.insert(1,2);
-        boolean expResult1 = true;
         boolean result1 = instance.invert();
-        assertEquals(expResult1, result1);
+        assertTrue(result1);
         
     }
 
@@ -154,29 +145,24 @@ public class CalculatorTest {
         instance.insert(2, 1);
         
         int a = -1;
-        boolean expResult0 = false;
         boolean result0 = instance.checkSize(a);
-        assertEquals(expResult0, result0);
+        assertFalse(result0);
         
         a = 0;
-        boolean expResult1 = false;
         boolean result1 = instance.checkSize(a);
-        assertEquals(expResult1, result1);
+        assertFalse(result1);
         
         a = 1;
-        boolean expResult2 = true;
         boolean result2 = instance.checkSize(a);
-        assertEquals(expResult2, result2);
+        assertTrue(result2);
         
         a = 2;
-        boolean expResult3 = true;
         boolean result3 = instance.checkSize(a);
-        assertEquals(expResult3, result3);
+        assertTrue(result3);
         
         a = 3;
-        boolean expResult4 = false;
         boolean result4 = instance.checkSize(a);
-        assertEquals(expResult4, result4);
+        assertFalse(result4);
     }
 
     /**
