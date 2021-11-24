@@ -7,11 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import com.vm.jcomplex.Complex;
 
 public class PrimaryController {
 
     @FXML
-    private ListView<String> memory;
+    private ListView<Complex> memory;
     @FXML
     private TextField real;
     @FXML
@@ -21,12 +22,6 @@ public class PrimaryController {
     
     private Calculator calc = new Calculator();
 
-    
-    /*
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-    */
     @FXML
     private Button addButton;
     @FXML
@@ -40,15 +35,34 @@ public class PrimaryController {
     @FXML
     private Button invertButton;
     
-    
-    
-    
     @FXML
     private void insertComplex(MouseEvent event) {
+        Double realNum;
+        Double imagNum;
         
-        memory.getItems().add(real.getText());
-    }
+        try {
+            if(real.getText() == null || real.getText().trim().isEmpty())
+                realNum = 0;
+            else
+                realNum = Double.parseDouble(real.getText());
+            
+            if(imag.getText() == null || imag.getText().trim().isEmpty())
+                imagNum = 0;
+            else
+                imagNum = Double.parseDouble(imag.getText());
+            
+            calc.insert(realNum, imagNum);
 
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().add(calc.getTop());
+        }catch(NumberFormatException exc){
+                System.out.println("Mariojfhsdujkhfjk");
+        }
+        
+        
+        
+    }
+    
     @FXML
     private void add(MouseEvent event) {
     }
