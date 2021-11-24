@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
-import com.vm.jcomplex.Complex;
+import com.vm.jcomplex.*;
+import static com.vm.jcomplex.Complex.NaN;
 import java.lang.UnsupportedOperationException;
 import java.util.Stack;
 /**
@@ -63,8 +64,20 @@ public class Calculator {
     /**
      *
      */
-    public boolean divide (){
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean divide () throws ImpossibleDivisionException{
+        if(!checkSize(2))
+            return false;
+        Complex a=memory.pop();
+        Complex b=memory.pop();            
+        Complex c=a.divide(b);
+        if(c==NaN){
+            insert(a);
+            insert(b);
+            throw new ImpossibleDivisionException();
+            
+        }
+        insert(c);
+        return true;
     }
 
     /**
