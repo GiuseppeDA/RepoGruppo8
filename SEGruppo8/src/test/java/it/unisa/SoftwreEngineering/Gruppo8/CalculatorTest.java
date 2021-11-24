@@ -52,6 +52,9 @@ public class CalculatorTest {
         instance.insert(2,1);
         boolean result1 = instance.add();
         assertTrue(result1);
+        
+        Complex ris= new Complex(3,3);
+        assertEquals(ris,instance.getTop());
 
     }
 
