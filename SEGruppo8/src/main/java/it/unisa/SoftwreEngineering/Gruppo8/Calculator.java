@@ -71,11 +71,11 @@ public class Calculator {
             return false;
         Complex a=memory.pop();
         Complex b=memory.pop();            
-        Complex c=a.divide(b);
+        Complex c=b.divide(a);
         if(c==NaN){
-            insert(a);
             insert(b);
-            throw new ImpossibleDivisionException();
+            insert(a);
+            throw new ImpossibleDivisionException("Divisione per 0 non consentita");
             
         }
         insert(c);
@@ -87,7 +87,7 @@ public class Calculator {
      * @return true se l'operazione di radice quadrata è andata a buon fine false altrimenti
      */
     public boolean sqrt(){
-       if(!checkSize(2))
+       if(!checkSize(1))
             return false;
         Complex a=memory.pop();            
         Complex c=a.sqrt();
