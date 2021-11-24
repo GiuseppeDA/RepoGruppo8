@@ -71,7 +71,12 @@ public class Calculator {
      *
      */
     public boolean sqrt(){
-        throw new UnsupportedOperationException("Not supported yet.");
+       if(!checkSize(2))
+            return false;
+        Complex a=memory.pop();            
+        Complex c=a.sqrt();
+        insert(c);
+        return true;
     }
 
     /**
