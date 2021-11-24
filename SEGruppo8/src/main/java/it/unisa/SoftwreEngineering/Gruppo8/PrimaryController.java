@@ -54,36 +54,69 @@ public class PrimaryController {
             calc.insert(realNum, imagNum);
 
             //righe da eliminare dopo aver inserito la observable
-            memory.getItems().add(calc.getTop());
+            memory.getItems().add(0,calc.getTop());
         }catch(NumberFormatException exc){
-                System.out.println("Mariojfhsdujkhfjk");
+                SecondaryController.display("Inserisci solo numeri con segno che li pecede!");
         }
-        
-        
-        
+
     }
     
     @FXML
     private void add(MouseEvent event) {
+        if(calc.add()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());
+        }else
+            SecondaryController.display("Non sono presnti abbastanza valori!");
     }
 
     @FXML
     private void subtract(MouseEvent event) {
+        if(calc.subcract()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());   
+        }
     }
 
     @FXML
     private void sqrt(MouseEvent event) {
+        if(calc.sqrt()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());
+        }
     }
 
     @FXML
     private void multiply(MouseEvent event) {
+        if(calc.multiply()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());
+        }
     }
 
     @FXML
     private void divide(MouseEvent event) {
+        if(calc.divide()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());
+        }
     }
 
     @FXML
     private void invert(MouseEvent event) {
+        if(calc.invert()){
+            //righe da eliminare dopo aver inserito la observable
+            memory.getItems().remove(0);
+            memory.getItems().add(0,calc.getTop());
+        }
     }
 }
