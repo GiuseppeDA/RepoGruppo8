@@ -118,7 +118,7 @@ public class CalculatorTest {
         ComplexNumber ris= new ComplexNumber(0,1);
         assertEquals(ris,instance.getTop());
         
-        instance.insert(0,0);
+        //instance.insert(0,0);
         
         
         
