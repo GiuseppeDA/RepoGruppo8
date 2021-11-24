@@ -1,6 +1,7 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -17,13 +18,23 @@ public class PrimaryController {
     private TextField imag;
     @FXML
     private Button insButton;
-
+    
+    private Calculator calc = new Calculator();
+    
+    private List list = new ArrayList();
+    
+    /*
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
-
+    */
+    
+    
+    
+    
     @FXML
     private void insertComplex(MouseEvent event) {
+        
         memory.getItems().add(real.getText());
     }
 }
