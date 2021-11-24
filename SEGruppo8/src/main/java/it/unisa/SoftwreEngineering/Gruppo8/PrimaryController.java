@@ -8,6 +8,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
+import javafx.scene.control.TextArea;
+import javafx.stage.Screen;
 
 public class PrimaryController {
 
@@ -34,6 +36,18 @@ public class PrimaryController {
     private Button divideButton;
     @FXML
     private Button invertButton;
+    @FXML
+    private TextArea screen;
+    
+    
+    //Initializing
+    
+    public void initialize() {
+        // Initialization code can go here. 
+        // The parameters url and resources can be omitted if they are not needed
+        screen.setEditable(false);
+        
+    }
     
     @FXML
     private void insertComplex(MouseEvent event) {
@@ -55,6 +69,8 @@ public class PrimaryController {
 
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
+
         }catch(NumberFormatException exc){
                 SecondaryController.display("Inserisci solo numeri con segno che li pecede!");
         }
@@ -68,6 +84,8 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
+
         }else
             SecondaryController.display("Non sono presnti abbastanza valori!");
     }
@@ -78,7 +96,8 @@ public class PrimaryController {
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().remove(0);
             memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());   
+            memory.getItems().add(0,calc.getTop()); 
+            screen.setText(memory.getItems().get(0).toString());
         }
     }
 
@@ -88,6 +107,7 @@ public class PrimaryController {
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
         }
     }
 
@@ -98,6 +118,7 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
         }
     }
 
@@ -108,6 +129,7 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
         }
     }
 
@@ -117,6 +139,7 @@ public class PrimaryController {
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
+            screen.setText(memory.getItems().get(0).toString());
         }
     }
 }
