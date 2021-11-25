@@ -62,16 +62,16 @@ public class CalculatorTest {
      * Test of subcract method, of class Calculator.
      */
     @Test
-    public void testSubcract() {
+    public void testSubtract() {
         System.out.println("subcract");
         Calculator instance = new Calculator();
         instance.insert(1,2);
-        boolean result0 = instance.subcract();
+        boolean result0 = instance.subtract();
         assertFalse(result0);
         
         
         instance.insert(2,1);
-        boolean result1 = instance.subcract();
+        boolean result1 = instance.subtract();
         assertTrue(result1);
         
         ComplexNumber ris= new ComplexNumber(-1,1);

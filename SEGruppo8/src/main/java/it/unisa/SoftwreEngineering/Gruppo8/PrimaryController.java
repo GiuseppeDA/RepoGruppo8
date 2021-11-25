@@ -92,7 +92,7 @@ public class PrimaryController {
 
     @FXML
     private void subtract(MouseEvent event) {
-        if(calc.subcract()){
+        if(calc.subtract()){
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().remove(0);
             memory.getItems().remove(0);

@@ -37,7 +37,7 @@ public class Calculator {
      *Sottrae l'ultimo numero in memoria al penultimo numero in memoria.
      * @return true se l'operazione di sottrazione è andata a buon fine false altrimenti
      */
-    public boolean subcract(){
+    public boolean subtract(){
          if(!checkSize(2))
             return false;
         Complex a=memory.pop();
