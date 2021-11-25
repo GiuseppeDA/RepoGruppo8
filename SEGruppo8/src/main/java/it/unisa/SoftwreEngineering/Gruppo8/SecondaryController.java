@@ -20,7 +20,6 @@ public class SecondaryController {
     */
     public static void display(String message){
         Stage window = new Stage();
-    
         window. initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Error");
         window.setMinWidth(250);
