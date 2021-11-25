@@ -98,7 +98,8 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop()); 
             screen.setText(memory.getItems().get(0).toString());
-        }
+        }else
+            SecondaryController.display("Non sono presnti abbastanza valori!");
     }
 
     @FXML
@@ -108,7 +109,8 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
-        }
+        }else
+            SecondaryController.display("Non sono presnti abbastanza valori!");
     }
 
     @FXML
@@ -119,17 +121,23 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
-        }
+        }else
+            SecondaryController.display("Non sono presnti abbastanza valori!");
     }
 
     @FXML
     private void divide(MouseEvent event) {
-        if(calc.divide()){
+        try {
+            if(calc.divide()){
             //righe da eliminare dopo aver inserito la observable
             memory.getItems().remove(0);
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
+            }else
+                SecondaryController.display("Non sono presnti abbastanza valori!");
+        } catch (Exception e) {
+            SecondaryController.display("divisione per 0!");
         }
     }
 
@@ -140,6 +148,7 @@ public class PrimaryController {
             memory.getItems().remove(0);
             memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
-        }
+        }else
+            SecondaryController.display("Non sono presnti abbastanza valori!");
     }
 }
