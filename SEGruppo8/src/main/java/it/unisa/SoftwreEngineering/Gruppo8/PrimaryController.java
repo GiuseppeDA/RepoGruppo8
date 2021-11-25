@@ -8,10 +8,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.stage.Screen;
 
-public class PrimaryController {
+public class PrimaryController implements Initializable{
 
     @FXML
     private ListView<Complex> memory;
@@ -41,12 +44,11 @@ public class PrimaryController {
     
     
     //Initializing
-    
-    public void initialize() {
-        // Initialization code can go here. 
-        // The parameters url and resources can be omitted if they are not needed
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         screen.setEditable(false);
         
+        memory.setItems(calc.getMemory());
     }
     
     @FXML
@@ -67,9 +69,6 @@ public class PrimaryController {
             
             calc.insert(realNum, imagNum);
 
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().add(0,calc.getTop());
-            screen.setText(memory.getItems().get(0).toString());
 
         }catch(NumberFormatException exc){
                 SecondaryController.display("Inserisci solo numeri con segno che li pecede!");
@@ -80,10 +79,6 @@ public class PrimaryController {
     @FXML
     private void add(MouseEvent event) {
         if(calc.add()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
 
         }else
@@ -151,4 +146,6 @@ public class PrimaryController {
         }else
             SecondaryController.display("Non sono presnti abbastanza valori!");
     }
+
+    
 }
