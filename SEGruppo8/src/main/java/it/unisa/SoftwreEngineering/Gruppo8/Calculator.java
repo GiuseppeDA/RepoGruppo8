@@ -7,15 +7,17 @@ import com.vm.jcomplex.*;
 import static com.vm.jcomplex.Complex.NaN;
 import java.lang.UnsupportedOperationException;
 import java.util.Stack;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author 39324
  */
 public class Calculator {
-    private Stack<Complex> memory;
+    private ObservableList<Complex> memory;
 
     public Calculator() {
-        memory = new Stack<>();
+        memory = FXCollections.observableArrayList();
     }
 
     
@@ -26,8 +28,8 @@ public class Calculator {
     public boolean add(){
         if(!checkSize(2))
             return false;
-        Complex a=memory.pop();
-        Complex b=memory.pop(); 
+        Complex a=removeTop();
+        Complex b=removeTop(); 
         Complex c= a.add(b);
         insert(c);
         return true;
@@ -40,8 +42,8 @@ public class Calculator {
     public boolean subtract(){
          if(!checkSize(2))
             return false;
-        Complex a=memory.pop();
-        Complex b=memory.pop();            
+        Complex a=removeTop();
+        Complex b=removeTop();            
         Complex c=b.subtract(a);
         insert(c);
         return true;
@@ -54,8 +56,8 @@ public class Calculator {
     public boolean multiply(){
          if(!checkSize(2))
             return false;
-        Complex a=memory.pop();
-        Complex b=memory.pop();            
+        Complex a=removeTop();
+        Complex b=removeTop();            
         Complex c=a.multiply(b);
         insert(c);
         return true;
@@ -69,8 +71,8 @@ public class Calculator {
     public boolean divide () throws ImpossibleDivisionException{
         if(!checkSize(2))
             return false;
-        Complex a=memory.pop();
-        Complex b=memory.pop();            
+        Complex a=removeTop();
+        Complex b=removeTop();            
         Complex c=b.divide(a);
         if(c==NaN){
             insert(b);
@@ -89,7 +91,7 @@ public class Calculator {
     public boolean sqrt(){
        if(!checkSize(1))
             return false;
-        Complex a=memory.pop();            
+        Complex a=removeTop();            
         Complex c=a.sqrt();
         insert(c);
         return true;
@@ -102,7 +104,7 @@ public class Calculator {
     public boolean invert (){
        if(!checkSize(1))
             return false;
-        Complex a=memory.pop();
+        Complex a=removeTop();
         Complex b=new Complex(-1);           
         Complex c=a.multiply(b);
         insert(c);
@@ -114,7 +116,7 @@ public class Calculator {
      * @return l'oggetto Complex in cima alla memory
      */
     public ComplexNumber getTop(){
-        return (ComplexNumber)memory.peek();
+        return (ComplexNumber)memory.get(0);
     }
 
     /**
@@ -135,7 +137,7 @@ public class Calculator {
      */
     public void insert(double real ,double img){
         Complex c=new ComplexNumber(real,img);
-        memory.push(c);
+        memory.add(0,c);
     } 
 
     /**
@@ -144,6 +146,10 @@ public class Calculator {
      */
     public void insert (Complex x){
         Complex c=new ComplexNumber(x.getReal(),x.getImaginary());
-        memory.push(c);
+       memory.add(0,c);
+    }
+    
+    private Complex removeTop(){
+     return memory.remove(0);   
     }
 }
