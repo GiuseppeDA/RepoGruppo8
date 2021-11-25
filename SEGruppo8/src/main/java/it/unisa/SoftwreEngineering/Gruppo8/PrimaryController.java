@@ -43,7 +43,9 @@ public class PrimaryController implements Initializable{
     @FXML
     private Text screen;
     
-    private String sizeMsg="Inserisci solo numeri e relativo segno!";
+    private String sizeMsg="Operandi non sufficienti!";
+    
+    private String inseMsg="Inserisci solo numeri e relativo segno!";
     
     private String divideeMsg="impossibile dividere per 0!";
     
@@ -76,7 +78,7 @@ public class PrimaryController implements Initializable{
             
             screen.setText(memory.getItems().get(0).toString());
         }catch(NumberFormatException exc){
-                SecondaryController.display(sizeMsg);
+                SecondaryController.display(inseMsg);
         }
 
     }
