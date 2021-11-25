@@ -152,4 +152,10 @@ public class Calculator {
     private Complex removeTop(){
      return memory.remove(0);   
     }
+
+    protected ObservableList<Complex> getMemory() {
+        return memory;
+    }
+    
+    
 }
