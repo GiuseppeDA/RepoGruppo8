@@ -2,6 +2,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,6 +25,7 @@ public class SecondaryController {
         window.setTitle("Error");
         window.setMinWidth(250);
         Label label = new Label();
+        label.setPadding(new Insets(10,10,10,10));
         label.setText(message);
         Button closeButton = new Button ("Ok");
         closeButton.setOnAction(e -> window.close());

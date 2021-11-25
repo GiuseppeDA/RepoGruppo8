@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 public class PrimaryController implements Initializable{
@@ -40,14 +41,15 @@ public class PrimaryController implements Initializable{
     @FXML
     private Button invertButton;
     @FXML
-    private TextArea screen;
+    private Text screen;
     
+    private String sizeMsg="Inserisci solo numeri e relativo segno!";
+    
+    private String divideeMsg="impossibile dividere per 0!";
     
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        screen.setEditable(false);
-        
         memory.setItems(calc.getMemory());
     }
     
@@ -68,10 +70,13 @@ public class PrimaryController implements Initializable{
                 imagNum = Double.parseDouble(imag.getText());
             
             calc.insert(realNum, imagNum);
-
-
+            
+            real.setText("");
+            imag.setText("");
+            
+            screen.setText(memory.getItems().get(0).toString());
         }catch(NumberFormatException exc){
-                SecondaryController.display("Inserisci solo numeri con segno che li pecede!");
+                SecondaryController.display(sizeMsg);
         }
 
     }
@@ -82,69 +87,51 @@ public class PrimaryController implements Initializable{
             screen.setText(memory.getItems().get(0).toString());
 
         }else
-            SecondaryController.display("Non sono presnti abbastanza valori!");
+            SecondaryController.display(sizeMsg);
     }
 
     @FXML
     private void subtract(MouseEvent event) {
         if(calc.subtract()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop()); 
             screen.setText(memory.getItems().get(0).toString());
         }else
-            SecondaryController.display("Non sono presnti abbastanza valori!");
+            SecondaryController.display(sizeMsg);
     }
 
     @FXML
     private void sqrt(MouseEvent event) {
         if(calc.sqrt()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
         }else
-            SecondaryController.display("Non sono presnti abbastanza valori!");
+            SecondaryController.display(sizeMsg);
     }
 
     @FXML
     private void multiply(MouseEvent event) {
         if(calc.multiply()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
         }else
-            SecondaryController.display("Non sono presnti abbastanza valori!");
+            SecondaryController.display(sizeMsg);
     }
 
     @FXML
     private void divide(MouseEvent event) {
         try {
             if(calc.divide()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
             }else
-                SecondaryController.display("Non sono presnti abbastanza valori!");
-        } catch (Exception e) {
-            SecondaryController.display("divisione per 0!");
+                SecondaryController.display(sizeMsg);
+        } catch (ImpossibleDivisionException e) {
+            SecondaryController.display(divideeMsg);
         }
     }
 
     @FXML
     private void invert(MouseEvent event) {
         if(calc.invert()){
-            //righe da eliminare dopo aver inserito la observable
-            memory.getItems().remove(0);
-            memory.getItems().add(0,calc.getTop());
             screen.setText(memory.getItems().get(0).toString());
         }else
-            SecondaryController.display("Non sono presnti abbastanza valori!");
+            SecondaryController.display(sizeMsg);
     }
 
     
