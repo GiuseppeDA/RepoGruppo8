@@ -145,7 +145,7 @@ public class Calculator {
      * @param x l'oggetto Complex da aggiungere
      */
     public void insert (Complex x){
-        Complex c=new ComplexNumber(x.getReal(),x.getImaginary());
+       Complex c=new ComplexNumber(x.getReal(),x.getImaginary());
        memory.add(0,c);
     }
     

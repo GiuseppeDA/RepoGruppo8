@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
@@ -53,6 +54,16 @@ public class PrimaryController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         memory.setItems(calc.getMemory());
+        
+        
+        memory.getItems().addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(ListChangeListener.Change change) {
+                if(memory.getItems().size() > 0)
+                    screen.setText(memory.getItems().get(0).toString());
+            }
+        });
+        
     }
     
     @FXML
@@ -76,65 +87,56 @@ public class PrimaryController implements Initializable{
             real.setText("");
             imag.setText("");
             
-            screen.setText(memory.getItems().get(0).toString());
+            
         }catch(NumberFormatException exc){
-                SecondaryController.display(inseMsg);
+                popupCaller(inseMsg);
         }
 
     }
     
     @FXML
     private void add(MouseEvent event) {
-        if(calc.add()){
-            screen.setText(memory.getItems().get(0).toString());
-
-        }else
-            SecondaryController.display(sizeMsg);
+        if(!calc.add())
+            popupCaller(sizeMsg);
     }
 
     @FXML
     private void subtract(MouseEvent event) {
-        if(calc.subtract()){
-            screen.setText(memory.getItems().get(0).toString());
-        }else
-            SecondaryController.display(sizeMsg);
+        if(!calc.subtract())
+            popupCaller(sizeMsg);
     }
 
     @FXML
     private void sqrt(MouseEvent event) {
-        if(calc.sqrt()){
-            screen.setText(memory.getItems().get(0).toString());
-        }else
-            SecondaryController.display(sizeMsg);
+        if(!calc.sqrt())
+            popupCaller(sizeMsg);
     }
 
     @FXML
     private void multiply(MouseEvent event) {
-        if(calc.multiply()){
-            screen.setText(memory.getItems().get(0).toString());
-        }else
-            SecondaryController.display(sizeMsg);
+        if(!calc.multiply())
+            popupCaller(sizeMsg);
     }
 
     @FXML
     private void divide(MouseEvent event) {
         try {
-            if(calc.divide()){
-            screen.setText(memory.getItems().get(0).toString());
-            }else
-                SecondaryController.display(sizeMsg);
+            boolean var = calc.divide();
+            if(!var)
+                popupCaller(sizeMsg);
         } catch (ImpossibleDivisionException e) {
-            SecondaryController.display(divideeMsg);
+            popupCaller(divideeMsg);
         }
     }
 
     @FXML
     private void invert(MouseEvent event) {
-        if(calc.invert()){
-            screen.setText(memory.getItems().get(0).toString());
-        }else
-            SecondaryController.display(sizeMsg);
+        if(!calc.invert())
+            popupCaller(sizeMsg);
+    }
+    
+    private void popupCaller(String msg){
+        SecondaryController.display(sizeMsg);
     }
 
-    
 }
