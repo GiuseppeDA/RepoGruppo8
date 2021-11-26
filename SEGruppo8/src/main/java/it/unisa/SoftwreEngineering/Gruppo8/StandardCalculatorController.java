@@ -17,7 +17,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 public class StandardCalculatorController implements Initializable{
-
+    
+    private Calculator calc = new Calculator();
+    
+    private String sizeMsg="Operandi non sufficienti!";
+    
+    private String inseMsg="Inserisci solo numeri e relativo segno!";
+    
+    private String divideeMsg="impossibile dividere per 0!"; 
+    
     @FXML
     private ListView<Complex> memory;
     @FXML
@@ -25,30 +33,7 @@ public class StandardCalculatorController implements Initializable{
     @FXML
     private TextField imag;
     @FXML
-    private Button insButton;
-    
-    private Calculator calc = new Calculator();
-
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button subtractButton;
-    @FXML
-    private Button sqrtButton;
-    @FXML
-    private Button multiplyButton;
-    @FXML
-    private Button divideButton;
-    @FXML
-    private Button invertButton;
-    @FXML
     private Text screen;
-    
-    private String sizeMsg="Operandi non sufficienti!";
-    
-    private String inseMsg="Inserisci solo numeri e relativo segno!";
-    
-    private String divideeMsg="impossibile dividere per 0!";
     
     //Initializing
     @Override

@@ -17,13 +17,13 @@
       </HBox>
       <TextField fx:id="real" layoutX="200.0" layoutY="245.0" prefHeight="38.0" prefWidth="137.0" promptText="Real" />
       <TextField fx:id="imag" layoutX="337.0" layoutY="245.0" prefHeight="38.0" prefWidth="137.0" promptText="Imaginary" />
-      <Button fx:id="insButton" layoutX="474.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#insertComplex" prefHeight="38.0" prefWidth="52.0" text="INS" />
-      <Button fx:id="addButton" layoutX="221.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="32.0" prefWidth="45.0" text="+" />
-      <Button fx:id="subtractButton" layoutX="277.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#subtract" prefHeight="32.0" prefWidth="45.0" text="-" />
-      <Button fx:id="sqrtButton" layoutX="337.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#sqrt" prefHeight="32.0" prefWidth="45.0" text="sqrt" />
-      <Button fx:id="multiplyButton" layoutX="221.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#multiply" prefHeight="32.0" prefWidth="45.0" text="*" />
-      <Button fx:id="divideButton" layoutX="277.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#divide" prefHeight="32.0" prefWidth="45.0" text="/" />
-      <Button fx:id="invertButton" layoutX="337.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#invert" prefHeight="32.0" prefWidth="45.0" style="-fx-font-size: 12;" text="+-" />
+      <Button layoutX="474.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#insertComplex" prefHeight="38.0" prefWidth="52.0" text="INS" />
+      <Button layoutX="221.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="32.0" prefWidth="45.0" text="+" />
+      <Button layoutX="277.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#subtract" prefHeight="32.0" prefWidth="45.0" text="-" />
+      <Button layoutX="337.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#sqrt" prefHeight="32.0" prefWidth="45.0" text="sqrt" />
+      <Button layoutX="221.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#multiply" prefHeight="32.0" prefWidth="45.0" text="*" />
+      <Button layoutX="277.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#divide" prefHeight="32.0" prefWidth="45.0" text="/" />
+      <Button layoutX="337.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#invert" prefHeight="32.0" prefWidth="45.0" style="-fx-font-size: 12;" text="+-" />
       <Text fx:id="screen" fontSmoothingType="LCD" layoutX="199.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" textAlignment="RIGHT" wrappingWidth="321.13671875">
          <font>
             <Font name="Wingdings" size="24.0" />
