@@ -121,8 +121,7 @@ public class PrimaryController implements Initializable{
     @FXML
     private void divide(MouseEvent event) {
         try {
-            boolean var = calc.divide();
-            if(!var)
+            if(!calc.divide())
                 popupCaller(sizeMsg);
         } catch (ImpossibleDivisionException e) {
             popupCaller(divideeMsg);
@@ -136,7 +135,7 @@ public class PrimaryController implements Initializable{
     }
     
     private void popupCaller(String msg){
-        SecondaryController.display(sizeMsg);
+        SecondaryController.display(msg);
     }
 
 }
