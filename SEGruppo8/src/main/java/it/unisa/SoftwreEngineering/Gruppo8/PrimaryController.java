@@ -81,14 +81,15 @@ public class PrimaryController implements Initializable{
                 imagNum = 0.0;
             else
                 imagNum = Double.parseDouble(imag.getText());
-            
+                 
             calc.insert(realNum, imagNum);
             
             real.setText("");
             imag.setText("");
-            
-            
+   
         }catch(NumberFormatException exc){
+                real.setText("");
+                imag.setText("");
                 popupCaller(inseMsg);
         }
 
