@@ -8,7 +8,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  *
  * @author 39324
  */
-public class ImpossibleDivisionException extends RuntimeException {
+public class ImpossibleDivisionException extends Exception {
 
     /**
      * Creates a new instance of <code>ImpossibleDivisionException</code>
