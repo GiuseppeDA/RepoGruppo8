@@ -21,10 +21,15 @@ public class ComplexNumber extends Complex {
     public String toString() {
         Double insReal=getReal();
         Double insImaginary=getImaginary();
-        if (getReal()==0.0)
-            insReal=0.0;
-        if (getImaginary()==0.0)
+        if (getImaginary()==0.0){
             insImaginary=0.0;
+            return Double.toString(insReal);
+        }                
+        if (getReal()==0.0){
+            insReal=0.0;
+            return Double.toString(insImaginary)+'j';            
+        }
+    
         if(getImaginary()>=0){
              return Double.toString(insReal) + " + "+Double.toString(insImaginary)+'j';
         }
