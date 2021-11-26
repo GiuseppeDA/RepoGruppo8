@@ -16,7 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
-public class PrimaryController implements Initializable{
+public class StandardCalculatorController implements Initializable{
 
     @FXML
     private ListView<Complex> memory;
