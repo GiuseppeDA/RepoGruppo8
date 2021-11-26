@@ -136,7 +136,7 @@ public class PrimaryController implements Initializable{
     }
     
     private void popupCaller(String msg){
-        SecondaryController.display(msg);
+        PopupController.display(msg);
     }
 
 }
