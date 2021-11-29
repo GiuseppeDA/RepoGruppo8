@@ -75,8 +75,8 @@ public class Calculator {
         Complex b=removeTop();            
         Complex c=b.divide(a);
         if(c==NaN){
-            insert(a);
             insert(b);
+            insert(a);
             throw new ImpossibleDivisionException("Divisione per 0 non consentita");           
         }
         insert(c);
