@@ -166,7 +166,12 @@ public class Calculator {
         memory.clear();
     }
     public boolean swap(){
-        throw new UnsupportedOperationException();
+        if(!checkSize(2))
+            return false;
+        Complex a=memory.get(0);
+        memory.set(0, memory.get(1));
+        memory.set(1, a);
+        return true;
     }
     public boolean over(){
         throw new UnsupportedOperationException();
