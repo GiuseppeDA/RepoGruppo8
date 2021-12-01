@@ -303,6 +303,24 @@ public class StandardCalculatorController implements Initializable{
         PopupController.display(msg);
     }
 
+    @FXML
+    private void setVar(MouseEvent event) {
+    }
+
+    @FXML
+    private void insertVarInStack(MouseEvent event) {
+    }
+
+    @FXML
+    private void addVar(MouseEvent event) {
+    }
+
+    @FXML
+    private void subVar(MouseEvent event) {
+    }
+
+    
+
     
 
 }
