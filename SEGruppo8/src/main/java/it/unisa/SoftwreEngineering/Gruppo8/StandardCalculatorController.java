@@ -18,7 +18,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
@@ -40,6 +43,20 @@ public class StandardCalculatorController implements Initializable{
     private Text screen;
     @FXML
     private Button insButton;
+    @FXML
+    private TableView<Variable> variables;
+    @FXML
+    private TableColumn<Variable, String> var;
+    @FXML
+    private TableColumn<Variable, Complex> value;
+    @FXML
+    private Button setVarButton;
+    @FXML
+    private Button insertVarInStackButton;
+    @FXML
+    private Button addVarButton;
+    @FXML
+    private Button subVarButton;
     
     //Initializing
     @Override
@@ -66,6 +83,19 @@ public class StandardCalculatorController implements Initializable{
                     insButton.setDefaultButton(false);
             }
         });
+        
+        
+        //TableView
+        
+        var.setCellValueFactory( new PropertyValueFactory<>("name"));
+        value.setCellValueFactory( new PropertyValueFactory<>("value"));
+        
+        //variables.setItems(ol);
+        
+        
+        //Variables Buttons
+        
+        
     }
     
     @FXML
@@ -234,6 +264,8 @@ public class StandardCalculatorController implements Initializable{
     private void add(MouseEvent event) {
         if(!calc.add())
             popupCaller(sizeMsg);
+        
+      
     }
 
     @FXML

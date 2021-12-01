@@ -36,32 +36,32 @@
       <Button layoutX="635.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#dup" prefHeight="32.0" prefWidth="45.0" text="dup" />
       <Button layoutX="635.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#swap" prefHeight="32.0" prefWidth="45.0" text="swap" />
       <Button layoutX="478.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#over" prefHeight="32.0" prefWidth="45.0" text="over" />
-      <TableView layoutX="718.0" prefHeight="471.0" prefWidth="229.0">
-        <columns>
-          <TableColumn prefWidth="61.0" text="VAR" />
-          <TableColumn prefWidth="189.0" text="Value" />
-        </columns>
-      </TableView>
-      <Button layoutX="478.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#setVar" prefHeight="32.0" prefWidth="45.0" text="&lt;VAR">
+      <Button fx:id="setVarButton" layoutX="478.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#setVar" prefHeight="32.0" prefWidth="45.0" text="&lt;VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button layoutX="557.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#insertVarInStack" prefHeight="32.0" prefWidth="45.0" text="&gt;VAR">
+      <Button fx:id="insertVarInStackButton" layoutX="557.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#insertVarInStack" prefHeight="32.0" prefWidth="45.0" text="&gt;VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button layoutX="635.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#addVar" prefHeight="32.0" prefWidth="45.0" text="+VAR">
+      <Button fx:id="addVarButton" layoutX="635.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#addVar" prefHeight="32.0" prefWidth="45.0" text="+VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button layoutX="557.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#subVar" prefHeight="32.0" prefWidth="45.0" text="-VAR" />
+      <Button fx:id="subVarButton" layoutX="557.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#subVar" prefHeight="32.0" prefWidth="45.0" text="-VAR" />
       <Label layoutX="480.0" layoutY="300.0" prefHeight="21.0" prefWidth="208.0" text="----------- Variables -----------">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <TableView fx:id="variables" layoutX="710.0" prefHeight="471.0" prefWidth="236.0">
+        <columns>
+          <TableColumn fx:id="var" prefWidth="60.0" text="VAR" />
+          <TableColumn fx:id="value" prefWidth="175.0" text="Value" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
