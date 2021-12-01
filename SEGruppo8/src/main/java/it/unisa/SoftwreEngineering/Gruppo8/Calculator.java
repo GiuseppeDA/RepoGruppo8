@@ -157,7 +157,10 @@ public class Calculator {
     }
     
     public boolean drop(){
-        throw new UnsupportedOperationException();
+         if(!checkSize(1))
+            return false;
+        removeTop();
+        return true;
     }
     public boolean clear(){
         throw new UnsupportedOperationException();
