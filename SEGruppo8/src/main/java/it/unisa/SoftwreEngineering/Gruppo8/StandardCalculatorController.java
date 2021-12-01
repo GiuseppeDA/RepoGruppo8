@@ -377,10 +377,15 @@ public class StandardCalculatorController implements Initializable{
             } catch (ImpossibleDivisionException e) {
                 popupCaller(divideeMsg);
             }
+            return true;
         }
         
-        if(op.equals("clear"))
+        if(op.equals("clear")){
             calc.clear();
+            return true;
+        }
+            
+        
         
         return false;
     }
