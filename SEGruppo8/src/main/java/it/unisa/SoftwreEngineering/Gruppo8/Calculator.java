@@ -149,7 +149,7 @@ public class Calculator {
     }
     
     protected Complex removeTop(){
-     return memory.remove(0);   
+     return memory.remove(0);
     }
 
     protected ObservableList<Complex> getMemory() {
@@ -205,7 +205,7 @@ public class Calculator {
      * @return true se l'inversione è andata a buon fine false altrimenti
      */
     public boolean dup(){
-       if(!checkSize(2))
+       if(!checkSize(1))
             return false;
         Complex a=memory.get(0);
         insert(a);
