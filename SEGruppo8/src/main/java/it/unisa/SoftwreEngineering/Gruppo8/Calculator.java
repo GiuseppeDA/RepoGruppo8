@@ -5,8 +5,6 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.*;
 import static com.vm.jcomplex.Complex.NaN;
-import java.lang.UnsupportedOperationException;
-import java.util.Stack;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 /**

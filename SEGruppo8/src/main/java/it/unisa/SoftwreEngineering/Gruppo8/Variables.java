@@ -7,7 +7,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.Complex;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import java.lang.UnsupportedOperationException;
 /**
  *
  * @author 39324
@@ -17,7 +17,22 @@ public class Variables {
 
     public Variables() {
          variablesList= FXCollections.observableArrayList();
+         variablesList.setAll(Complex.ZERO);
     }
     
+    public void setVar(Complex c,int index){
+        Complex a=new ComplexNumber(c.getReal(),c.getImaginary());
+        variablesList.set(index, a);
+    }
+    public Complex getVar(int index){
+        return variablesList.get(index);
+    }
+    public void addVar(Complex c,int intex){
+        throw new UnsupportedOperationException();   
+    }
+    public void subVar(Complex c,int index){
+        throw new UnsupportedOperationException();   
+    }
 }
 
+    
