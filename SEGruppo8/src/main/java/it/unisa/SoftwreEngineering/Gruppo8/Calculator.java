@@ -148,7 +148,7 @@ public class Calculator {
        memory.add(0,c);
     }
     
-    private Complex removeTop(){
+    protected Complex removeTop(){
      return memory.remove(0);   
     }
 
@@ -211,5 +211,4 @@ public class Calculator {
         insert(a);
         return true;
     }
-   
 }
