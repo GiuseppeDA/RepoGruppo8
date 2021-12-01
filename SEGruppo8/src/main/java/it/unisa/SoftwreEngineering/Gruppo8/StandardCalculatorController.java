@@ -73,8 +73,7 @@ public class StandardCalculatorController implements Initializable{
       
       String imagPattern = "([+-])?(" + optionalDecimalNumber + ")?j";
       
-      
-      
+
       if(Pattern.matches(pattern, s)){ //significa che il valore inserito è accettabile
           
           StringTokenizer st = new StringTokenizer (s, "+-j", true);
@@ -126,17 +125,12 @@ public class StandardCalculatorController implements Initializable{
                     if (sa.equals("-j"))
                         sa = "-1";
                 }
-                else if(sa.equals ("j"))
-                    sa = "1";
-                
               }
- 
+              if(sa.equals ("j"))
+                    sa = "1";
               imagNum = Double.parseDouble (sa);
               calc.insert(0.0, imagNum); 
           }
- 
-          
-          
       }
       
       boolean matches = Pattern.matches(pattern, s);
