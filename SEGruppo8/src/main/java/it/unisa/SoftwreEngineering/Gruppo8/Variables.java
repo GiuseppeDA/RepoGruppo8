@@ -17,19 +17,22 @@ public class Variables {
 
     public Variables() {
          variablesList= FXCollections.observableArrayList();
+         variablesList.setAll(Complex.ZERO);
     }
     
-    public boolean setVar(Complex c,int index){
-        throw new UnsupportedOperationException();   
+    public void setVar(Complex c,int index){
+        Complex a=new ComplexNumber(c.getReal(),c.getImaginary());
+        variablesList.set(index, a);
     }
     public Complex getVar(int index){
         throw new UnsupportedOperationException();   
     }
-    public boolean addVar(Complex c,int intex){
+    public void addVar(Complex c,int intex){
         throw new UnsupportedOperationException();   
     }
-    public boolean subVar(Complex c,int index){
+    public void subVar(Complex c,int index){
         throw new UnsupportedOperationException();   
     }
 }
 
+    
