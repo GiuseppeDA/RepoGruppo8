@@ -189,6 +189,8 @@ public class Calculator {
         return true;
     }
     protected  ObservableList<Complex> getMemoryClone(){
-        throw new UnsupportedOperationException();
+        ObservableList<Complex> clone=FXCollections.observableArrayList();
+        clone.addAll(memory);
+        return clone;
     }
 }
