@@ -255,11 +255,11 @@ public class CalculatorTest {
         System.out.println("swap");
         Calculator instance = new Calculator();
         instance.insert(1,2);
-        boolean result0 = instance.add();
+        boolean result0 = instance.swap();
         assertFalse(result0);
         
         instance.insert(2,1);
-        boolean result1 = instance.add();
+        boolean result1 = instance.swap();
         assertTrue(result1);
         
         instance.swap();
