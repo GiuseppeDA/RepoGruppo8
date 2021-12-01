@@ -8,26 +8,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
    <children>
-      <HBox maxHeight="1.7976931348623157E308" prefHeight="283.0" prefWidth="200.0">
+      <HBox maxHeight="1.7976931348623157E308" prefHeight="283.0" prefWidth="457.0">
          <children>
-            <ListView fx:id="memory" prefHeight="364.0" prefWidth="200.0" />
+            <ListView fx:id="memory" prefHeight="283.0" prefWidth="460.0" />
          </children>
       </HBox>
-      <TextField fx:id="real" layoutX="200.0" layoutY="245.0" prefHeight="38.0" prefWidth="137.0" promptText="Real" />
-      <TextField fx:id="imag" layoutX="337.0" layoutY="245.0" prefHeight="38.0" prefWidth="137.0" promptText="Imaginary" />
-      <Button layoutX="474.0" layoutY="245.0" mnemonicParsing="false" onMouseClicked="#insertComplex" prefHeight="38.0" prefWidth="52.0" text="INS" />
-      <Button layoutX="221.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="32.0" prefWidth="45.0" text="+" />
-      <Button layoutX="277.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#subtract" prefHeight="32.0" prefWidth="45.0" text="-" />
-      <Button layoutX="337.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#sqrt" prefHeight="32.0" prefWidth="45.0" text="sqrt" />
-      <Button layoutX="221.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#multiply" prefHeight="32.0" prefWidth="45.0" text="*" />
-      <Button layoutX="277.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#divide" prefHeight="32.0" prefWidth="45.0" text="/" />
-      <Button layoutX="337.0" layoutY="127.0" mnemonicParsing="false" onMouseClicked="#invert" prefHeight="32.0" prefWidth="45.0" style="-fx-font-size: 12;" text="+-" />
-      <Text fx:id="screen" fontSmoothingType="LCD" layoutX="199.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" textAlignment="RIGHT" wrappingWidth="321.13671875">
+      <TextField fx:id="input" layoutX="466.0" layoutY="328.0" prefHeight="38.0" prefWidth="194.0" promptText="Insert a Complex or an operation" />
+      <Button layoutX="665.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#insertComplex" prefHeight="38.0" prefWidth="52.0" text="INS" />
+      <Button layoutX="489.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#add" prefHeight="32.0" prefWidth="45.0" text="+" />
+      <Button layoutX="568.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#subtract" prefHeight="32.0" prefWidth="45.0" text="-" />
+      <Button layoutX="646.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#sqrt" prefHeight="32.0" prefWidth="45.0" text="sqrt" />
+      <Button layoutX="489.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#multiply" prefHeight="32.0" prefWidth="45.0" text="*" />
+      <Button layoutX="568.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#divide" prefHeight="32.0" prefWidth="45.0" text="/" />
+      <Button layoutX="646.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#invert" prefHeight="32.0" prefWidth="45.0" style="-fx-font-size: 12;" text="+-" />
+      <Text fx:id="screen" fontSmoothingType="LCD" layoutX="457.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" textAlignment="RIGHT" wrappingWidth="274.47003173828125">
          <font>
             <Font name="Wingdings" size="24.0" />
          </font>
       </Text>
+      <Button layoutX="489.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="32.0" prefWidth="45.0" text="clear" />
+      <Button layoutX="568.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#drop" prefHeight="32.0" prefWidth="45.0" text="drop" />
+      <Button layoutX="646.0" layoutY="221.0" mnemonicParsing="false" onMouseClicked="#dup" prefHeight="32.0" prefWidth="45.0" text="dup" />
+      <Button layoutX="568.0" layoutY="273.0" mnemonicParsing="false" onMouseClicked="#swap" prefHeight="32.0" prefWidth="45.0" text="swap" />
+      <Button layoutX="489.0" layoutY="273.0" mnemonicParsing="false" onMouseClicked="#over" prefHeight="32.0" prefWidth="45.0" text="over" />
    </children>
 </Pane>

@@ -29,7 +29,7 @@ public class StandardCalculatorController implements Initializable{
     @FXML
     private ListView<Complex> memory;
     @FXML
-    private TextField real;
+    private TextField input;
     @FXML
     private TextField imag;
     @FXML
@@ -57,10 +57,10 @@ public class StandardCalculatorController implements Initializable{
         Double imagNum;
         
         try {
-            if(real.getText() == null || real.getText().trim().isEmpty())
+            if(input.getText() == null || input.getText().trim().isEmpty())
                 realNum = 0.0;
             else
-                realNum = Double.parseDouble(real.getText());
+                realNum = Double.parseDouble(input.getText());
             
             if(imag.getText() == null || imag.getText().trim().isEmpty())
                 imagNum = 0.0;
@@ -69,11 +69,11 @@ public class StandardCalculatorController implements Initializable{
                  
             calc.insert(realNum, imagNum);
             
-            real.setText("");
+            input.setText("");
             imag.setText("");
    
         }catch(NumberFormatException exc){
-                real.setText("");
+                input.setText("");
                 imag.setText("");
                 popupCaller(inseMsg);
         }
@@ -118,6 +118,36 @@ public class StandardCalculatorController implements Initializable{
     private void invert(MouseEvent event) {
         if(!calc.invert())
             popupCaller(sizeMsg);
+    }
+    
+    @FXML
+    private void clear(MouseEvent event){
+        //if(!calc.clear())
+          //  popupCaller(sizeMsg);
+    }
+    
+    @FXML
+    private void drop(MouseEvent event){
+        //if(!calc.drop())
+          //  popupCaller(sizeMsg);
+    }
+    
+    @FXML
+    private void dup(MouseEvent event){
+        //if(!calc.dup())
+          //  popupCaller(sizeMsg);
+    }
+    
+    @FXML
+    private void over(MouseEvent event){
+        //if(!calc.over())
+          //  popupCaller(sizeMsg);
+    }
+    
+    @FXML
+    private void swap(MouseEvent event){
+        //if(!calc.swap())
+          //  popupCaller(sizeMsg);
     }
     
     private void popupCaller(String msg){
