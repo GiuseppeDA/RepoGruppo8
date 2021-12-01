@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -53,6 +56,62 @@ public class StandardCalculatorController implements Initializable{
     
     @FXML
     private void insertComplex(MouseEvent event) {
+        
+      String s1 = input.getText();
+      String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";
+      
+      String pattern = optionalDecimalNumber + "([+-]" + optionalDecimalNumber + "i)?";
+
+      boolean matches = Pattern.matches(pattern, s1);
+
+      System.out.println("matches = " + matches);
+      
+      calc.insert(Double.valueOf(s1), 0.0);
+      
+      
+      /*
+      
+      double a = 0.0;
+      double b = 0.0;
+      StringTokenizer st = new StringTokenizer (s, "+-j", true);
+      if (st.hasMoreTokens()) {
+         String sa = st.nextToken().trim();
+         System.out.println(sa);
+         if (st.hasMoreTokens()) {
+            if (sa.equals ("+")) sa = st.nextToken().trim();
+            if (sa.equals ("-")) sa = "-" + st.nextToken().trim();
+            if (sa.equals ("j")) System.out.println("Mario"); //throw new IllegalArgumentException(s + " is not a complex number");
+         } 
+         a = Double.parseDouble (sa);
+         if (st.hasMoreTokens()) {
+            String sb = st.nextToken().trim();
+            if (st.hasMoreTokens()) {
+               if (sb.equals ("+")) sb = st.nextToken().trim();
+               if (sb.equals ("-")) sb = "-" + st.nextToken().trim();
+            }
+            b = Double.parseDouble (sb);
+         }
+         if (st.hasMoreTokens()) {
+            String si = st.nextToken().trim();
+            if (!si.equals ("j"))
+               System.out.println("Mario");
+               //throw new IllegalArgumentException(s + " is not a complex number");
+            if (st.hasMoreTokens())
+                System.out.println("Mario");
+               //throw new IllegalArgumentException(s + " is not a complex number");
+         } else
+             System.out.println("Mario");
+            //throw new IllegalArgumentException (s + " is not a complex number");
+      } else 
+         System.out.println("Mario");
+         //throw new IllegalArgumentException (s + " is not a complex number");
+        
+        calc.insert(a, b);
+            
+        input.setText("");
+        */
+        /*
+        
         Double realNum;
         Double imagNum;
         
@@ -76,7 +135,7 @@ public class StandardCalculatorController implements Initializable{
                 input.setText("");
                 imag.setText("");
                 popupCaller(inseMsg);
-        }
+        }*/
 
     }
     
@@ -122,32 +181,31 @@ public class StandardCalculatorController implements Initializable{
     
     @FXML
     private void clear(MouseEvent event){
-        //if(!calc.clear())
-          //  popupCaller(sizeMsg);
+        calc.clear();
     }
     
     @FXML
     private void drop(MouseEvent event){
-        //if(!calc.drop())
-          //  popupCaller(sizeMsg);
+        if(!calc.drop())
+            popupCaller(sizeMsg);
     }
     
     @FXML
     private void dup(MouseEvent event){
-        //if(!calc.dup())
-          //  popupCaller(sizeMsg);
+        if(!calc.dup())
+            popupCaller(sizeMsg);
     }
     
     @FXML
     private void over(MouseEvent event){
-        //if(!calc.over())
-          //  popupCaller(sizeMsg);
+        if(!calc.over())
+          popupCaller(sizeMsg);
     }
     
     @FXML
     private void swap(MouseEvent event){
-        //if(!calc.swap())
-          //  popupCaller(sizeMsg);
+        if(!calc.swap())
+          popupCaller(sizeMsg);
     }
     
     private void popupCaller(String msg){
