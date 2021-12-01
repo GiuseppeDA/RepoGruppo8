@@ -156,15 +156,28 @@ public class Calculator {
         return memory;
     }
     
+    /**
+     *cancella l'ultimo elemento dalla memory
+     * @return true se l'inversione è andata a buon fine false altrimenti
+     */
     public boolean drop(){
          if(!checkSize(1))
             return false;
         removeTop();
         return true;
     }
+
+    /**
+     *svuota la memory
+     */
     public void clear(){
         memory.clear();
     }
+
+    /**
+     *scambia l'ultimo e il penultimo elemento della memory
+     * @return true se l'inversione è andata a buon fine false altrimenti
+     */
     public boolean swap(){
         if(!checkSize(2))
             return false;
@@ -174,6 +187,11 @@ public class Calculator {
         insert(b);
         return true;
     }
+
+    /**
+     *pusha nella memory una copia del penultimo elemento 
+     * @return true se l'inversione è andata a buon fine false altrimenti 
+     */
     public boolean over(){
        if(!checkSize(2))
             return false;
@@ -181,6 +199,11 @@ public class Calculator {
         insert(a);
         return true;
     }
+
+    /**
+     *pusha nella memory una copia dell'ultimo elemento 
+     * @return true se l'inversione è andata a buon fine false altrimenti
+     */
     public boolean dup(){
        if(!checkSize(2))
             return false;
