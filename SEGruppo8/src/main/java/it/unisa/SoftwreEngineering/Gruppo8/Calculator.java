@@ -182,7 +182,11 @@ public class Calculator {
         return true;
     }
     public boolean dup(){
-        throw new UnsupportedOperationException();
+       if(!checkSize(2))
+            return false;
+        Complex a=memory.get(0);
+        insert(a);
+        return true;
     }
     protected  ObservableList<Complex> getMemoryClone(){
         throw new UnsupportedOperationException();
