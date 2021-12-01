@@ -242,7 +242,7 @@ public class CalculatorTest {
         assertTrue(result1);
         
         ComplexNumber ris= new ComplexNumber(1,2);
-        assertEquals(ris,instance.getTop());
+        assertEquals(ris,instance.removeTop());
         
     }
 
@@ -262,14 +262,12 @@ public class CalculatorTest {
         boolean result1 = instance.swap();
         assertTrue(result1);
         
-        instance.swap();
-        ObservableList<Complex> memoryClone = instance.getMemoryClone();
         
         ComplexNumber ris0= new ComplexNumber(1,2);
         ComplexNumber ris1= new ComplexNumber(2,1);
         
-        assertEquals(ris1,memoryClone.get(0));
-        assertEquals(ris0,memoryClone.get(1));
+        assertEquals(ris0,instance.removeTop());
+        assertEquals(ris1,instance.removeTop());
         
     }
 
@@ -280,11 +278,19 @@ public class CalculatorTest {
     public void testOver() {
         System.out.println("over");
         Calculator instance = new Calculator();
-        boolean expResult = false;
-        boolean result = instance.over();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1,2);
+        boolean result0 = instance.over();
+        assertFalse(result0);
+        
+        instance.insert(2,1);
+        boolean result1 = instance.over();
+        assertTrue(result1);
+        
+        
+        ComplexNumber ris= new ComplexNumber(1,2);
+        assertEquals(ris,instance.removeTop());
+        instance.removeTop();
+        assertEquals(ris,instance.removeTop());
     }
 
     /**
@@ -294,11 +300,16 @@ public class CalculatorTest {
     public void testDup() {
         System.out.println("dup");
         Calculator instance = new Calculator();
-        boolean expResult = false;
-        boolean result = instance.dup();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean result0 = instance.over();
+        assertFalse(result0);
+        
+        instance.insert(1,2);
+        boolean result1 = instance.dup();
+        assertTrue(result1);
+        
+        ComplexNumber ris= new ComplexNumber(1,2);
+        assertEquals(ris,instance.removeTop());
+        assertEquals(ris,instance.removeTop());
     }
 
     /**
