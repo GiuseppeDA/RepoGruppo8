@@ -168,13 +168,18 @@ public class Calculator {
     public boolean swap(){
         if(!checkSize(2))
             return false;
-        Complex a=memory.get(0);
-        memory.set(0, memory.get(1));
-        memory.set(1, a);
+        Complex a=removeTop();
+        Complex b=removeTop();            
+        insert(a);
+        insert(b);
         return true;
     }
     public boolean over(){
-        throw new UnsupportedOperationException();
+       if(!checkSize(2))
+            return false;
+        Complex a=memory.get(1);
+        insert(a);
+        return true;
     }
     public boolean dup(){
         throw new UnsupportedOperationException();
