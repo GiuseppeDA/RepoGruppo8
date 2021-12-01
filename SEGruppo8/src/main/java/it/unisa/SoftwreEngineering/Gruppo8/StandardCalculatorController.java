@@ -56,17 +56,94 @@ public class StandardCalculatorController implements Initializable{
     
     @FXML
     private void insertComplex(MouseEvent event) {
+      Double realNum;
+      Double imagNum;
         
       String s1 = input.getText();
+      String s = s1.replaceAll("\\s+","");
+      
+      
       String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";
       
-      String pattern = optionalDecimalNumber + "([+-]" + optionalDecimalNumber + "i)?";
-
-      boolean matches = Pattern.matches(pattern, s1);
+      String pattern = "(([+-])?" + optionalDecimalNumber + ")?(([+-])?(" + optionalDecimalNumber + ")?j)?";
+      
+      String complexPattern = "([+-])?" + optionalDecimalNumber + "[+-](" + optionalDecimalNumber + ")?j";
+      
+      String realPattern = "([+-])?" + optionalDecimalNumber;
+      
+      String imagPattern = "([+-])?(" + optionalDecimalNumber + ")?j";
+      
+      
+      
+      if(Pattern.matches(pattern, s)){ //significa che il valore inserito è accettabile
+          
+          StringTokenizer st = new StringTokenizer (s, "+-j", true);
+          if(Pattern.matches(complexPattern, s)){ //significa che èun numero complesso completo
+              String sa = st.nextToken();
+              if (st.hasMoreTokens()) {
+                if (sa.equals ("+")) sa = st.nextToken();
+                if (sa.equals ("-")) sa = "-" + st.nextToken();
+              } 
+              realNum = Double.parseDouble (sa);
+              
+              sa = st.nextToken();
+              if (st.hasMoreTokens()) {
+                if (sa.equals ("+")){
+                    sa = st.nextToken();
+                    if (sa.equals("j"))
+                        sa = "1";
+                }    
+                if (sa.equals ("-")){
+                    sa = "-" + st.nextToken();
+                    if (sa.equals("-j"))
+                        sa = "-1";
+                }
+              }
+ 
+              imagNum = Double.parseDouble (sa);
+              calc.insert(realNum, imagNum); 
+          }
+          else if(Pattern.matches(realPattern, s)){ //significa che è solo un numero reale
+              String sa = st.nextToken();
+              if (st.hasMoreTokens()) {
+                if (sa.equals ("+")) sa = st.nextToken();
+                if (sa.equals ("-")) sa = "-" + st.nextToken();
+              } 
+              realNum = Double.parseDouble (sa);
+              
+              calc.insert(realNum, 0.0);
+          }
+          else if (Pattern.matches(imagPattern, s)){
+              String sa = st.nextToken();
+              if (st.hasMoreTokens()) {
+                if (sa.equals ("+")){
+                    sa = st.nextToken();
+                    if (sa.equals("j"))
+                        sa = "1";
+                }    
+                else if (sa.equals ("-")){
+                    sa = "-" + st.nextToken();
+                    if (sa.equals("-j"))
+                        sa = "-1";
+                }
+                else if(sa.equals ("j"))
+                    sa = "1";
+                
+              }
+ 
+              imagNum = Double.parseDouble (sa);
+              calc.insert(0.0, imagNum); 
+          }
+ 
+          
+          
+      }
+      
+      boolean matches = Pattern.matches(pattern, s);
 
       System.out.println("matches = " + matches);
       
-      calc.insert(Double.valueOf(s1), 0.0);
+      //calc.insert(Double.valueOf(s1), 0.0);
       
       
       /*
