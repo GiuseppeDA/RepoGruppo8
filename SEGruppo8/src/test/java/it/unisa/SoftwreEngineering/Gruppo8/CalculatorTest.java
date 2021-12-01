@@ -104,7 +104,7 @@ public class CalculatorTest {
      * Test of divide method, of class Calculator.
      */
     @Test
-    public void testDivide() {
+    public void testDivide() throws ImpossibleDivisionException {
         System.out.println("divide");
         Calculator instance = new Calculator();
 
