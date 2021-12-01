@@ -156,5 +156,22 @@ public class Calculator {
         return memory;
     }
     
-    
+    public boolean drop(){
+        throw new UnsupportedOperationException();
+    }
+    public boolean clear(){
+        throw new UnsupportedOperationException();
+    }
+    public boolean swap(){
+        throw new UnsupportedOperationException();
+    }
+    public boolean over(){
+        throw new UnsupportedOperationException();
+    }
+    public boolean dup(){
+        throw new UnsupportedOperationException();
+    }
+    protected  ObservableList<Complex> getMemoryClone(){
+        throw new UnsupportedOperationException();
+    }
 }
