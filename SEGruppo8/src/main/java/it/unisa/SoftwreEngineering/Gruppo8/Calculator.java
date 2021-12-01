@@ -212,7 +212,8 @@ public class Calculator {
         return true;
     }
     protected  ObservableList<Complex> getMemoryClone(){
-        ObservableList<Complex> clone=FXCollections.observableArrayList(memory);
+        ObservableList<Complex> clone=FXCollections.observableArrayList();
+        clone.setAll(memory);
         return clone;
     }
 }
