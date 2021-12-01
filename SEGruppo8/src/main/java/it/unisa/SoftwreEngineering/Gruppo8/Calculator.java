@@ -162,8 +162,8 @@ public class Calculator {
         removeTop();
         return true;
     }
-    public boolean clear(){
-        throw new UnsupportedOperationException();
+    public void clear(){
+        memory.clear();
     }
     public boolean swap(){
         throw new UnsupportedOperationException();
