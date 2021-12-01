@@ -5,6 +5,8 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
+import static com.vm.jcomplex.Complex.NaN;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -132,8 +134,8 @@ public class CalculatorTest {
     public void testSqrt() {
         System.out.println("sqrt");
         Calculator instance = new Calculator();
-       boolean result0 = instance.sqrt();
-       assertFalse(result0);
+        boolean result0 = instance.sqrt();
+        assertFalse(result0);
         
         instance.insert(-3,4);
         boolean result1 = instance.sqrt();
@@ -195,11 +197,12 @@ public class CalculatorTest {
         assertFalse(result4);
     }
 
+
     /**
      * Test of insert method, of class Calculator.
      */
     @Test
-    public void testInsert() {
+    public void testInsert_double_double() {
         System.out.println("insert");
         Calculator instance = new Calculator();
         double real=1;
@@ -207,6 +210,123 @@ public class CalculatorTest {
         instance.insert(real,img);
         ComplexNumber ris= new ComplexNumber(1,2);
         assertEquals(ris,instance.getTop());
+    }
+
+    /**
+     * Test of insert method, of class Calculator.
+     */
+    @Test
+    public void testInsert_Complex() {
+        System.out.println("insert");
+        Complex x = null;
+        Calculator instance = new Calculator();
+        instance.insert(x);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getMemory method, of class Calculator.
+     */
+    @Test
+    public void testGetMemory() {
+        System.out.println("getMemory");
+        Calculator instance = new Calculator();
+        ObservableList<Complex> expResult = null;
+        ObservableList<Complex> result = instance.getMemory();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of drop method, of class Calculator.
+     */
+    @Test
+    public void testDrop() {
+        System.out.println("drop");
+        Calculator instance = new Calculator();
+        boolean result0 = instance.drop();
+        assertFalse(result0);
+        
+        instance.insert(1,2);
+        instance.insert(2,1);
+        boolean result1 = instance.drop();
+        assertTrue(result1);
+        
+        ComplexNumber ris= new ComplexNumber(1,2);
+        assertEquals(ris,instance.getTop());
+        
+    }
+
+    
+    /**
+     * Test of swap method, of class Calculator.
+     */
+    @Test
+    public void testSwap() {
+        System.out.println("swap");
+        Calculator instance = new Calculator();
+        boolean expResult = false;
+        boolean result = instance.swap();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of over method, of class Calculator.
+     */
+    @Test
+    public void testOver() {
+        System.out.println("over");
+        Calculator instance = new Calculator();
+        boolean expResult = false;
+        boolean result = instance.over();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of dup method, of class Calculator.
+     */
+    @Test
+    public void testDup() {
+        System.out.println("dup");
+        Calculator instance = new Calculator();
+        boolean expResult = false;
+        boolean result = instance.dup();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getMemoryClone method, of class Calculator.
+     */
+    @Test
+    public void testGetMemoryClone() {
+        System.out.println("getMemoryClone");
+        Calculator instance = new Calculator();
+        ObservableList<Complex> expResult = null;
+        ObservableList<Complex> result = instance.getMemoryClone();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of clear method, of class Calculator.
+     */
+    @Test
+    public void testClear() {
+        System.out.println("clear");
+        Calculator instance = new Calculator();
+        instance.insert(1,2);
+        instance.clear();
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.getTop());
+        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
     }
     
 }
