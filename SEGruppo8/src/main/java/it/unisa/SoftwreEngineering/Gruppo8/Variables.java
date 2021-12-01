@@ -25,7 +25,7 @@ public class Variables {
         variablesList.set(index, a);
     }
     public Complex getVar(int index){
-        throw new UnsupportedOperationException();   
+        return variablesList.get(index);
     }
     public void addVar(Complex c,int intex){
         throw new UnsupportedOperationException();   
