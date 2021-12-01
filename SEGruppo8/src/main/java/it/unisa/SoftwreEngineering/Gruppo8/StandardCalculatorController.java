@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
@@ -99,13 +100,15 @@ public class StandardCalculatorController implements Initializable{
     }
     
     @FXML
-    private void insertComplex(ActionEvent event) {
+    private void insertComplex(ActionEvent event) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
       Double realNum;
       Double imagNum;
         
       String s1 = input.getText();
       String s = s1.replaceAll("\\s+","");
       
+      if(isOperation(s) == true)
+          return;
       
       String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";
       
@@ -351,7 +354,36 @@ public class StandardCalculatorController implements Initializable{
     private void subVar(MouseEvent event) {
     }
 
-    
+    private boolean isOperation(String op) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+        String operations[]= {"+", "-", "sqrt", "*", "+-", "drop", "dup", "over", "swap"};
+        String methodName[]= {"add", "subtract", "sqrt", "multiply", "invert", "drop", "dup", "over", "swap"};
+        
+        int i;
+        
+        for(i=0;i<operations.length;i++){
+            if(op.equals(operations[i]) == true){
+                Object obj = calc.getClass().getDeclaredMethod(methodName[i]).invoke(calc);
+                Boolean res = (Boolean) obj;
+                if(res == false)
+                    popupCaller(sizeMsg);
+                return true;
+            }
+        }
+        
+        if(op.equals("/")){
+            try {
+                if(!calc.divide())
+                    popupCaller(sizeMsg);
+            } catch (ImpossibleDivisionException e) {
+                popupCaller(divideeMsg);
+            }
+        }
+        
+        if(op.equals("clear"))
+            calc.clear();
+        
+        return false;
+    }
 
     
 
