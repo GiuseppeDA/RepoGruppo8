@@ -46,6 +46,7 @@ public class StandardCalculatorController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         memory.setItems(calc.getMemory());
         
+        memory.setStyle("-fx-font-size: 13px ;");
         
         memory.getItems().addListener(new ListChangeListener() {
             @Override
@@ -146,11 +147,10 @@ public class StandardCalculatorController implements Initializable{
           }
           
           input.setText("");
-          input.setPromptText("Insert a Complex or an operation");
           
       }else{
           input.setText("");
-          input.setPromptText("Syntax Error");
+          screen.setText("Syntax Error");
       }
       
       //boolean matches = Pattern.matches(pattern, s);
