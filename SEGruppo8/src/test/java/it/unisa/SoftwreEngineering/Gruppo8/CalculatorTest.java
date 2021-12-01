@@ -218,26 +218,13 @@ public class CalculatorTest {
     @Test
     public void testInsert_Complex() {
         System.out.println("insert");
-        Complex x = null;
         Calculator instance = new Calculator();
+        Complex x = new ComplexNumber(1,2);
         instance.insert(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ComplexNumber ris= new ComplexNumber(1,2);
+        assertEquals(ris,instance.getTop());
     }
 
-    /**
-     * Test of getMemory method, of class Calculator.
-     */
-    @Test
-    public void testGetMemory() {
-        System.out.println("getMemory");
-        Calculator instance = new Calculator();
-        ObservableList<Complex> expResult = null;
-        ObservableList<Complex> result = instance.getMemory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of drop method, of class Calculator.
@@ -267,11 +254,23 @@ public class CalculatorTest {
     public void testSwap() {
         System.out.println("swap");
         Calculator instance = new Calculator();
-        boolean expResult = false;
-        boolean result = instance.swap();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.insert(1,2);
+        boolean result0 = instance.add();
+        assertFalse(result0);
+        
+        instance.insert(2,1);
+        boolean result1 = instance.add();
+        assertTrue(result1);
+        
+        instance.swap();
+        ObservableList<Complex> memoryClone = instance.getMemoryClone();
+        
+        ComplexNumber ris0= new ComplexNumber(1,2);
+        ComplexNumber ris1= new ComplexNumber(2,1);
+        
+        assertEquals(ris1,memoryClone.get(0));
+        assertEquals(ris0,memoryClone.get(1));
+        
     }
 
     /**
@@ -297,20 +296,6 @@ public class CalculatorTest {
         Calculator instance = new Calculator();
         boolean expResult = false;
         boolean result = instance.dup();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getMemoryClone method, of class Calculator.
-     */
-    @Test
-    public void testGetMemoryClone() {
-        System.out.println("getMemoryClone");
-        Calculator instance = new Calculator();
-        ObservableList<Complex> expResult = null;
-        ObservableList<Complex> result = instance.getMemoryClone();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
