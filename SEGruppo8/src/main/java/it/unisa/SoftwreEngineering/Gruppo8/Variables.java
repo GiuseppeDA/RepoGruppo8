@@ -28,11 +28,12 @@ public class Variables {
         return variablesList.get(index);
     }
     public void addVar(Complex c,int index){
-        Complex a=c.add(variablesList.get(index));
+        Complex a=variablesList.get(index).add(c);
         setVar(a,index);
     }
     public void subVar(Complex c,int index){
-        throw new UnsupportedOperationException();   
+        Complex a=variablesList.get(index).subtract(c);
+        setVar(a,index);   
     }
 }
 
