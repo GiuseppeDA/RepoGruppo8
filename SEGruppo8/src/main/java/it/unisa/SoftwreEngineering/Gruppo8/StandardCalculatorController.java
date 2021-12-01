@@ -13,7 +13,10 @@ import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
@@ -34,9 +37,9 @@ public class StandardCalculatorController implements Initializable{
     @FXML
     private TextField input;
     @FXML
-    private TextField imag;
-    @FXML
     private Text screen;
+    @FXML
+    private Button insButton;
     
     //Initializing
     @Override
@@ -52,10 +55,20 @@ public class StandardCalculatorController implements Initializable{
             }
         });
         
+       
+        input.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if(newPropertyValue)
+                    insButton.setDefaultButton(true);
+                else
+                    insButton.setDefaultButton(false);
+            }
+        });
     }
     
     @FXML
-    private void insertComplex(MouseEvent event) {
+    private void insertComplex(ActionEvent event) {
       Double realNum;
       Double imagNum;
         
@@ -77,7 +90,7 @@ public class StandardCalculatorController implements Initializable{
       if(Pattern.matches(pattern, s)){ //significa che il valore inserito è accettabile
           
           StringTokenizer st = new StringTokenizer (s, "+-j", true);
-          if(Pattern.matches(complexPattern, s)){ //significa che èun numero complesso completo
+          if(Pattern.matches(complexPattern, s)){ //significa che è un numero complesso completo
               String sa = st.nextToken();
               if (st.hasMoreTokens()) {
                 if (sa.equals ("+")) sa = st.nextToken();
@@ -131,11 +144,18 @@ public class StandardCalculatorController implements Initializable{
               imagNum = Double.parseDouble (sa);
               calc.insert(0.0, imagNum); 
           }
+          
+          input.setText("");
+          input.setPromptText("Insert a Complex or an operation");
+          
+      }else{
+          input.setText("");
+          input.setPromptText("Syntax Error");
       }
       
-      boolean matches = Pattern.matches(pattern, s);
+      //boolean matches = Pattern.matches(pattern, s);
 
-      System.out.println("matches = " + matches);
+      //System.out.println("matches = " + matches);
       
       //calc.insert(Double.valueOf(s1), 0.0);
       
@@ -282,5 +302,7 @@ public class StandardCalculatorController implements Initializable{
     private void popupCaller(String msg){
         PopupController.display(msg);
     }
+
+    
 
 }
