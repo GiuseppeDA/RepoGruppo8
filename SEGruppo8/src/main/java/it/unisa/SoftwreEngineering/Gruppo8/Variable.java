@@ -11,8 +11,8 @@ import com.vm.jcomplex.Complex;
  * @author 39324
  */
 public class Variable {
-    String name;
-    Complex value;
+    private String name;
+    private Complex value;
 
     public Variable(String name, Complex value) {
         this.name = name;
