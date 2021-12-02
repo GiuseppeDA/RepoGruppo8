@@ -8,6 +8,7 @@ import com.vm.jcomplex.Complex;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.lang.UnsupportedOperationException;
+import java.util.regex.Pattern;
 /**
  *
  * @author 39324
@@ -76,8 +77,14 @@ public class Variables {
     }
     
     public int charToIndex(char a){
+        int index = (int) a;
         
-        return 0;
+        if( a > 64 && a < 91){
+            return a-65;
+        }else if(a > 96 && a < 123){
+            return a-97;
+        }
+        return -1;
     }
 }
 
