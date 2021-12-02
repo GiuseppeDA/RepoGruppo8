@@ -5,6 +5,7 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -96,6 +97,28 @@ public class VariablesTest {
         instance.subVar(c2, indexP);
         Complex c3 = new ComplexNumber(-1,1);
         assertEquals(c3,instance.getVar(0).getValue());
+    }
+
+    /**
+     * Test of charToIndex method, of class Variables.
+     */
+    @Test
+    public void testCharToIndex() {
+        System.out.println("charToIndex");
+        Variables instance = new Variables();
+        char a = '3';
+        int expResultF = -1;
+        int result0 = instance.charToIndex(a);
+        assertEquals(expResultF, result0);
+        
+        a='A';
+        int expResultT = 0;
+        int result1 = instance.charToIndex(a);
+        assertEquals(expResultT, result1);
+        
+        a='a';
+        int result2 = instance.charToIndex(a);
+        assertEquals(expResultT, result2);
     }
     
 }
