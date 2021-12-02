@@ -17,9 +17,10 @@ public class Variables {
 
     public Variables() {
          variablesList= FXCollections.observableArrayList();
+         Complex c;
          for(int i=0;i<26;i++){
-             Complex c=new ComplexNumber(0,0);
-             Variable v=new Variable(String.valueOf(Character.toChars(+65)),c);
+             c=new ComplexNumber(0,0);
+             Variable v=new Variable(String.valueOf(Character.toChars(i+65)),c);
              variablesList.add(i, v);
          }
     }
