@@ -48,7 +48,7 @@ public class VariablesTest {
         int indexN =-1;
         
         IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.setVar(c, indexN));
-        //assertEquals("Index: -1, Size: 26",exception.getMessage());
+        assertEquals("Index -1 out of bounds for length 26",exception.getMessage());
         
         int indexP = 0;
         instance.setVar(c, indexP);
@@ -68,7 +68,7 @@ public class VariablesTest {
         Complex c2 = new ComplexNumber(2,1);
         
         IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.addVar(c2, indexN));
-        //assertEquals("Index: -1, Size: 0",exception.getMessage());
+        assertEquals("Index -1 out of bounds for length 26",exception.getMessage());
         
         int indexP = 0;
         instance.setVar(c1, indexP);
@@ -89,7 +89,7 @@ public class VariablesTest {
         Complex c2 = new ComplexNumber(2,1);
         
         IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.subVar(c2, indexN));
-        //assertEquals("Index: -1, Size: 0",exception.getMessage());
+        assertEquals("Index -1 out of bounds for length 26",exception.getMessage());
         
         int indexP = 0;
         instance.setVar(c1, indexP);
