@@ -17,10 +17,13 @@ import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
@@ -52,6 +55,9 @@ public class StandardCalculatorController implements Initializable{
     private TableColumn<Variable, String> var;
     @FXML
     private TableColumn<Variable, Complex> value;
+    
+    ObservableList<Integer> selectedVarIndices;
+    
     @FXML
     private Button setVarButton;
     @FXML
@@ -97,6 +103,27 @@ public class StandardCalculatorController implements Initializable{
         
         
         //Variables Buttons
+        setVarButton.setDisable(true);
+        insertVarInStackButton.setDisable(true);
+        addVarButton.setDisable(true);
+        subVarButton.setDisable(true);
+        
+        TableViewSelectionModel selectionModel = variables.getSelectionModel();
+        selectionModel.setSelectionMode(SelectionMode.SINGLE);
+        
+        selectedVarIndices = selectionModel.getSelectedIndices();
+
+        selectedVarIndices.addListener(new ListChangeListener<Integer>() {
+          @Override
+          public void onChanged(Change<? extends Integer> change) {
+                setVarButton.setDisable(false);
+                insertVarInStackButton.setDisable(false);
+                addVarButton.setDisable(false);
+                subVarButton.setDisable(false);                 
+              
+               
+          }
+        });
         
         
     }
@@ -189,81 +216,6 @@ public class StandardCalculatorController implements Initializable{
           screen.setText("Syntax Error");
       }
       
-      //boolean matches = Pattern.matches(pattern, s);
-
-      //System.out.println("matches = " + matches);
-      
-      //calc.insert(Double.valueOf(s1), 0.0);
-      
-      
-      /*
-      
-      double a = 0.0;
-      double b = 0.0;
-      StringTokenizer st = new StringTokenizer (s, "+-j", true);
-      if (st.hasMoreTokens()) {
-         String sa = st.nextToken().trim();
-         System.out.println(sa);
-         if (st.hasMoreTokens()) {
-            if (sa.equals ("+")) sa = st.nextToken().trim();
-            if (sa.equals ("-")) sa = "-" + st.nextToken().trim();
-            if (sa.equals ("j")) System.out.println("Mario"); //throw new IllegalArgumentException(s + " is not a complex number");
-         } 
-         a = Double.parseDouble (sa);
-         if (st.hasMoreTokens()) {
-            String sb = st.nextToken().trim();
-            if (st.hasMoreTokens()) {
-               if (sb.equals ("+")) sb = st.nextToken().trim();
-               if (sb.equals ("-")) sb = "-" + st.nextToken().trim();
-            }
-            b = Double.parseDouble (sb);
-         }
-         if (st.hasMoreTokens()) {
-            String si = st.nextToken().trim();
-            if (!si.equals ("j"))
-               System.out.println("Mario");
-               //throw new IllegalArgumentException(s + " is not a complex number");
-            if (st.hasMoreTokens())
-                System.out.println("Mario");
-               //throw new IllegalArgumentException(s + " is not a complex number");
-         } else
-             System.out.println("Mario");
-            //throw new IllegalArgumentException (s + " is not a complex number");
-      } else 
-         System.out.println("Mario");
-         //throw new IllegalArgumentException (s + " is not a complex number");
-        
-        calc.insert(a, b);
-            
-        input.setText("");
-        */
-        /*
-        
-        Double realNum;
-        Double imagNum;
-        
-        try {
-            if(input.getText() == null || input.getText().trim().isEmpty())
-                realNum = 0.0;
-            else
-                realNum = Double.parseDouble(input.getText());
-            
-            if(imag.getText() == null || imag.getText().trim().isEmpty())
-                imagNum = 0.0;
-            else
-                imagNum = Double.parseDouble(imag.getText());
-                 
-            calc.insert(realNum, imagNum);
-            
-            input.setText("");
-            imag.setText("");
-   
-        }catch(NumberFormatException exc){
-                input.setText("");
-                imag.setText("");
-                popupCaller(inseMsg);
-        }*/
-
     }
     
     @FXML
@@ -343,18 +295,24 @@ public class StandardCalculatorController implements Initializable{
 
     @FXML
     private void setVar(MouseEvent event) {
+        varList.setVar(calc.removeTop(),selectedVarIndices.get(0));
     }
 
     @FXML
     private void insertVarInStack(MouseEvent event) {
+        Variable v = varList.getVar(selectedVarIndices.get(0));
+        
+        calc.insert(v.getValue());
     }
 
     @FXML
     private void addVar(MouseEvent event) {
+        varList.addVar(calc.getTop(), selectedVarIndices.get(0));
     }
 
     @FXML
     private void subVar(MouseEvent event) {
+        varList.subVar(calc.getTop(), selectedVarIndices.get(0));
     }
 
     private boolean isOperation(String op) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
