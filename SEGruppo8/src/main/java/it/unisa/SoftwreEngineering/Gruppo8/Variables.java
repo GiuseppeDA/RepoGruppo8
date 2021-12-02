@@ -75,6 +75,10 @@ public class Variables {
         return variablesList;
     }
     
+    public int charToIndex(char a){
+        
+        return 0;
+    }
 }
 
     
