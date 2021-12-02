@@ -15,9 +15,7 @@ import java.lang.UnsupportedOperationException;
 public class Variables {
     private ObservableList<Variable> variablesList;
 
-    /**
-     *
-     */
+    
     public Variables() {
          variablesList= FXCollections.observableArrayList();
          Complex c;
@@ -29,9 +27,9 @@ public class Variables {
     }
     
     /**
-     *
-     * @param c
-     * @param index
+     *si inserisce un numero complesso in una variabile 
+     * @param c il numero complesso da inserire nella variabile
+     * @param index l'indice della variabile desiderata
      */
     public void setVar(Complex c,int index){
         Complex a=new ComplexNumber(c.getReal(),c.getImaginary());
@@ -41,41 +39,37 @@ public class Variables {
     }
     
     /**
-     *
-     * @param index
-     * @return
+     * ritorna una variabile dato il suo indice
+     * @param index l'indice della variabile desiderata
+     * @return la variabile corrispondente all'indice
      */
     public Variable getVar(int index){
         return variablesList.get(index);
     }
 
     /**
-     *
-     * @param c
-     * @param index
+     *somma un valore a una variabile
+     * @param c coplex da aggiungere al valore della variabile
+     * @param index indice di riferimento della variabile
      */
     public void addVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().add(c);
-        Variable v=variablesList.get(index);
-        v.setValue(a);
-        variablesList.set(index, v);
+        setVar(a, index);
     }
 
     /**
-     *
-     * @param c
-     * @param index
+     *sottrae un valore a una variabile
+     * @param c coplex da sottrarre al valore della variabile
+     * @param index indice di riferimento della variabile
      */
     public void subVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().subtract(c);
-        Variable v=variablesList.get(index);
-        v.setValue(a);
-        variablesList.set(index, v);  
+        setVar(a, index);  
     }
 
     /**
      *
-     * @return
+     * @return il riferimento alla lista di variabili
      */
     public ObservableList<Variable> getVariablesList() {
         return variablesList;
