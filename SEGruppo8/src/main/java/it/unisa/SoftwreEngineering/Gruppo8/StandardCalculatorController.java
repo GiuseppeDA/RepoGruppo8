@@ -30,6 +30,8 @@ public class StandardCalculatorController implements Initializable{
     
     private Calculator calc = new Calculator();
     
+    private Variables varList = new Variables();
+    
     private String sizeMsg="Operandi non sufficienti!";
     
     private String inseMsg="Inserisci solo numeri e relativo segno!";
@@ -91,7 +93,7 @@ public class StandardCalculatorController implements Initializable{
         var.setCellValueFactory( new PropertyValueFactory<>("name"));
         value.setCellValueFactory( new PropertyValueFactory<>("value"));
         
-        //variables.setItems(ol);
+        variables.setItems(varList.getVariablesList());
         
         
         //Variables Buttons
@@ -107,8 +109,6 @@ public class StandardCalculatorController implements Initializable{
       String s1 = input.getText();
       String s = s1.replaceAll("\\s+","");
       
-      if(isOperation(s) == true)
-          return;
       
       String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";
       
@@ -181,6 +181,9 @@ public class StandardCalculatorController implements Initializable{
           
           input.setText("");
           
+      }
+      else if(isOperation(s)){
+          input.setText("");
       }else{
           input.setText("");
           screen.setText("Syntax Error");
