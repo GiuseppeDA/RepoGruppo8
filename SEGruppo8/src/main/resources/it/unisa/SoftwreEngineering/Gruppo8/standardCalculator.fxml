@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
    <children>
       <HBox maxHeight="1.7976931348623157E308" prefHeight="417.0" prefWidth="441.0">
          <children>
@@ -26,7 +26,7 @@
       <Button layoutX="478.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#multiply" prefHeight="32.0" prefWidth="45.0" text="*" />
       <Button layoutX="557.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#divide" prefHeight="32.0" prefWidth="45.0" text="/" />
       <Button layoutX="635.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#invert" prefHeight="32.0" prefWidth="45.0" style="-fx-font-size: 12;" text="+-" />
-      <Text fx:id="screen" fontSmoothingType="LCD" layoutX="441.0" layoutY="48.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" textAlignment="RIGHT" wrappingWidth="266.47003173828125">
+      <Text fx:id="screen" fontSmoothingType="LCD" layoutX="457.0" layoutY="36.0" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" textAlignment="RIGHT" wrappingWidth="244.47003173828125">
          <font>
             <Font name="Wingdings" size="24.0" />
          </font>
@@ -36,22 +36,22 @@
       <Button layoutX="635.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#dup" prefHeight="32.0" prefWidth="45.0" text="dup" />
       <Button layoutX="635.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#swap" prefHeight="32.0" prefWidth="45.0" text="swap" />
       <Button layoutX="478.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#over" prefHeight="32.0" prefWidth="45.0" text="over" />
-      <Button fx:id="setVarButton" layoutX="478.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#setVar" prefHeight="32.0" prefWidth="45.0" text="&lt;VAR">
+      <Button fx:id="setVarButton" layoutX="632.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#setVar" prefHeight="32.0" prefWidth="45.0" text="&gt;VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="insertVarInStackButton" layoutX="557.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#insertVarInStack" prefHeight="32.0" prefWidth="45.0" text="&gt;VAR">
+      <Button fx:id="insertVarInStackButton" layoutX="478.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#insertVarInStack" prefHeight="32.0" prefWidth="45.0" text="&lt;VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="addVarButton" layoutX="635.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#addVar" prefHeight="32.0" prefWidth="45.0" text="+VAR">
+      <Button fx:id="addVarButton" layoutX="478.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#addVar" prefHeight="32.0" prefWidth="45.0" text="+VAR">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Button fx:id="subVarButton" layoutX="557.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#subVar" prefHeight="32.0" prefWidth="45.0" text="-VAR" />
+      <Button fx:id="subVarButton" layoutX="632.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#subVar" prefHeight="32.0" prefWidth="45.0" text="-VAR" />
       <Label layoutX="480.0" layoutY="300.0" prefHeight="21.0" prefWidth="208.0" text="----------- Variables -----------">
          <font>
             <Font size="15.0" />

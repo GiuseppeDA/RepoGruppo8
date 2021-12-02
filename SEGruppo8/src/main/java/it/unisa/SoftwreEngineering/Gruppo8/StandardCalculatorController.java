@@ -211,7 +211,11 @@ public class StandardCalculatorController implements Initializable{
       }
       else if(isOperation(s)){
           input.setText("");
-      }else{
+      }
+      else if(isVarOperation(s)){
+          input.setText("");
+      }
+      else{
           input.setText("");
           screen.setText("Syntax Error");
       }
@@ -349,6 +353,18 @@ public class StandardCalculatorController implements Initializable{
         
         
         return false;
+    }
+    
+    private boolean isVarOperation(String op){
+        String opVarUp = "[><+-][a-zA-Z]";
+        
+        if(Pattern.matches(op, opVarUp)){
+            if(Pattern.matches(op, "<[a-zA-Z]")){
+                if(Pattern.matches(op.substring(1, 2), "[a-z]")){
+                    
+                }
+            }
+        }
     }
 
     
