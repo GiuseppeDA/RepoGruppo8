@@ -324,5 +324,6 @@ public class CalculatorTest {
         IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.getTop());
         assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
     }
-    
+
+ 
 }
