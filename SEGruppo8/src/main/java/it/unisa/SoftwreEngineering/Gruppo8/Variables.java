@@ -56,7 +56,9 @@ public class Variables {
      */
     public void addVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().add(c);
-        variablesList.get(index).setValue(a);
+        Variable v=variablesList.get(index);
+        v.setValue(a);
+        variablesList.set(index, v);
     }
 
     /**
@@ -66,7 +68,9 @@ public class Variables {
      */
     public void subVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().subtract(c);
-        variablesList.get(index).setValue(a);  
+        Variable v=variablesList.get(index);
+        v.setValue(a);
+        variablesList.set(index, v);  
     }
 
     /**
