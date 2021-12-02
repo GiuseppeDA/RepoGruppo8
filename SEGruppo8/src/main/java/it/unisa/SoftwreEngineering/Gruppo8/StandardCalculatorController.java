@@ -356,25 +356,32 @@ public class StandardCalculatorController implements Initializable{
     }
     
     private boolean isVarOperation(String op){
-        String opVarUp = "[><+-][a-zA-Z]";
+ 
+        String opVarUp = "[><'+'-][a-zA-Z]";
         
-        if(Pattern.matches(op, opVarUp)){
+
+        if(Pattern.matches(opVarUp,op)){
             int index = varList.charToIndex(op.charAt(1));
+            System.out.println(index);
+            System.out.println(op.substring(0, 1));
             if(Pattern.matches(op.substring(0, 1), "<")){
                 Variable v = varList.getVar(index);
         
                 calc.insert(v.getValue());
+                return true;
             }
             else if(Pattern.matches(op.substring(0, 1), ">")){
                 varList.setVar(calc.removeTop(),index);
+                return true;
             }
-            else if(Pattern.matches(op.substring(0, 1), "+")){
-                varList.addVar(calc.getTop(), index);
-            }
-            else if(Pattern.matches(op.substring(0, 1), "-")){
+            else if(op.substring(0, 1).equals("-")){
                 varList.subVar(calc.getTop(), index);
+                return true;
+            }else if (op.substring(0, 1).equals("+")){
+                varList.addVar(calc.getTop(), index);
+                return true;
             }
-            return true;
+            
         }
         return false;
     }
