@@ -14,23 +14,44 @@ public class Variable {
     private String name;
     private Complex value;
 
+    /**
+     *
+     * @param name
+     * @param value
+     */
     public Variable(String name, Complex value) {
         this.name = name;
         this.value = value;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Complex getValue() {
         return value;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @param value
+     */
     public void setValue(Complex value) {
         this.value = value;
     }

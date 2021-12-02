@@ -15,6 +15,9 @@ import java.lang.UnsupportedOperationException;
 public class Variables {
     private ObservableList<Variable> variablesList;
 
+    /**
+     *
+     */
     public Variables() {
          variablesList= FXCollections.observableArrayList();
          Complex c;
@@ -25,23 +28,49 @@ public class Variables {
          }
     }
     
+    /**
+     *
+     * @param c
+     * @param index
+     */
     public void setVar(Complex c,int index){
         Complex a=new ComplexNumber(c.getReal(),c.getImaginary());
         variablesList.get(index).setValue(a);
     }
     
+    /**
+     *
+     * @param index
+     * @return
+     */
     public Variable getVar(int index){
         return variablesList.get(index);
     }
+
+    /**
+     *
+     * @param c
+     * @param index
+     */
     public void addVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().add(c);
         variablesList.get(index).setValue(a);
     }
+
+    /**
+     *
+     * @param c
+     * @param index
+     */
     public void subVar(Complex c,int index){
         Complex a=variablesList.get(index).getValue().subtract(c);
         variablesList.get(index).setValue(a);  
     }
 
+    /**
+     *
+     * @return
+     */
     public ObservableList<Variable> getVariablesList() {
         return variablesList;
     }
