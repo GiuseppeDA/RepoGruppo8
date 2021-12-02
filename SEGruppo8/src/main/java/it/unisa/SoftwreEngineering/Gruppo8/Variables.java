@@ -35,7 +35,9 @@ public class Variables {
      */
     public void setVar(Complex c,int index){
         Complex a=new ComplexNumber(c.getReal(),c.getImaginary());
-        variablesList.get(index).setValue(a);
+        Variable v=variablesList.get(index);
+        v.setValue(a);
+        variablesList.set(index, v);
     }
     
     /**
