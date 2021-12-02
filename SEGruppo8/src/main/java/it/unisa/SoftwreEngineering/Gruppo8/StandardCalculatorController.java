@@ -359,12 +359,24 @@ public class StandardCalculatorController implements Initializable{
         String opVarUp = "[><+-][a-zA-Z]";
         
         if(Pattern.matches(op, opVarUp)){
-            if(Pattern.matches(op, "<[a-zA-Z]")){
-                if(Pattern.matches(op.substring(1, 2), "[a-z]")){
-                    
-                }
+            int index = varList.charToIndex(op.charAt(1));
+            if(Pattern.matches(op.substring(0, 1), "<")){
+                Variable v = varList.getVar(index);
+        
+                calc.insert(v.getValue());
             }
+            else if(Pattern.matches(op.substring(0, 1), ">")){
+                varList.setVar(calc.removeTop(),index);
+            }
+            else if(Pattern.matches(op.substring(0, 1), "+")){
+                varList.addVar(calc.getTop(), index);
+            }
+            else if(Pattern.matches(op.substring(0, 1), "-")){
+                varList.subVar(calc.getTop(), index);
+            }
+            return true;
         }
+        return false;
     }
 
     
