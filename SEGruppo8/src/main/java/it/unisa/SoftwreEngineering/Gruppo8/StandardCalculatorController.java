@@ -357,20 +357,20 @@ public class StandardCalculatorController implements Initializable{
     
     private boolean isVarOperation(String op){
  
-        String opVarUp = "[><'+'-][a-zA-Z]";
+        String opVarUp = "[a-zA-Z]";
         
 
-        if(Pattern.matches(opVarUp,op)){
+        if(Pattern.matches(opVarUp,op.substring(1))){
             int index = varList.charToIndex(op.charAt(1));
             System.out.println(index);
-            System.out.println(op.substring(0, 1));
-            if(Pattern.matches(op.substring(0, 1), "<")){
+            System.out.println(op);
+            if(op.substring(0, 1).equals("<")){
                 Variable v = varList.getVar(index);
         
                 calc.insert(v.getValue());
                 return true;
             }
-            else if(Pattern.matches(op.substring(0, 1), ">")){
+            else if(op.substring(0, 1).equals(">")){
                 varList.setVar(calc.removeTop(),index);
                 return true;
             }
