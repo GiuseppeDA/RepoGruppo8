@@ -50,11 +50,11 @@ public class StandardCalculatorController implements Initializable{
     @FXML
     private Button insButton;
     @FXML
-    private TableView<Variable> varTableView;
+    private TableView<Variable> variables;
     @FXML
-    private TableColumn<Variable, String> varName;
+    private TableColumn<Variable, String> var;
     @FXML
-    private TableColumn<Variable, Complex> varValue;
+    private TableColumn<Variable, Complex> value;
     
     ObservableList<Integer> selectedVarIndices;
     
@@ -96,10 +96,10 @@ public class StandardCalculatorController implements Initializable{
         
         //TableView
         
-        varName.setCellValueFactory( new PropertyValueFactory<>("name"));
-        varValue.setCellValueFactory( new PropertyValueFactory<>("value"));
+        var.setCellValueFactory( new PropertyValueFactory<>("name"));
+        value.setCellValueFactory( new PropertyValueFactory<>("value"));
         
-        varTableView.setItems(varList.getVariablesList());
+        variables.setItems(varList.getVariablesList());
         
         
         //Variables Buttons
@@ -108,7 +108,7 @@ public class StandardCalculatorController implements Initializable{
         addVarButton.setDisable(true);
         subVarButton.setDisable(true);
         
-        TableViewSelectionModel selectionModel = varTableView.getSelectionModel();
+        TableViewSelectionModel selectionModel = variables.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.SINGLE);
         
         selectedVarIndices = selectionModel.getSelectedIndices();
@@ -226,6 +226,8 @@ public class StandardCalculatorController implements Initializable{
     private void add(MouseEvent event) {
         if(!calc.add())
             popupCaller(sizeMsg);
+        
+      
     }
 
     @FXML
@@ -360,6 +362,8 @@ public class StandardCalculatorController implements Initializable{
 
         if(Pattern.matches(opVarUp,op.substring(1))){
             int index = varList.charToIndex(op.charAt(1));
+            System.out.println(index);
+            System.out.println(op);
             if(op.substring(0, 1).equals("<")){
                 Variable v = varList.getVar(index);
         
