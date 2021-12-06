@@ -50,11 +50,12 @@ public class StandardCalculatorController implements Initializable{
     @FXML
     private Button insButton;
     @FXML
-    private TableView<Variable> variables;
+    private TableView<Variable> varTableView;
     @FXML
-    private TableColumn<Variable, String> var;
+    private TableColumn<Variable, String> varName;
     @FXML
-    private TableColumn<Variable, Complex> value;
+    private TableColumn<Variable, Complex> varValue;
+    
     
     ObservableList<Integer> selectedVarIndices;
     
@@ -66,6 +67,7 @@ public class StandardCalculatorController implements Initializable{
     private Button addVarButton;
     @FXML
     private Button subVarButton;
+    
     
     //Initializing
     @Override
@@ -96,10 +98,10 @@ public class StandardCalculatorController implements Initializable{
         
         //TableView
         
-        var.setCellValueFactory( new PropertyValueFactory<>("name"));
-        value.setCellValueFactory( new PropertyValueFactory<>("value"));
+        varName.setCellValueFactory( new PropertyValueFactory<>("name"));
+        varValue.setCellValueFactory( new PropertyValueFactory<>("value"));
         
-        variables.setItems(varList.getVariablesList());
+        varTableView.setItems(varList.getVariablesList());
         
         
         //Variables Buttons
@@ -108,7 +110,7 @@ public class StandardCalculatorController implements Initializable{
         addVarButton.setDisable(true);
         subVarButton.setDisable(true);
         
-        TableViewSelectionModel selectionModel = variables.getSelectionModel();
+        TableViewSelectionModel selectionModel = varTableView.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.SINGLE);
         
         selectedVarIndices = selectionModel.getSelectedIndices();
