@@ -29,7 +29,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
-public class StandardCalculatorController implements Initializable{
+public class StandardCalculatorController extends CalculatorController implements Initializable{
     
     private Calculator calc = new Calculator();
     
@@ -55,8 +55,7 @@ public class StandardCalculatorController implements Initializable{
     private TableColumn<Variable, String> varName;
     @FXML
     private TableColumn<Variable, Complex> varValue;
-    
-    
+        
     ObservableList<Integer> selectedVarIndices;
     
     @FXML
@@ -131,7 +130,7 @@ public class StandardCalculatorController implements Initializable{
     }
     
     @FXML
-    private void insertComplex(ActionEvent event) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public void insertComplex(ActionEvent event) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
       Double realNum;
       Double imagNum;
         
@@ -225,11 +224,11 @@ public class StandardCalculatorController implements Initializable{
     }
     
     @FXML
-    private void add(MouseEvent event) {
+    @Override
+    public void add(MouseEvent event) {
         if(!calc.add())
             popupCaller(sizeMsg);
-        
-      
+ 
     }
 
     @FXML
@@ -306,8 +305,7 @@ public class StandardCalculatorController implements Initializable{
 
     @FXML
     private void insertVarInStack(MouseEvent event) {
-        Variable v = varList.getVar(selectedVarIndices.get(0));
-        
+        Variable v = varList.getVar(selectedVarIndices.get(0));       
         calc.insert(v.getValue());
     }
 
@@ -351,9 +349,7 @@ public class StandardCalculatorController implements Initializable{
             calc.clear();
             return true;
         }
-            
-        
-        
+
         return false;
     }
     
@@ -364,8 +360,6 @@ public class StandardCalculatorController implements Initializable{
 
         if(Pattern.matches(opVarUp,op.substring(1))){
             int index = varList.charToIndex(op.charAt(1));
-            System.out.println(index);
-            System.out.println(op);
             if(op.substring(0, 1).equals("<")){
                 Variable v = varList.getVar(index);
         
