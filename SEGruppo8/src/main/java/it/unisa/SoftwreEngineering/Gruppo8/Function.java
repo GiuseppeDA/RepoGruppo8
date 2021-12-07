@@ -15,8 +15,17 @@ public class Function {
         commandList=new ArrayList<Command>();
     }
     public void run(){
-        for(int i=0;i<commandList.size();i++){
+        int i;
+        for(i=0;i<commandList.size();i++){
+            try{
             commandList.get(i).execute();
+            }catch(CommandExecuteException e){
+                for(int j=i-1;j>=0;j--){
+                    commandList.get(j).undo();
+                }
+              break;
+            }
         }
+        
     }
 }
