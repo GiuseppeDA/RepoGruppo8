@@ -6,6 +6,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
 import java.util.ListIterator;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -18,12 +19,14 @@ public class ClearerCommand implements Command{
 
     public ClearerCommand(Calculator calc) {
         this.calc = calc;
+        values= FXCollections.observableArrayList();
     }
     
     @Override
     public void execute() throws CommandExecuteException {
-        values = calc.getMemory();
+        values.addAll(calc.getMemory());
         calc.clear();
+        
     }
 
     @Override
