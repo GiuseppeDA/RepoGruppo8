@@ -4,6 +4,9 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 
@@ -30,5 +33,15 @@ public class Functions {
     }
     public void addFunction(String name,Function f){
         map.putIfAbsent(name, f);
+    }
+    public boolean save(String filename){
+        try(BufferedWriter writer=new BufferedWriter(new FileWriter(filename))) {
+            for(String name:map.keySet()){
+                writer.write( name +" "+ map.get(name).toString()+"\n");
+            }     
+        } catch (IOException ex) {
+            return false;
+        }
+        return true;
     }
 }
