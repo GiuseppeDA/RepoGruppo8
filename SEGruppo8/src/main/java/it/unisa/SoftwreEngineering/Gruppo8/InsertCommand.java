@@ -14,7 +14,7 @@ public class InsertCommand implements Command{
     private Calculator calc;
     private ComplexNumber compl;
 
-    public InsertCommand(Calculator calc, ComplexNumber compl) {
+    public InsertCommand(ComplexNumber compl, Calculator calc) {
         this.calc = calc;
         this.compl = compl;
     }
