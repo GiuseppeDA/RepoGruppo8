@@ -355,7 +355,7 @@ public class StandardCalculatorController extends CalculatorController implement
         
         for(i=0;i<operations.length;i++){
             if(op.equals(operations[i]) == true){
-                Object obj = getCalculator().getClass().getDeclaredMethod(methodName[i]).invoke(calc);
+                Object obj = getCalculator().getClass().getDeclaredMethod(methodName[i]).invoke(getCalculator());
                 Boolean res = (Boolean) obj;
                 if(res == false)
                     popupCaller(sizeMsg);
