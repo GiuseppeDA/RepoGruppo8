@@ -21,7 +21,7 @@ public class Function {
             commandList.get(i).execute();
             }catch(CommandExecuteException e){
                 for(int j=i-1;j>=0;j--){
-                    commandList.get(j).undo();
+                     commandList.get(j).undo();
                 }
               break;
             }
