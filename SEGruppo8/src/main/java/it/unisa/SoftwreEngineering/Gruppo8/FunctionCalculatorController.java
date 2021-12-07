@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -59,19 +60,8 @@ public class FunctionCalculatorController extends CalculatorController implement
     
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
-        
-        try {
-            Parent root = (Parent) loader.load();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        StandardCalculatorController scc = loader.getController();
-        
-        //System.out.println(scc.getMemory().getItems());
-        
-        //memory.setItems(scc.getMemory().getItems());
-        
+      
+       
     }
     @FXML
     public void insertComplex(ActionEvent event) {
@@ -145,5 +135,18 @@ public class FunctionCalculatorController extends CalculatorController implement
             ex.printStackTrace();
         }
     }
+
+    public ListView<Complex> getMemory() {
+        return memory;
+    }
+
+    public void setMemory(ListView<Complex> memory) {
+        this.memory.setItems(memory.getItems());
+    }
+
+   public void setText(String string){
+       screen.setText(string);
+   }
+    
     
 }

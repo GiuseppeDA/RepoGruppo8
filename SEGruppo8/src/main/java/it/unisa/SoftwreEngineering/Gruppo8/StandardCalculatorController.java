@@ -19,7 +19,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,6 +32,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class StandardCalculatorController extends CalculatorController implements Initializable{
     
@@ -40,6 +45,10 @@ public class StandardCalculatorController extends CalculatorController implement
     private String inseMsg="Inserisci solo numeri e relativo segno!";
     
     private String divideeMsg="impossibile dividere per 0!"; 
+    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     
     @FXML
     private ListView<Complex> memory;
@@ -401,11 +410,28 @@ public class StandardCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToFunctionController(ActionEvent event) {
+        
+        
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("functionCalculator.fxml"));
         try {
-            App.setRoot("functionCalculator");
+            root = loader.load();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+               
+        FunctionCalculatorController fcc = loader.getController();
+        fcc.setText("mammt");
+        
+        fcc.setMemory(memory);
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        
     }
 
     public Calculator getCalc() {
@@ -433,6 +459,4 @@ public class StandardCalculatorController extends CalculatorController implement
     }
     
     
-    
-
 }
