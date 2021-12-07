@@ -9,7 +9,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  * @author 39324
  */
 public interface Command {
-    public void execute ();
+    public void execute() throws CommandExecuteException;
     public void undo();
     
 }
