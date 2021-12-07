@@ -4,21 +4,39 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import com.vm.jcomplex.Complex;
+import java.util.ListIterator;
+import javafx.collections.ObservableList;
+
 /**
  *
  * @author simon
  */
 public class ClearerCommand implements Command{
-    
+    private Calculator calc;
+    private ObservableList<Complex> values;
+
+    public ClearerCommand(Calculator calc) {
+        this.calc = calc;
+    }
     
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute() throws CommandExecuteException {
+        values = calc.getMemory();
+        calc.clear();
     }
 
     @Override
     public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ListIterator<Complex> li = values.listIterator(values.size());
+        while(li.hasPrevious()){
+            calc.insert(li.previous());
+        }
+    }
+    
+    @Override
+    public String toString() {
+        return "clear";
     }
     
 }

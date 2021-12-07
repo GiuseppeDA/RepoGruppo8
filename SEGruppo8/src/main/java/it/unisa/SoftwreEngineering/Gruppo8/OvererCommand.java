@@ -9,15 +9,27 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  * @author simon
  */
 public class OvererCommand implements Command{
+    private Calculator calc;
 
+    public OvererCommand(Calculator calc) {
+        this.calc = calc;
+    }
+    
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute() throws CommandExecuteException {
+        if(calc.over()== false)
+            throw new CommandExecuteException("Comando non eseguibile");
     }
 
     @Override
-    public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void undo(){
+        calc.removeTop();
     }
+
+    @Override
+    public String toString() {
+        return "over";
+    }
+    
     
 }
