@@ -408,6 +408,31 @@ public class StandardCalculatorController extends CalculatorController implement
         }
     }
 
+    public Calculator getCalc() {
+        return calc;
+    }
+
+    public Variables getVarList() {
+        return varList;
+    }
+
+    public ListView<Complex> getMemory() {
+        return memory;
+    }
+
+    public TableView<Variable> getVarTableView() {
+        return varTableView;
+    }
+
+    public TableColumn<Variable, String> getVarName() {
+        return varName;
+    }
+
+    public TableColumn<Variable, Complex> getVarValue() {
+        return varValue;
+    }
+    
+    
     
 
 }
