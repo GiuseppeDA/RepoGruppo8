@@ -401,6 +401,11 @@ public class StandardCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToFunctionController(ActionEvent event) {
+        try {
+            App.setRoot("functionCalculator");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     
