@@ -18,7 +18,7 @@ import javafx.scene.input.MouseEvent;
  */
 public abstract class CalculatorController {
     
-    protected Calculator calculator;
+    private Calculator calculator = new Calculator();
     
     @FXML
     private ListView<Complex> memory;
@@ -83,8 +83,8 @@ public abstract class CalculatorController {
         return calculator;
     }
 
-    public void setCalculatorMemory(ObservableList<Complex> memory) {
-        this.calculator.setMemory(memory);
+    public void setCalculator(Calculator calculator) {
+        this.calculator = calculator;
     }
-
+    
 }

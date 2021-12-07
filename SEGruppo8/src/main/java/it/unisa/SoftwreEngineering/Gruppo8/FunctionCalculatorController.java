@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -33,7 +35,8 @@ import javafx.stage.Stage;
  * @author mario
  */
 public class FunctionCalculatorController extends CalculatorController implements Initializable{
-
+    
+    private Calculator calc = new Calculator();
     @FXML
     private TextField input;
     @FXML
@@ -60,13 +63,23 @@ public class FunctionCalculatorController extends CalculatorController implement
     private TableColumn<?, ?> functionName;
     @FXML
     private Button STDButton;
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
     
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        this.setCalculator(scc.getCalculator());
+        this.setMemory(this.getCalculator().getMemory());
+
+    }
+    
     @FXML
     public void insertComplex(ActionEvent event) {
-        System.out.println(getMemory().getItems().toString());
+        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        System.out.println(calc.getMemory().toString());
     }
 
     @FXML
@@ -143,22 +156,17 @@ public class FunctionCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToStandardController(ActionEvent event) {
+        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        scc.setCalculator(this.getCalculator());
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
         try {
             root = loader.load();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-        
-             
-        StandardCalculatorController scc = loader.getController();
-        //scc.setText("jksdkl");
-        scc.setMemory(getCalculator().getMemory());
-        
+
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        
-        
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -170,10 +178,6 @@ public class FunctionCalculatorController extends CalculatorController implement
        screen.setText(string);
    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(getMemory().getItems().toString());
-    }
-    
+
     
 }

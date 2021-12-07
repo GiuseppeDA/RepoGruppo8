@@ -36,8 +36,7 @@ import javafx.stage.Stage;
 
 public class StandardCalculatorController extends CalculatorController implements Initializable{
     
-    
-    
+
     private Variables varList = new Variables();
     
     private String sizeMsg="Operandi non sufficienti!";
@@ -85,13 +84,13 @@ public class StandardCalculatorController extends CalculatorController implement
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        calculator = new Calculator();
-        
-        setCalculatorMemory(getMemory().getItems());
+        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        if(scc.getCalculator() != null){
+            setCalculator(scc.getCalculator());
+        }
         
         setMemory(getCalculator().getMemory());
         
-
         getMemory().setStyle("-fx-font-size: 13px ;");
         
         getMemory().getItems().addListener(new ListChangeListener() {
@@ -415,21 +414,17 @@ public class StandardCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToFunctionController(ActionEvent event) {
-       
+        
+        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        scc.setCalculator(this.getCalculator());
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("functionCalculator.fxml"));
         try {
             root = loader.load();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-               
-        FunctionCalculatorController fcc = loader.getController();       
-        
-        //SET THE CALCULATOR
-        fcc.setText("jksdkl");
-        fcc.setMemory(getCalculator().getMemory());
-        
+       
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         
         scene = new Scene(root);
