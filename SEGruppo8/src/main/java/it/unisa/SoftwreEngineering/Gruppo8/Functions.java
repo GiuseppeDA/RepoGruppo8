@@ -18,5 +18,11 @@ public class Functions {
     public Functions() {
         map=FXCollections.emptyObservableMap();
     }
-    
+
+    public ObservableMap<String, Function> getMap() {
+        return map;
+    }
+    public Function getFunction(String name){
+       return map.get(name);
+    }
 }
