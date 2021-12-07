@@ -62,12 +62,22 @@ public class AdderCommandTest {
      * Test of undo method, of class AdderCommand.
      */
     @Test
-    public void testUndo() {
+    public void testUndo() throws CommandExecuteException {
         System.out.println("undo");
-        AdderCommand instance = null;
+        ComplexNumber c1= new ComplexNumber(1,2);
+        ComplexNumber c2= new ComplexNumber(2,1);
+        Calculator calc = new Calculator();
+        AdderCommand instance = new AdderCommand(calc);
+        
+        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
+        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
+        
+        calc.insert(c1);
+        calc.insert(c2);
+        instance.execute();
         instance.undo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(c2,calc.removeTop());
+        assertEquals(c1,calc.removeTop());
     }
 
     /**
