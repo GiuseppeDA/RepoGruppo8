@@ -1,11 +1,14 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import com.vm.jcomplex.Complex;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -26,7 +29,7 @@ import javafx.scene.text.Text;
 public class FunctionCalculatorController extends CalculatorController implements Initializable{
 
     @FXML
-    private ListView<?> memory;
+    private ListView<Complex> memory;
     @FXML
     private TextField input;
     @FXML
@@ -53,7 +56,23 @@ public class FunctionCalculatorController extends CalculatorController implement
     private TableColumn<?, ?> functionName;
     @FXML
     private Button STDButton;
-
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) { 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
+        
+        try {
+            Parent root = (Parent) loader.load();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        StandardCalculatorController scc = loader.getController();
+        
+        //System.out.println(scc.getMemory().getItems());
+        
+        //memory.setItems(scc.getMemory().getItems());
+        
+    }
     @FXML
     public void insertComplex(ActionEvent event) {
     }
@@ -125,11 +144,6 @@ public class FunctionCalculatorController extends CalculatorController implement
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
     }
     
 }
