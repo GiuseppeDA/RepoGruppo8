@@ -20,93 +20,47 @@ public abstract class CalculatorController {
     
     @FXML
     public abstract void add(MouseEvent event);
-    
-    /*
+        
     @FXML
-    private void subtract(MouseEvent event) {
-        if(!calc.subtract())
-            popupCaller(sizeMsg);
-    }
-
-    @FXML
-    private void sqrt(MouseEvent event) {
-        if(!calc.sqrt())
-            popupCaller(sizeMsg);
-    }
-
-    @FXML
-    private void multiply(MouseEvent event) {
-        if(!calc.multiply())
-            popupCaller(sizeMsg);
-    }
-
-    @FXML
-    private void divide(MouseEvent event) {
-        try {
-            if(!calc.divide())
-                popupCaller(sizeMsg);
-        } catch (ImpossibleDivisionException e) {
-            popupCaller(divideeMsg);
-        }
-    }
-
-    @FXML
-    private void invert(MouseEvent event) {
-        if(!calc.invert())
-            popupCaller(sizeMsg);
-    }
+    public abstract void subtract(MouseEvent event);
     
     @FXML
-    private void clear(MouseEvent event){
-        calc.clear();
-    }
-    
-    @FXML
-    private abstract void drop(MouseEvent event){
-        if(!calc.drop())
-            popupCaller(sizeMsg);
-    }
-    
-    @FXML
-    private abstract void dup(MouseEvent event){
-        if(!calc.dup())
-            popupCaller(sizeMsg);
-    }
-    
-    @FXML
-    private abstract void over(MouseEvent event){
-        if(!calc.over())
-          popupCaller(sizeMsg);
-    }
-    
-    @FXML
-    private abstract void swap(MouseEvent event){
-        if(!calc.swap())
-          popupCaller(sizeMsg);
-    }
-    
+    public abstract void sqrt(MouseEvent event);
 
     @FXML
-    private abstract void setVar(MouseEvent event) {
-        varList.setVar(calc.removeTop(),selectedVarIndices.get(0));
-    }
+    public abstract void multiply(MouseEvent event);
 
     @FXML
-    private abstract void insertVarInStack(MouseEvent event) {
-        Variable v = varList.getVar(selectedVarIndices.get(0));       
-        calc.insert(v.getValue());
-    }
+    public abstract void divide(MouseEvent event);
 
     @FXML
-    private abstract void addVar(MouseEvent event) {
-        varList.addVar(calc.getTop(), selectedVarIndices.get(0));
-    }
-
-    @FXML
-    private abstract void subVar(MouseEvent event) {
-        varList.subVar(calc.getTop(), selectedVarIndices.get(0));
-    }
+    public abstract void invert(MouseEvent event);
     
-    */
+    @FXML
+    public abstract void clear(MouseEvent event);
+    
+    @FXML
+    public abstract void drop(MouseEvent event);
+    
+    @FXML
+    public abstract void dup(MouseEvent event);
+    
+    @FXML
+    public abstract void over(MouseEvent event);
+    
+    @FXML
+    public abstract void swap(MouseEvent event);
+
+    @FXML
+    public abstract void setVar(MouseEvent event);
+
+    @FXML
+    public abstract void insertVarInStack(MouseEvent event);
+
+    @FXML
+    public abstract void addVar(MouseEvent event);
+
+    @FXML
+    public abstract void subVar(MouseEvent event);
     
 }

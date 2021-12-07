@@ -66,6 +66,12 @@ public class StandardCalculatorController extends CalculatorController implement
     private Button addVarButton;
     @FXML
     private Button subVarButton;
+    @FXML
+    private Button FunButton;
+    @FXML
+    private TableView<?> functionTableView;
+    @FXML
+    private TableColumn<?, ?> functionName;
     
     
     //Initializing
@@ -232,25 +238,29 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void subtract(MouseEvent event) {
+    @Override
+    public void subtract(MouseEvent event) {
         if(!calc.subtract())
             popupCaller(sizeMsg);
     }
 
     @FXML
-    private void sqrt(MouseEvent event) {
+    @Override
+    public void sqrt(MouseEvent event) {
         if(!calc.sqrt())
             popupCaller(sizeMsg);
     }
 
     @FXML
-    private void multiply(MouseEvent event) {
+    @Override
+    public void multiply(MouseEvent event) {
         if(!calc.multiply())
             popupCaller(sizeMsg);
     }
 
     @FXML
-    private void divide(MouseEvent event) {
+    @Override
+    public void divide(MouseEvent event) {
         try {
             if(!calc.divide())
                 popupCaller(sizeMsg);
@@ -260,36 +270,42 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void invert(MouseEvent event) {
+    @Override
+    public void invert(MouseEvent event) {
         if(!calc.invert())
             popupCaller(sizeMsg);
     }
     
     @FXML
-    private void clear(MouseEvent event){
+    @Override
+    public void clear(MouseEvent event){
         calc.clear();
     }
     
     @FXML
-    private void drop(MouseEvent event){
+    @Override
+    public void drop(MouseEvent event){
         if(!calc.drop())
             popupCaller(sizeMsg);
     }
     
     @FXML
-    private void dup(MouseEvent event){
+    @Override
+    public void dup(MouseEvent event){
         if(!calc.dup())
             popupCaller(sizeMsg);
     }
     
     @FXML
-    private void over(MouseEvent event){
+    @Override
+    public void over(MouseEvent event){
         if(!calc.over())
           popupCaller(sizeMsg);
     }
     
     @FXML
-    private void swap(MouseEvent event){
+    @Override
+    public void swap(MouseEvent event){
         if(!calc.swap())
           popupCaller(sizeMsg);
     }
@@ -299,23 +315,24 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void setVar(MouseEvent event) {
+    @Override
+    public void setVar(MouseEvent event) {
         varList.setVar(calc.removeTop(),selectedVarIndices.get(0));
     }
 
     @FXML
-    private void insertVarInStack(MouseEvent event) {
+    public void insertVarInStack(MouseEvent event) {
         Variable v = varList.getVar(selectedVarIndices.get(0));       
         calc.insert(v.getValue());
     }
 
     @FXML
-    private void addVar(MouseEvent event) {
+    public void addVar(MouseEvent event) {
         varList.addVar(calc.getTop(), selectedVarIndices.get(0));
     }
 
     @FXML
-    private void subVar(MouseEvent event) {
+    public void subVar(MouseEvent event) {
         varList.subVar(calc.getTop(), selectedVarIndices.get(0));
     }
 
@@ -380,6 +397,10 @@ public class StandardCalculatorController extends CalculatorController implement
             
         }
         return false;
+    }
+
+    @FXML
+    private void changeToFunctionController(ActionEvent event) {
     }
 
     
