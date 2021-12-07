@@ -1,8 +1,11 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -20,7 +23,7 @@ import javafx.scene.text.Text;
  *
  * @author mario
  */
-public class FunctionCalculatorController extends CalculatorController {
+public class FunctionCalculatorController extends CalculatorController implements Initializable{
 
     @FXML
     private ListView<?> memory;
@@ -45,11 +48,11 @@ public class FunctionCalculatorController extends CalculatorController {
     @FXML
     private TableColumn<?, ?> varValue;
     @FXML
-    private Button FunButton;
-    @FXML
     private TableView<?> functionTableView;
     @FXML
     private TableColumn<?, ?> functionName;
+    @FXML
+    private Button STDButton;
 
     @FXML
     public void insertComplex(ActionEvent event) {
@@ -122,6 +125,11 @@ public class FunctionCalculatorController extends CalculatorController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
     }
     
 }
