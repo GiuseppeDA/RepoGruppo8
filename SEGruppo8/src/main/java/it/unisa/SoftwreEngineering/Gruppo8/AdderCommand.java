@@ -21,20 +21,22 @@ public class AdderCommand implements Command{
     
     @Override
     public void execute() throws CommandExecuteException {
+        pop1 = calc.getTop();
+        pop2 = calc.getOver();
         if(calc.add() == false)
             throw new CommandExecuteException();
     }
 
     @Override
     public void undo() {
-        
+        calc.removeTop();
+        calc.insert(pop2);
+        calc.insert(pop1);
     }
 
     @Override
     public String toString() {
         return "+";
     }
-    
-    
     
 }
