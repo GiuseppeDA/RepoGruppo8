@@ -36,7 +36,7 @@ import javafx.stage.Stage;
 
 public class StandardCalculatorController extends CalculatorController implements Initializable{
     
-    private Calculator calc = new Calculator();
+    
     
     private Variables varList = new Variables();
     
@@ -84,7 +84,11 @@ public class StandardCalculatorController extends CalculatorController implement
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        getMemory().setItems(calc.getMemory());
+        
+        if(getCalculator() == null)
+            setCalculator(new Calculator());
+        
+        getMemory().setItems(getCalculator().getMemory());
         
         getMemory().setStyle("-fx-font-size: 13px ;");
         
@@ -188,7 +192,7 @@ public class StandardCalculatorController extends CalculatorController implement
               }
  
               imagNum = Double.parseDouble (sa);
-              calc.insert(realNum, imagNum); 
+              getCalculator().insert(realNum, imagNum); 
           }
           else if(Pattern.matches(realPattern, s)){ //significa che è solo un numero reale
               String sa = st.nextToken();
@@ -198,7 +202,7 @@ public class StandardCalculatorController extends CalculatorController implement
               } 
               realNum = Double.parseDouble (sa);
               
-              calc.insert(realNum, 0.0);
+              getCalculator().insert(realNum, 0.0);
           }
           else if (Pattern.matches(imagPattern, s)){
               String sa = st.nextToken();
@@ -217,7 +221,7 @@ public class StandardCalculatorController extends CalculatorController implement
               if(sa.equals ("j"))
                     sa = "1";
               imagNum = Double.parseDouble (sa);
-              calc.insert(0.0, imagNum); 
+              getCalculator().insert(0.0, imagNum); 
           }
           
           input.setText("");
@@ -239,7 +243,7 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     @Override
     public void add(MouseEvent event) {
-        if(!calc.add())
+        if(!getCalculator().add())
             popupCaller(sizeMsg);
  
     }
@@ -247,21 +251,21 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     @Override
     public void subtract(MouseEvent event) {
-        if(!calc.subtract())
+        if(!getCalculator().subtract())
             popupCaller(sizeMsg);
     }
 
     @FXML
     @Override
     public void sqrt(MouseEvent event) {
-        if(!calc.sqrt())
+        if(!getCalculator().sqrt())
             popupCaller(sizeMsg);
     }
 
     @FXML
     @Override
     public void multiply(MouseEvent event) {
-        if(!calc.multiply())
+        if(!getCalculator().multiply())
             popupCaller(sizeMsg);
     }
 
@@ -269,7 +273,7 @@ public class StandardCalculatorController extends CalculatorController implement
     @Override
     public void divide(MouseEvent event) {
         try {
-            if(!calc.divide())
+            if(!getCalculator().divide())
                 popupCaller(sizeMsg);
         } catch (ImpossibleDivisionException e) {
             popupCaller(divideeMsg);
@@ -279,41 +283,41 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     @Override
     public void invert(MouseEvent event) {
-        if(!calc.invert())
+        if(!getCalculator().invert())
             popupCaller(sizeMsg);
     }
     
     @FXML
     @Override
     public void clear(MouseEvent event){
-        calc.clear();
+        getCalculator().clear();
     }
     
     @FXML
     @Override
     public void drop(MouseEvent event){
-        if(!calc.drop())
+        if(!getCalculator().drop())
             popupCaller(sizeMsg);
     }
     
     @FXML
     @Override
     public void dup(MouseEvent event){
-        if(!calc.dup())
+        if(!getCalculator().dup())
             popupCaller(sizeMsg);
     }
     
     @FXML
     @Override
     public void over(MouseEvent event){
-        if(!calc.over())
+        if(!getCalculator().over())
           popupCaller(sizeMsg);
     }
     
     @FXML
     @Override
     public void swap(MouseEvent event){
-        if(!calc.swap())
+        if(!getCalculator().swap())
           popupCaller(sizeMsg);
     }
     
@@ -324,23 +328,23 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     @Override
     public void setVar(MouseEvent event) {
-        varList.setVar(calc.removeTop(),selectedVarIndices.get(0));
+        varList.setVar(getCalculator().removeTop(),selectedVarIndices.get(0));
     }
 
     @FXML
     public void insertVarInStack(MouseEvent event) {
         Variable v = varList.getVar(selectedVarIndices.get(0));       
-        calc.insert(v.getValue());
+        getCalculator().insert(v.getValue());
     }
 
     @FXML
     public void addVar(MouseEvent event) {
-        varList.addVar(calc.getTop(), selectedVarIndices.get(0));
+        varList.addVar(getCalculator().getTop(), selectedVarIndices.get(0));
     }
 
     @FXML
     public void subVar(MouseEvent event) {
-        varList.subVar(calc.getTop(), selectedVarIndices.get(0));
+        varList.subVar(getCalculator().getTop(), selectedVarIndices.get(0));
     }
 
     private boolean isOperation(String op) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
@@ -351,7 +355,7 @@ public class StandardCalculatorController extends CalculatorController implement
         
         for(i=0;i<operations.length;i++){
             if(op.equals(operations[i]) == true){
-                Object obj = calc.getClass().getDeclaredMethod(methodName[i]).invoke(calc);
+                Object obj = getCalculator().getClass().getDeclaredMethod(methodName[i]).invoke(calc);
                 Boolean res = (Boolean) obj;
                 if(res == false)
                     popupCaller(sizeMsg);
@@ -361,7 +365,7 @@ public class StandardCalculatorController extends CalculatorController implement
         
         if(op.equals("/")){
             try {
-                if(!calc.divide())
+                if(!getCalculator().divide())
                     popupCaller(sizeMsg);
             } catch (ImpossibleDivisionException e) {
                 popupCaller(divideeMsg);
@@ -370,7 +374,7 @@ public class StandardCalculatorController extends CalculatorController implement
         }
         
         if(op.equals("clear")){
-            calc.clear();
+            getCalculator().clear();
             return true;
         }
 
@@ -387,18 +391,18 @@ public class StandardCalculatorController extends CalculatorController implement
             if(op.substring(0, 1).equals("<")){
                 Variable v = varList.getVar(index);
         
-                calc.insert(v.getValue());
+                getCalculator().insert(v.getValue());
                 return true;
             }
             else if(op.substring(0, 1).equals(">")){
-                varList.setVar(calc.removeTop(),index);
+                varList.setVar(getCalculator().removeTop(),index);
                 return true;
             }
             else if(op.substring(0, 1).equals("-")){
-                varList.subVar(calc.getTop(), index);
+                varList.subVar(getCalculator().getTop(), index);
                 return true;
             }else if (op.substring(0, 1).equals("+")){
-                varList.addVar(calc.getTop(), index);
+                varList.addVar(getCalculator().getTop(), index);
                 return true;
             }
             
@@ -421,32 +425,13 @@ public class StandardCalculatorController extends CalculatorController implement
                
         FunctionCalculatorController fcc = loader.getController();       
         fcc.setMemory(getMemory());
+        
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     
-    }
-
-    public Calculator getCalc() {
-        return calc;
-    }
-
-    public Variables getVarList() {
-        return varList;
-    }
-
-    public TableView<Variable> getVarTableView() {
-        return varTableView;
-    }
-
-    public TableColumn<Variable, String> getVarName() {
-        return varName;
-    }
-
-    public TableColumn<Variable, Complex> getVarValue() {
-        return varValue;
     }
     
     

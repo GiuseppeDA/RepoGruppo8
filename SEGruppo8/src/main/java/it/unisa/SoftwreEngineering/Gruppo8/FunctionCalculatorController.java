@@ -4,6 +4,9 @@ import com.vm.jcomplex.Complex;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +62,8 @@ public class FunctionCalculatorController extends CalculatorController implement
     private Button STDButton;
     private Stage stage;
     private Scene scene;
-    private Parent root;    
+    private Parent root;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
       
@@ -142,7 +146,7 @@ public class FunctionCalculatorController extends CalculatorController implement
         StandardCalculatorController scc = loader.getController();
         
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        scc.setMemory(getMemory());
+        
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
