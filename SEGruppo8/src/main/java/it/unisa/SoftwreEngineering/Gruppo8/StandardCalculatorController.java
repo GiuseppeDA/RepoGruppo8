@@ -46,6 +46,7 @@ public class StandardCalculatorController extends CalculatorController implement
     
     private String divideeMsg="impossibile dividere per 0!"; 
     
+    
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -84,12 +85,13 @@ public class StandardCalculatorController extends CalculatorController implement
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        calculator = new Calculator();
         
-        if(getCalculator() == null)
-            setCalculator(new Calculator());
+        setCalculatorMemory(getMemory().getItems());
         
-        getMemory().setItems(getCalculator().getMemory());
+        setMemory(getCalculator().getMemory());
         
+
         getMemory().setStyle("-fx-font-size: 13px ;");
         
         getMemory().getItems().addListener(new ListChangeListener() {
@@ -238,6 +240,7 @@ public class StandardCalculatorController extends CalculatorController implement
           screen.setText("Syntax Error");
       }
       
+        System.out.println(getCalculator().getMemory().toString());
     }
     
     @FXML
@@ -412,9 +415,7 @@ public class StandardCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToFunctionController(ActionEvent event) {
-        
-        
-        
+       
         FXMLLoader loader = new FXMLLoader(getClass().getResource("functionCalculator.fxml"));
         try {
             root = loader.load();
@@ -424,7 +425,10 @@ public class StandardCalculatorController extends CalculatorController implement
         
                
         FunctionCalculatorController fcc = loader.getController();       
-        fcc.setMemory(getMemory());
+        
+        //SET THE CALCULATOR
+        fcc.setText("jksdkl");
+        fcc.setMemory(getCalculator().getMemory());
         
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         

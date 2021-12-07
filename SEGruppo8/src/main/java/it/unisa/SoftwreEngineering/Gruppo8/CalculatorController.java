@@ -6,6 +6,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
 import java.lang.reflect.InvocationTargetException;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -17,7 +18,7 @@ import javafx.scene.input.MouseEvent;
  */
 public abstract class CalculatorController {
     
-    private Calculator calculator;
+    protected Calculator calculator;
     
     @FXML
     private ListView<Complex> memory;
@@ -74,16 +75,16 @@ public abstract class CalculatorController {
         return memory;
     }
 
-    public void setMemory(ListView<Complex> memory) {
-        this.memory.setItems(memory.getItems());
+    public void setMemory(ObservableList<Complex> memory) {
+        this.memory.setItems(memory);
     }
 
     public Calculator getCalculator() {
         return calculator;
     }
 
-    public void setCalculator(Calculator calculator) {
-        this.calculator = calculator;
+    public void setCalculatorMemory(ObservableList<Complex> memory) {
+        this.calculator.setMemory(memory);
     }
 
 }

@@ -64,61 +64,69 @@ public class FunctionCalculatorController extends CalculatorController implement
     private Scene scene;
     private Parent root;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) { 
-      
-       
-    }
     @FXML
     public void insertComplex(ActionEvent event) {
+        System.out.println(getMemory().getItems().toString());
     }
 
     @FXML
     public void add(MouseEvent event) {
+        input.appendText("+ ");
     }
 
     @FXML
     public void subtract(MouseEvent event) {
+        input.appendText("- ");
     }
 
     @FXML
     public void sqrt(MouseEvent event) {
+        input.appendText("sqrt ");
     }
 
     @FXML
     public void multiply(MouseEvent event) {
+        input.appendText("* ");
     }
 
     @FXML
     public void divide(MouseEvent event) {
+        input.appendText("/ ");
     }
 
     @FXML
     public void invert(MouseEvent event) {
+        input.appendText("+- ");
     }
 
     @FXML
     public void clear(MouseEvent event) {
+        input.appendText("clear ");
     }
 
     @FXML
     public void drop(MouseEvent event) {
+        input.appendText("drop ");
     }
 
     @FXML
     public void dup(MouseEvent event) {
+        input.appendText("dup ");
     }
 
     @FXML
     public void swap(MouseEvent event) {
+        input.appendText("swap ");
     }
 
     @FXML
     public void over(MouseEvent event) {
+        input.appendText("over ");
     }
 
     @FXML
     public void setVar(MouseEvent event) {
+        
     }
 
     @FXML
@@ -142,10 +150,14 @@ public class FunctionCalculatorController extends CalculatorController implement
             ex.printStackTrace();
         }
         
-               
+        
+             
         StandardCalculatorController scc = loader.getController();
+        //scc.setText("jksdkl");
+        scc.setMemory(getCalculator().getMemory());
         
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        
         
         scene = new Scene(root);
         stage.setScene(scene);
@@ -157,6 +169,11 @@ public class FunctionCalculatorController extends CalculatorController implement
    public void setText(String string){
        screen.setText(string);
    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        System.out.println(getMemory().getItems().toString());
+    }
     
     
 }
