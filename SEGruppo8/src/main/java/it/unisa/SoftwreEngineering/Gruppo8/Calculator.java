@@ -18,6 +18,9 @@ public class Calculator {
         memory = FXCollections.observableArrayList();
     }
 
+    public void setMemory(ObservableList<Complex> memory) {
+        this.memory = memory;
+    }
     
     /**
      *Somma gli ulltimi due valori in memoria
