@@ -25,7 +25,9 @@ public class Function {
                 }
               break;
             }
-        }
-        
+        }   
+    }
+    public void add(Command c){
+        commandList.add(0,c);
     }
 }
