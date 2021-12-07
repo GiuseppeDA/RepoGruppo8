@@ -30,4 +30,18 @@ public class Function {
     public void add(Command c){
         commandList.add(0,c);
     }
+
+    public ArrayList<Command> getCommandList() {
+        return commandList;
+    }
+
+    @Override
+    public String toString() {
+        String commands=new String();
+        for(Command c:commandList){
+            commands=commands+c.toString()+" ";  
+        }
+        return commands;
+    }
+    
 }
