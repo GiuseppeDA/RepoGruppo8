@@ -68,9 +68,7 @@ public class SubtracterCommandTest {
         ComplexNumber c2= new ComplexNumber(2,1);
         Calculator calc = new Calculator();
         SubtracterCommand instance = new SubtracterCommand(calc);
-        
-        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
-        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
+
         
         calc.insert(c1);
         calc.insert(c2);

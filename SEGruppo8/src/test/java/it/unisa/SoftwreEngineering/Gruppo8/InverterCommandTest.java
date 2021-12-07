@@ -64,9 +64,7 @@ public class InverterCommandTest {
         ComplexNumber c1= new ComplexNumber(1,2);
         Calculator calc = new Calculator();
         InverterCommand instance = new InverterCommand(calc);
-        
-        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
-        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
+
         
         calc.insert(c1);
         instance.execute();

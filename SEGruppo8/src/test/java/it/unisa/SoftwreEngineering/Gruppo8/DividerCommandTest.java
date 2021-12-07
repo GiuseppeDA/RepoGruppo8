@@ -75,8 +75,6 @@ public class DividerCommandTest {
         Calculator calc = new Calculator();
         DividerCommand instance = new DividerCommand(calc);
         
-        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
-        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
         
         calc.insert(c1);
         calc.insert(c2);

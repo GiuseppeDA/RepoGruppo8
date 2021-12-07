@@ -65,8 +65,6 @@ public class SqrterCommandTest {
         Calculator calc = new Calculator();
         SqrterCommand instance = new SqrterCommand(calc);
         
-        IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
-        assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
         
         calc.insert(c1);
         instance.execute();
