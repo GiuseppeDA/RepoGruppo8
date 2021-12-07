@@ -21,10 +21,16 @@ public class AdderCommand implements Command{
     
     @Override
     public void execute() throws CommandExecuteException {
-        pop1 = calc.getTop();
-        pop2 = calc.getOver();
+        try{
+          pop1 = calc.getTop();
+          pop2 = calc.getOver();  
+        }catch(IndexOutOfBoundsException ex){
+            
+            throw new CommandExecuteException("Comando non eseguibile");
+        }
+        
         if(calc.add() == false)
-            throw new CommandExecuteException();
+            throw new CommandExecuteException("Comando non eseguibile");
     }
 
     @Override
