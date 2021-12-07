@@ -112,12 +112,12 @@ public class Calculator {
      *
      * @return l'oggetto Complex in cima alla memory
      */
-    public ComplexNumber getTop(){
-        return (ComplexNumber)memory.get(0);
+    public Complex getTop(){
+        return memory.get(0);
     }
     
-    public ComplexNumber getOver(){
-        return (ComplexNumber)memory.get(1);
+    public Complex getOver(){
+        return memory.get(1);
     }
 
     /**
