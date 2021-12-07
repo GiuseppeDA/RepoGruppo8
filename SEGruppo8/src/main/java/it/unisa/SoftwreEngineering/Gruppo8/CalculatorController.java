@@ -4,9 +4,11 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import com.vm.jcomplex.Complex;
 import java.lang.reflect.InvocationTargetException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -14,6 +16,9 @@ import javafx.scene.input.MouseEvent;
  * @author mario
  */
 public abstract class CalculatorController {
+    
+    @FXML
+    private ListView<Complex> memory;
     
     @FXML
     public abstract void insertComplex(ActionEvent event) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException;
@@ -63,4 +68,11 @@ public abstract class CalculatorController {
     @FXML
     public abstract void subVar(MouseEvent event);
     
+    public ListView<Complex> getMemory() {
+        return memory;
+    }
+
+    public void setMemory(ListView<Complex> memory) {
+        this.memory.setItems(memory.getItems());
+    }
 }

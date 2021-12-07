@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -29,8 +31,6 @@ import javafx.scene.text.Text;
  */
 public class FunctionCalculatorController extends CalculatorController implements Initializable{
 
-    @FXML
-    private ListView<Complex> memory;
     @FXML
     private TextField input;
     @FXML
@@ -57,7 +57,9 @@ public class FunctionCalculatorController extends CalculatorController implement
     private TableColumn<?, ?> functionName;
     @FXML
     private Button STDButton;
-    
+    private Stage stage;
+    private Scene scene;
+    private Parent root;    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
       
@@ -129,20 +131,24 @@ public class FunctionCalculatorController extends CalculatorController implement
 
     @FXML
     private void changeToStandardController(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
         try {
-            App.setRoot("standardCalculator");
+            root = loader.load();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+               
+        StandardCalculatorController scc = loader.getController();
+        
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        scc.setMemory(getMemory());
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public ListView<Complex> getMemory() {
-        return memory;
-    }
 
-    public void setMemory(ListView<Complex> memory) {
-        this.memory.setItems(memory.getItems());
-    }
 
    public void setText(String string){
        screen.setText(string);

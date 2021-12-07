@@ -51,8 +51,6 @@ public class StandardCalculatorController extends CalculatorController implement
     private Parent root;
     
     @FXML
-    private ListView<Complex> memory;
-    @FXML
     private TextField input;
     @FXML
     private Text screen;
@@ -86,15 +84,15 @@ public class StandardCalculatorController extends CalculatorController implement
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        memory.setItems(calc.getMemory());
+        getMemory().setItems(calc.getMemory());
         
-        memory.setStyle("-fx-font-size: 13px ;");
+        getMemory().setStyle("-fx-font-size: 13px ;");
         
-        memory.getItems().addListener(new ListChangeListener() {
+        getMemory().getItems().addListener(new ListChangeListener() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
-                if(memory.getItems().size() > 0)
-                    screen.setText(memory.getItems().get(0).toString());
+                if(getMemory().getItems().size() > 0)
+                    screen.setText(getMemory().getItems().get(0).toString());
             }
         });
         
@@ -421,17 +419,14 @@ public class StandardCalculatorController extends CalculatorController implement
         }
         
                
-        FunctionCalculatorController fcc = loader.getController();
-        fcc.setText("mammt");
-        
-        fcc.setMemory(memory);
+        FunctionCalculatorController fcc = loader.getController();       
+        fcc.setMemory(getMemory());
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
-        
+    
     }
 
     public Calculator getCalc() {
@@ -440,10 +435,6 @@ public class StandardCalculatorController extends CalculatorController implement
 
     public Variables getVarList() {
         return varList;
-    }
-
-    public ListView<Complex> getMemory() {
-        return memory;
     }
 
     public TableView<Variable> getVarTableView() {
