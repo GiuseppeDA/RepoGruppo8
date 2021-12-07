@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author simon
  */
-public class MultiplierCommandTest {
+public class DividerCommandTest {
     
-    public MultiplierCommandTest() {
+    public DividerCommandTest() {
     }
     
     @BeforeAll
@@ -37,39 +37,43 @@ public class MultiplierCommandTest {
     }
 
     /**
-     * Test of execute method, of class MultiplierCommand.
+     * Test of execute method, of class DividerCommand.
      */
     @Test
     public void testExecute() throws CommandExecuteException {
         System.out.println("execute");
-        
         ComplexNumber c1= new ComplexNumber(1,2);
         Calculator calc = new Calculator();
         
         calc.insert(c1);
-        MultiplierCommand instance = new MultiplierCommand(calc);
+        DividerCommand instance = new DividerCommand(calc);
         
-        CommandExecuteException exception = assertThrows(CommandExecuteException.class, () -> instance.execute());
-        assertEquals("Comando non eseguibile",exception.getMessage());
+        CommandExecuteException exception1 = assertThrows(CommandExecuteException.class, () -> instance.execute());
+        assertEquals("Comando non eseguibile",exception1.getMessage());
         
-        ComplexNumber c2= new ComplexNumber(2,1); 
+        ComplexNumber c2= new ComplexNumber(2,-1); 
         calc.insert(c2);
         instance.execute();
-        ComplexNumber ris= new ComplexNumber(0,5);
+        ComplexNumber ris= new ComplexNumber(0,1);
         assertEquals(ris,calc.getTop());
+        
+        ComplexNumber c3= new ComplexNumber(0,0);  
+        calc.insert(c3);
+ 
+        CommandExecuteException exception2 = assertThrows(CommandExecuteException.class, () -> instance.execute());
+        assertEquals("Divisione per 0 non consentita",exception2.getMessage());
     }
 
     /**
-     * Test of undo method, of class MultiplierCommand.
+     * Test of undo method, of class DividerCommand.
      */
     @Test
     public void testUndo() throws CommandExecuteException {
         System.out.println("undo");
-        
         ComplexNumber c1= new ComplexNumber(1,2);
         ComplexNumber c2= new ComplexNumber(2,1);
         Calculator calc = new Calculator();
-        MultiplierCommand instance = new MultiplierCommand(calc);
+        DividerCommand instance = new DividerCommand(calc);
         
         IndexOutOfBoundsException exception = assertThrows(IndexOutOfBoundsException.class, () -> instance.undo());
         assertEquals("Index 0 out of bounds for length 0",exception.getMessage());
@@ -83,14 +87,14 @@ public class MultiplierCommandTest {
     }
 
     /**
-     * Test of toString method, of class MultiplierCommand.
+     * Test of toString method, of class DividerCommand.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
         Calculator calc = new Calculator();
-        MultiplierCommand instance = new MultiplierCommand(calc);
-        String expResult = "*";
+        DividerCommand instance = new DividerCommand(calc);
+        String expResult = "/";
         String result = instance.toString();
         assertEquals(expResult, result);
     }
