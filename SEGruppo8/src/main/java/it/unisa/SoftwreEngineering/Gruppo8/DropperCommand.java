@@ -6,17 +6,17 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 
 /**
  *
- * @author simon
+ * @author giuseppe
  */
-public class SubtracterComand implements Command {
+public class DropperCommand implements Command{
 
     @Override
-    public void execute() {
+    public void execute() throws CommandExecuteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void undo() {
+    public void undo() throws CommandExecuteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

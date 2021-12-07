@@ -34,8 +34,12 @@ public class AdderCommand implements Command{
     }
 
     @Override
-    public void undo() {
-        calc.removeTop();
+    public void undo() throws CommandExecuteException {
+        try{
+            calc.removeTop();}
+        catch(IndexOutOfBoundsException ex){
+            throw new CommandExecuteException("Comando non eseguibile");
+        }
         calc.insert(pop2);
         calc.insert(pop1);
     }

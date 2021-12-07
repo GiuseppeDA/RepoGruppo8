@@ -10,12 +10,12 @@ import com.vm.jcomplex.Complex;
  *
  * @author simon
  */
-public class DividerCommand implements Command{
+public class SubtracterCommand implements Command {
     private Calculator calc;
     private Complex pop1;
     private Complex pop2;
 
-    public DividerCommand(Calculator calc) {
+    public SubtracterCommand(Calculator calc) {
         this.calc = calc;
     }
     
@@ -29,12 +29,8 @@ public class DividerCommand implements Command{
             throw new CommandExecuteException("Comando non eseguibile");
         }
         
-        try {
-            if(calc.divide() == false)
-                throw new CommandExecuteException("Comando non eseguibile");
-        } catch (ImpossibleDivisionException ex) {
-            throw new CommandExecuteException("Divisione per 0 non consentita");
-        }
+        if(calc.subtract() == false)
+            throw new CommandExecuteException("Comando non eseguibile");
     }
 
     @Override
@@ -50,7 +46,7 @@ public class DividerCommand implements Command{
 
     @Override
     public String toString() {
-        return "/";
+        return "-";
     }
     
 }

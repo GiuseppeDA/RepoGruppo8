@@ -9,7 +9,8 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  * @author simon
  */
 public class ClearerCommand implements Command{
-
+    
+    
     @Override
     public void execute() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
