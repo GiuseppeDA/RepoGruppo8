@@ -28,4 +28,7 @@ public class Functions {
     public void setFunction(String name,Function f){
         map.put(name, f);
     }
+    public void addFunction(String name,Function f){
+        map.putIfAbsent(name, f);
+    }
 }
