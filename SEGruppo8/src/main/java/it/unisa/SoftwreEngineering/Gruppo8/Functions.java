@@ -25,4 +25,7 @@ public class Functions {
     public Function getFunction(String name){
        return map.get(name);
     }
+    public void setFunction(String name,Function f){
+        map.put(name, f);
+    }
 }
