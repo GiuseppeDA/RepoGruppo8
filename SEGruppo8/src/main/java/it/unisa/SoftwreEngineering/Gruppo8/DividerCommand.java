@@ -38,12 +38,8 @@ public class DividerCommand implements Command{
     }
 
     @Override
-    public void undo() throws CommandExecuteException {
-        try{
-            calc.removeTop();}
-        catch(IndexOutOfBoundsException ex){
-            throw new CommandExecuteException("Comando non eseguibile");
-        }
+    public void undo(){
+        calc.removeTop();
         calc.insert(pop2);
         calc.insert(pop1);
     }
