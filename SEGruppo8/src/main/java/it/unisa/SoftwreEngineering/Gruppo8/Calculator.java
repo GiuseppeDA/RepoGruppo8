@@ -115,6 +115,10 @@ public class Calculator {
     public ComplexNumber getTop(){
         return (ComplexNumber)memory.get(0);
     }
+    
+    public ComplexNumber getOver(){
+        return (ComplexNumber)memory.get(1);
+    }
 
     /**
      *controlla se nella memory ci sono a elementi
