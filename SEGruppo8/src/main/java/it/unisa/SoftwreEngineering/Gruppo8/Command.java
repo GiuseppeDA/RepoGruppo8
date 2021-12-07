@@ -10,6 +10,6 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  */
 public interface Command {
     public void execute() throws CommandExecuteException;
-    public void undo() throws CommandExecuteException;
+    public void undo();
     
 }
