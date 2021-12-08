@@ -8,7 +8,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  *
  * @author simon
  */
-public class VariablePullerCommand implements Command{
+public class VariableGetterCommand implements Command{
 
     @Override
     public void execute() {

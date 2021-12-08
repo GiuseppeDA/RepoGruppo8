@@ -8,7 +8,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  *
  * @author simon
  */
-public class VariablePusherCommand implements Command{
+public class VariableSetterCommand implements Command{
 
     @Override
     public void execute() {
