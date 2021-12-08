@@ -64,18 +64,24 @@ public class Functions {
         try(Scanner i = new Scanner(new BufferedReader(new FileReader(filename)))) {
             ObservableMap<String,Function> temp=FXCollections.emptyObservableMap();
             while(i.hasNextLine()){
-                StringTokenizer str= new StringTokenizer(i.nextLine()," ");
+               
+                StringTokenizer str0= new StringTokenizer(i.nextLine(),"()",true);
+                String s="";
+                while(str0.hasMoreTokens()){
+                s=s+str0.nextToken("(");
+                if(str0.hasMoreTokens())
+                  s=s+str0.nextToken(")").replaceAll("\\s+","");
+                }
+                StringTokenizer str= new StringTokenizer(s," ");
                 String name=str.nextToken();
                 Function f=new Function();     
                 while(str.hasMoreTokens()){
                     String token=str.nextToken(" ");
-                    if(token.startsWith("(")){
-                        token=token.replace(')', ' ');
-                       token=token.replace('(', ' ');
-                       c=p.isNumber(token);
+                    if(token.startsWith("(")){;
+                       token=token.replace("(", "");
+                       token=token.replace(")", "");
                     }
-                    else
-                       c=p.parse(token);
+                    c=p.parse(token);
                     if(c!=null)     
                       f.add(c);
                     else
@@ -105,7 +111,6 @@ public class Functions {
                 s=s+str0.nextToken(")").replaceAll("\\s+","");
             
         }
-        System.out.println(s);
           
          StringTokenizer str= new StringTokenizer(s," ");
                 Function f=new Function();     
@@ -114,7 +119,6 @@ public class Functions {
                     if(token.startsWith("(")){;
                        token=token.replace("(", "");
                        token=token.replace(")", "");
-                       System.out.println(s);
                     }
                     c=p.parse(token);
                     if(c!=null)     
