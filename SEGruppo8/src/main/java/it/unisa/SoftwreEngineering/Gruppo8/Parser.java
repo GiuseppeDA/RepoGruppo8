@@ -29,9 +29,9 @@ public class Parser {
     }
 
     /**
-     *
-     * @param s1
-     * @return
+     *restituisce il comando corrispondente a quello scritto su una stringa
+     * @param s1 la stringa in cui è scritto il comando
+     * @return il comando corrispondente a ciò scritto nella stringa o null se non era valido
      */
     public Command parse(String s1) {
      
@@ -50,9 +50,9 @@ public class Parser {
       }
       
     /**
-     *
-     * @param s
-     * @return
+     *restituisce un comando di inserimento di un nemero complesso a partire da una stringa su cui è scritto il complex
+     * @param s la stringa  su cui è scritto il complex
+     * @return il comando di inserimento del numero complesso corrispondente alla stringa, null se non era valido
      */
     public Command isNumber(String s){
        s = s.replaceAll("\\s+","");
