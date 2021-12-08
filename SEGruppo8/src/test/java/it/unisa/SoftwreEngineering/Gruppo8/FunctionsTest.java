@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.collections.ObservableMap;
 import org.junit.jupiter.api.AfterEach;
@@ -44,47 +45,26 @@ public class FunctionsTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getMap method, of class Functions.
-     */
-    @Test
-    public void testGetMap() {
-        System.out.println("getMap");
-        Functions instance = null;
-        ObservableMap<String, Function> expResult = null;
-        ObservableMap<String, Function> result = instance.getMap();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFunction method, of class Functions.
-     */
-    @Test
-    public void testGetFunction() {
-        System.out.println("getFunction");
-        String name = "";
-        Functions instance = null;
-        Function expResult = null;
-        Function result = instance.getFunction(name);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of setFunction method, of class Functions.
      */
     @Test
     public void testSetFunction() {
-        System.out.println("setFunction");
-        String name = "";
-        Function f = null;
-        Functions instance = null;
+        System.out.println("addFunction");
+        String name = "name";
+        Variables variable=new Variables();
+        Calculator calc=new Calculator();
+        Functions instance = new Functions(calc,variable);
+        ComplexNumber c=new ComplexNumber(2);
+        Command com =new InserterCommand(c,calc);
+        Function f= new Function();
+        f.add(com);
         instance.setFunction(name, f);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        f.add(com);
+        instance.setFunction(name, f);
+        assertEquals(f,instance.getFunction(name)); 
+        assertEquals(f.getCommandList(),instance.getFunction(name).getCommandList()); 
     }
 
     /**
@@ -93,12 +73,17 @@ public class FunctionsTest {
     @Test
     public void testAddFunction() throws Exception {
         System.out.println("addFunction");
-        String name = "";
-        Function f = null;
-        Functions instance = null;
+        String name = "name";
+        Variables variable=new Variables();
+        Calculator calc=new Calculator();
+        Functions instance = new Functions(calc,variable);
+        ComplexNumber c=new ComplexNumber(2);
+        Command com =new InserterCommand(c,calc);
+        Function f= new Function();
+        f.add(com);
         instance.addFunction(name, f);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(f,instance.getFunction(name)); 
+        FunctionDuplicateException exception = assertThrows(FunctionDuplicateException.class, () -> instance.addFunction(name, f));
     }
 
     /**
