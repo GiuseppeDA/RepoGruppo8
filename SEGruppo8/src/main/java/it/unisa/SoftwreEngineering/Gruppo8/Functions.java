@@ -36,8 +36,9 @@ public class Functions {
     public void setFunction(String name,Function f){
         map.put(name, f);
     }
-    public void addFunction(String name,Function f){
-        map.putIfAbsent(name, f);
+    public void addFunction(String name,Function f) throws FunctionDuplicateException{
+        if(map.putIfAbsent(name, f)==null)
+            throw new FunctionDuplicateException();
     }
     public boolean save(String filename){
         try(BufferedWriter writer=new BufferedWriter(new FileWriter(filename))) {

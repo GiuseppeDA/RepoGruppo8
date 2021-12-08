@@ -28,7 +28,7 @@ public class Function {
         }   
     }
     public void add(Command c){
-        commandList.add(0,c);
+        commandList.add(c);
     }
 
     public ArrayList<Command> getCommandList() {
