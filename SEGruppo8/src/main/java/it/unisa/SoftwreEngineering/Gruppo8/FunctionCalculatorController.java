@@ -36,31 +36,7 @@ import javafx.stage.Stage;
  */
 public class FunctionCalculatorController extends CalculatorController implements Initializable{
     
-    private Calculator calc = new Calculator();
-    @FXML
-    private TextField input;
-    @FXML
-    private Button insButton;
-    @FXML
-    private Text screen;
-    @FXML
-    private Button setVarButton;
-    @FXML
-    private Button insertVarInStackButton;
-    @FXML
-    private Button addVarButton;
-    @FXML
-    private Button subVarButton;
-    @FXML
-    private TableView<?> varTableView;
-    @FXML
-    private TableColumn<?, ?> varName;
-    @FXML
-    private TableColumn<?, ?> varValue;
-    @FXML
-    private TableView<?> functionTableView;
-    @FXML
-    private TableColumn<?, ?> functionName;
+    
     @FXML
     private Button STDButton;
     
@@ -70,71 +46,68 @@ public class FunctionCalculatorController extends CalculatorController implement
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
-        this.setCalculator(scc.getCalculator());
-        this.setMemory(this.getCalculator().getMemory());
-
+        super.initialize(url, rb);
     }
     
     @FXML
     public void insertComplex(ActionEvent event) {
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
-        System.out.println(calc.getMemory().toString());
+        System.out.println(getCalculator().getMemory().toString());
     }
 
     @FXML
     public void add(MouseEvent event) {
-        input.appendText("+ ");
+        this.getInput().appendText("+ ");
     }
 
     @FXML
     public void subtract(MouseEvent event) {
-        input.appendText("- ");
+        this.getInput().appendText("- ");
     }
 
     @FXML
     public void sqrt(MouseEvent event) {
-        input.appendText("sqrt ");
+        this.getInput().appendText("sqrt ");
     }
 
     @FXML
     public void multiply(MouseEvent event) {
-        input.appendText("* ");
+        this.getInput().appendText("* ");
     }
 
     @FXML
     public void divide(MouseEvent event) {
-        input.appendText("/ ");
+        this.getInput().appendText("/ ");
     }
 
     @FXML
     public void invert(MouseEvent event) {
-        input.appendText("+- ");
+        this.getInput().appendText("+- ");
     }
 
     @FXML
     public void clear(MouseEvent event) {
-        input.appendText("clear ");
+        this.getInput().appendText("clear ");
     }
 
     @FXML
     public void drop(MouseEvent event) {
-        input.appendText("drop ");
+        this.getInput().appendText("drop ");
     }
 
     @FXML
     public void dup(MouseEvent event) {
-        input.appendText("dup ");
+        this.getInput().appendText("dup ");
     }
 
     @FXML
     public void swap(MouseEvent event) {
-        input.appendText("swap ");
+        this.getInput().appendText("swap ");
     }
 
     @FXML
     public void over(MouseEvent event) {
-        input.appendText("over ");
+        this.getInput().appendText("over ");
     }
 
     @FXML
@@ -158,6 +131,7 @@ public class FunctionCalculatorController extends CalculatorController implement
     private void changeToStandardController(ActionEvent event) {
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         scc.setCalculator(this.getCalculator());
+        scc.setVariables(this.getVarList());
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
         try {
@@ -172,11 +146,6 @@ public class FunctionCalculatorController extends CalculatorController implement
         stage.show();
     }
 
-
-
-   public void setText(String string){
-       screen.setText(string);
-   }
 
 
     

@@ -23,7 +23,7 @@ public class Parser {
        // this.var = var;
     }
 
-   
+
     public Command parse(String s1) {
      
       String s = s1.replaceAll("\\s+","");

@@ -37,114 +37,25 @@ import javafx.stage.Stage;
 public class StandardCalculatorController extends CalculatorController implements Initializable{
     
 
-    private Variables varList = new Variables();
-    
     private String sizeMsg="Operandi non sufficienti!";
     
     private String inseMsg="Inserisci solo numeri e relativo segno!";
     
     private String divideeMsg="impossibile dividere per 0!"; 
-    
-    
+        
     private Stage stage;
     private Scene scene;
     private Parent root;
+          
     
-    @FXML
-    private TextField input;
-    @FXML
-    private Text screen;
-    @FXML
-    private Button insButton;
-    @FXML
-    private TableView<Variable> varTableView;
-    @FXML
-    private TableColumn<Variable, String> varName;
-    @FXML
-    private TableColumn<Variable, Complex> varValue;
-        
-    ObservableList<Integer> selectedVarIndices;
-    
-    @FXML
-    private Button setVarButton;
-    @FXML
-    private Button insertVarInStackButton;
-    @FXML
-    private Button addVarButton;
-    @FXML
-    private Button subVarButton;
     @FXML
     private Button FunButton;
-    @FXML
-    private TableView<?> functionTableView;
-    @FXML
-    private TableColumn<?, ?> functionName;
     
     
     //Initializing
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
-        if(scc.getCalculator() != null){
-            setCalculator(scc.getCalculator());
-        }
-        
-        setMemory(getCalculator().getMemory());
-        
-        getMemory().setStyle("-fx-font-size: 13px ;");
-        
-        getMemory().getItems().addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                if(getMemory().getItems().size() > 0)
-                    screen.setText(getMemory().getItems().get(0).toString());
-            }
-        });
-        
-       
-        input.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> ov, Boolean oldPropertyValue, Boolean newPropertyValue) {
-                if(newPropertyValue)
-                    insButton.setDefaultButton(true);
-                else
-                    insButton.setDefaultButton(false);
-            }
-        });
-        
-        
-        //TableView
-        
-        varName.setCellValueFactory( new PropertyValueFactory<>("name"));
-        varValue.setCellValueFactory( new PropertyValueFactory<>("value"));
-        
-        varTableView.setItems(varList.getVariablesList());
-        
-        
-        //Variables Buttons
-        setVarButton.setDisable(true);
-        insertVarInStackButton.setDisable(true);
-        addVarButton.setDisable(true);
-        subVarButton.setDisable(true);
-        
-        TableViewSelectionModel selectionModel = varTableView.getSelectionModel();
-        selectionModel.setSelectionMode(SelectionMode.SINGLE);
-        
-        selectedVarIndices = selectionModel.getSelectedIndices();
-
-        selectedVarIndices.addListener(new ListChangeListener<Integer>() {
-          @Override
-          public void onChanged(Change<? extends Integer> change) {
-                setVarButton.setDisable(false);
-                insertVarInStackButton.setDisable(false);
-                addVarButton.setDisable(false);
-                subVarButton.setDisable(false);                 
-              
-               
-          }
-        });
-        
-        
+    public void initialize(URL url, ResourceBundle rb) {      
+        super.initialize(url, rb);
     }
     
     @FXML
@@ -152,95 +63,25 @@ public class StandardCalculatorController extends CalculatorController implement
       Double realNum;
       Double imagNum;
         
-      String s1 = input.getText();
-      String s = s1.replaceAll("\\s+","");
+      String s1 = this.getInput().getText();
       
-      
-      String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";
-      
-      String pattern = "(([+-])?" + optionalDecimalNumber + ")?(([+-])?(" + optionalDecimalNumber + ")?j)?";
-      
-      String complexPattern = "([+-])?" + optionalDecimalNumber + "[+-](" + optionalDecimalNumber + ")?j";
-      
-      String realPattern = "([+-])?" + optionalDecimalNumber;
-      
-      String imagPattern = "([+-])?(" + optionalDecimalNumber + ")?j";
-      
+      Parser parser = new Parser(getCalculator(),this.getVarList());
+      Command c = parser.parse(s1);
+     
+        try {
+            if(c != null)
+                c.execute();
+            else{        
+                this.getScreen().setText("Syntax Error");
+            }
 
-      if(Pattern.matches(pattern, s)){ //significa che il valore inserito è accettabile
-          
-          StringTokenizer st = new StringTokenizer (s, "+-j", true);
-          if(Pattern.matches(complexPattern, s)){ //significa che è un numero complesso completo
-              String sa = st.nextToken();
-              if (st.hasMoreTokens()) {
-                if (sa.equals ("+")) sa = st.nextToken();
-                if (sa.equals ("-")) sa = "-" + st.nextToken();
-              } 
-              realNum = Double.parseDouble (sa);
-              
-              sa = st.nextToken();
-              if (st.hasMoreTokens()) {
-                if (sa.equals ("+")){
-                    sa = st.nextToken();
-                    if (sa.equals("j"))
-                        sa = "1";
-                }    
-                if (sa.equals ("-")){
-                    sa = "-" + st.nextToken();
-                    if (sa.equals("-j"))
-                        sa = "-1";
-                }
-              }
- 
-              imagNum = Double.parseDouble (sa);
-              getCalculator().insert(realNum, imagNum); 
-          }
-          else if(Pattern.matches(realPattern, s)){ //significa che è solo un numero reale
-              String sa = st.nextToken();
-              if (st.hasMoreTokens()) {
-                if (sa.equals ("+")) sa = st.nextToken();
-                if (sa.equals ("-")) sa = "-" + st.nextToken();
-              } 
-              realNum = Double.parseDouble (sa);
-              
-              getCalculator().insert(realNum, 0.0);
-          }
-          else if (Pattern.matches(imagPattern, s)){
-              String sa = st.nextToken();
-              if (st.hasMoreTokens()) {
-                if (sa.equals ("+")){
-                    sa = st.nextToken();
-                    if (sa.equals("j"))
-                        sa = "1";
-                }    
-                else if (sa.equals ("-")){
-                    sa = "-" + st.nextToken();
-                    if (sa.equals("-j"))
-                        sa = "-1";
-                }
-              }
-              if(sa.equals ("j"))
-                    sa = "1";
-              imagNum = Double.parseDouble (sa);
-              getCalculator().insert(0.0, imagNum); 
-          }
-          
-          input.setText("");
-          
-      }
-      else if(isOperation(s)){
-          input.setText("");
-      }
-      else if(isVarOperation(s)){
-          input.setText("");
-      }
-      else{
-          input.setText("");
-          screen.setText("Syntax Error");
-      }
+        } catch (CommandExecuteException ex) {
+           this.getScreen().setText("Syntax Error");
+        }
       
-        System.out.println(getCalculator().getMemory().toString());
+      this.getInput().setText("");
     }
+    
     
     @FXML
     @Override
@@ -330,23 +171,23 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     @Override
     public void setVar(MouseEvent event) {
-        varList.setVar(getCalculator().removeTop(),selectedVarIndices.get(0));
+        this.getVarList().setVar(getCalculator().removeTop(),selectedVarIndices.get(0));
     }
 
     @FXML
     public void insertVarInStack(MouseEvent event) {
-        Variable v = varList.getVar(selectedVarIndices.get(0));       
+        Variable v = this.getVarList().getVar(selectedVarIndices.get(0));       
         getCalculator().insert(v.getValue());
     }
 
     @FXML
     public void addVar(MouseEvent event) {
-        varList.addVar(getCalculator().getTop(), selectedVarIndices.get(0));
+        this.getVarList().addVar(getCalculator().getTop(), selectedVarIndices.get(0));
     }
 
     @FXML
     public void subVar(MouseEvent event) {
-        varList.subVar(getCalculator().getTop(), selectedVarIndices.get(0));
+        this.getVarList().subVar(getCalculator().getTop(), selectedVarIndices.get(0));
     }
 
     private boolean isOperation(String op) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
@@ -389,22 +230,22 @@ public class StandardCalculatorController extends CalculatorController implement
         
 
         if(Pattern.matches(opVarUp,op.substring(1))){
-            int index = varList.charToIndex(op.charAt(1));
+            int index = this.getVarList().charToIndex(op.charAt(1));
             if(op.substring(0, 1).equals("<")){
-                Variable v = varList.getVar(index);
+                Variable v = this.getVarList().getVar(index);
         
                 getCalculator().insert(v.getValue());
                 return true;
             }
             else if(op.substring(0, 1).equals(">")){
-                varList.setVar(getCalculator().removeTop(),index);
+                this.getVarList().setVar(getCalculator().removeTop(),index);
                 return true;
             }
             else if(op.substring(0, 1).equals("-")){
-                varList.subVar(getCalculator().getTop(), index);
+                this.getVarList().subVar(getCalculator().getTop(), index);
                 return true;
             }else if (op.substring(0, 1).equals("+")){
-                varList.addVar(getCalculator().getTop(), index);
+                this.getVarList().addVar(getCalculator().getTop(), index);
                 return true;
             }
             
@@ -417,6 +258,7 @@ public class StandardCalculatorController extends CalculatorController implement
         
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         scc.setCalculator(this.getCalculator());
+        scc.setVariables(this.getVarList());
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("functionCalculator.fxml"));
         try {
