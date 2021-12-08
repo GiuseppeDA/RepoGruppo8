@@ -19,7 +19,7 @@ public class InserterCommand implements Command{
         this.compl = compl;
     }
     
-    @Override
+    @Override 
     public void execute() throws CommandExecuteException {
         calc.insert(compl);
     }
