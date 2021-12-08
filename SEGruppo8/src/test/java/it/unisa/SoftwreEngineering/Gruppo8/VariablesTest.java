@@ -107,18 +107,43 @@ public class VariablesTest {
         System.out.println("charToIndex");
         Variables instance = new Variables();
         char a = '3';
-        int expResultF = -1;
-        int result0 = instance.charToIndex(a);
-        assertEquals(expResultF, result0);
+        int expResult = -1;
+        int result= instance.charToIndex(a);
+        assertEquals(expResult, result);
         
         a='A';
-        int expResultT = 0;
-        int result1 = instance.charToIndex(a);
-        assertEquals(expResultT, result1);
+        expResult = 0;
+        result = instance.charToIndex(a);
+        assertEquals(expResult, result);
         
         a='a';
-        int result2 = instance.charToIndex(a);
-        assertEquals(expResultT, result2);
+        result = instance.charToIndex(a);
+        assertEquals(expResult, result);
+    }
+
+
+    /**
+     * Test of indexToChar method, of class Variables.
+     */
+    @Test
+    public void testIndexToChar() {
+        System.out.println("indexToChar");
+        
+        int a = 0;
+        Variables instance = new Variables();
+        char expResult = 'A';
+        char result = instance.indexToChar(a);
+        assertEquals(expResult, result);
+        
+        a=25;
+        expResult = 'Z';
+        result = instance.indexToChar(a);
+        assertEquals(expResult, result);
+        
+        a=26;
+        expResult = '@';
+        result = instance.indexToChar(a);
+        assertEquals(expResult, result);
     }
     
 }
