@@ -46,9 +46,13 @@ public class VariableSetterCommandTest {
         Variables var = new Variables();
         Calculator calc = new Calculator();
         int index=0;
-        calc.insert(c1);
         
         VariableSetterCommand instance = new VariableSetterCommand(index,var,calc);
+        
+        CommandExecuteException exception = assertThrows(CommandExecuteException.class, () -> instance.execute());
+        assertEquals("Comando non eseguibile",exception.getMessage());
+        
+        calc.insert(c1);
         instance.execute();
         assertEquals(c1,var.getVar(index).getValue());
     }
