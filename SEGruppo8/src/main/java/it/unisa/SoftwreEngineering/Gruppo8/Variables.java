@@ -86,6 +86,21 @@ public class Variables {
         }
         return -1;
     }
+    
+    public char indexToChar(int a){
+        char c;
+        
+        if( a >= 0 && a < 26){
+            c = (char) (a+65);
+            return c;
+        }else if(a >= 26 && a < 52){
+            c = (char) (a+71);
+            return c;
+        }
+        
+        return '@';
+        
+    }
 }
 
     

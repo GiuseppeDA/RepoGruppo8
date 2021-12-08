@@ -4,20 +4,47 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import com.vm.jcomplex.Complex;
+
 /**
  *
  * @author simon
  */
 public class VariableSetterCommand implements Command{
+    private int index;
+    private Variables var;
+    private Calculator calc;
+    private Complex pop;
+    private Complex old;
+
+    public VariableSetterCommand(int index, Variables var, Calculator calc) {
+        this.index = index;
+        this.var = var;
+        this.calc = calc;
+    }
 
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute() throws CommandExecuteException {
+        try{
+            pop = calc.removeTop();
+            Variable v = var.getVar(index);
+            old = v.getValue();
+        }catch(IndexOutOfBoundsException ex){
+            throw new CommandExecuteException("Comando non eseguibile");
+        }
+        
+        var.setVar(pop, index);
     }
 
     @Override
     public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        var.setVar(old, index);
+        calc.insert(pop);
+    }
+
+    @Override
+    public String toString() {
+        return ">" + var.indexToChar(index);
     }
     
 }
