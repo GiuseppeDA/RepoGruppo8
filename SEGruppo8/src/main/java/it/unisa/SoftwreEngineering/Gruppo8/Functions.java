@@ -45,7 +45,7 @@ public class Functions {
         map.put(name, f);
     }
     public void addFunction(String name,Function f) throws FunctionDuplicateException{
-        if(map.putIfAbsent(name, f)==null)
+        if(map.putIfAbsent(name, f)!=null)
             throw new FunctionDuplicateException();
     }
     public boolean save(String filename){

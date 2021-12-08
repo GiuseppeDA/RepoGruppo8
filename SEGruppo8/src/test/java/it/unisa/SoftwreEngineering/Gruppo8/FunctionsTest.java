@@ -129,7 +129,7 @@ public class FunctionsTest {
      * Test of stringToFunction method, of class Functions.
      */
     @Test
-    public void testStringToFunction() throws  InvalidCommandException {
+    public void testStringToFunction() throws  InvalidCommandException, FunctionDuplicateException {
         System.out.println("stringToFunction");
         String name = "prova";
         String commands = "(2) (1) +";
@@ -141,8 +141,12 @@ public class FunctionsTest {
         Complex c =new Complex(3,0);
         assertEquals(calc.removeTop(),c);
         commands="(2+j) +-";
-        name="ciao";
-        instance.stringToFunction(name, commands);
+        String name1="ciao";
+        try {
+            instance.stringToFunction(name1, commands);
+        } catch (FunctionDuplicateException ex) {
+            ex.printStackTrace();
+        }
         instance.getFunction(name).run();
         Complex c1 =new Complex(-2,-1);
         assertEquals(calc.removeTop(),c1);
