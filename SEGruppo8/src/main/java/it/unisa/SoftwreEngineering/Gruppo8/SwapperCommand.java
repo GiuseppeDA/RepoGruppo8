@@ -24,8 +24,8 @@ public class SwapperCommand implements Command{
     }
     
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di swap
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -42,7 +42,7 @@ public class SwapperCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di swap eseguito precedentemente
      */
     @Override
     public void undo(){
@@ -52,6 +52,9 @@ public class SwapperCommand implements Command{
         calc.insert(pop1);
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "swap";

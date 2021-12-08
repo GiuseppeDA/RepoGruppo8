@@ -27,8 +27,8 @@ public class ClearerCommand implements Command{
     }
     
     /**
+     *Esegue il comando di clear
      *
-     * @throws CommandExecuteException
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -38,7 +38,7 @@ public class ClearerCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di clear eseguito precedentemente
      */
     @Override
     public void undo() {
@@ -48,6 +48,9 @@ public class ClearerCommand implements Command{
         }
     }
     
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "clear";

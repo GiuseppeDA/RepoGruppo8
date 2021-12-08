@@ -81,7 +81,7 @@ public class Variables {
     /**
      *
      * @param a
-     * @return
+     * @return l'indice corrispondente al char passato come parametro
      */
     public int charToIndex(char a){
         int index = (int) a;
@@ -97,7 +97,7 @@ public class Variables {
     /**
      *
      * @param a
-     * @return
+     * @return il char corrispondente all'indice passato come parametro
      */
     public char indexToChar(int a){
         char c;

@@ -25,8 +25,7 @@ public class InserterCommand implements Command{
     }
     
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di inserimento
      */
     @Override 
     public void execute() throws CommandExecuteException {
@@ -34,13 +33,16 @@ public class InserterCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di inserimento eseguito precedentemente
      */
     @Override
     public void undo(){
         calc.removeTop();
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "(" + compl + ")";

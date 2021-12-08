@@ -24,8 +24,8 @@ public class DividerCommand implements Command{
     }
     
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di divisione
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack o di una divisione non accettabile
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -46,7 +46,7 @@ public class DividerCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di divisione eseguito precedentemente
      */
     @Override
     public void undo(){
@@ -55,6 +55,9 @@ public class DividerCommand implements Command{
         calc.insert(pop1);
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "/";

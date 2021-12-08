@@ -20,8 +20,8 @@ public class OvererCommand implements Command{
     }
     
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di over
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -30,13 +30,16 @@ public class OvererCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di over eseguito precedentemente
      */
     @Override
     public void undo(){
         calc.removeTop();
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "over";

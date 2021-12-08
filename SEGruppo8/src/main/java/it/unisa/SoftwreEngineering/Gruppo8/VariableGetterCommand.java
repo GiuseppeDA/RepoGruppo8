@@ -29,8 +29,8 @@ public class VariableGetterCommand implements Command{
     }
 
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di inserimento nello stack da variabile
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -40,13 +40,16 @@ public class VariableGetterCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di inserimento nello stack da variabile, eseguito precedentemente
      */
     @Override
     public void undo() {
         calc.removeTop();
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "<" + var.indexToChar(index);

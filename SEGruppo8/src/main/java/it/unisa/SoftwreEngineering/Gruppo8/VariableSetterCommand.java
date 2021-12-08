@@ -30,8 +30,8 @@ public class VariableSetterCommand implements Command{
     }
 
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di inserimento nella variabile da stack
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -47,7 +47,7 @@ public class VariableSetterCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di inserimento nella variabile da stack, eseguito precedentemente
      */
     @Override
     public void undo() {
@@ -55,6 +55,9 @@ public class VariableSetterCommand implements Command{
         calc.insert(pop);
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return ">" + var.indexToChar(index);

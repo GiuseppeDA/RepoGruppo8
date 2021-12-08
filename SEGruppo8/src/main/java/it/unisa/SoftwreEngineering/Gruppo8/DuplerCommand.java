@@ -22,8 +22,8 @@ public class DuplerCommand implements Command{
     }
     
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di duplicazione
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -32,13 +32,16 @@ public class DuplerCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di duplicazione eseguito precedentemente
      */
     @Override
     public void undo(){
         calc.removeTop();
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "dup";

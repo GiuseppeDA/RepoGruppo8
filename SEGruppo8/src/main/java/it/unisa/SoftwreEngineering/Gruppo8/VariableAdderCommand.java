@@ -30,8 +30,8 @@ public class VariableAdderCommand implements Command{
     }
 
     /**
-     *
-     * @throws CommandExecuteException
+     *Esegue il comando di addizione sulla variabile
+     * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
@@ -47,13 +47,16 @@ public class VariableAdderCommand implements Command{
     }
 
     /**
-     *
+     *Annulla il comando di addizione sulla variabile eseguito precedentemente
      */
     @Override
     public void undo() {
         var.setVar(old, index);
     }
 
+    /**
+     *@return il simbolo di operazione, sottoforma di stringa
+     */
     @Override
     public String toString() {
         return "+" + var.indexToChar(index);
