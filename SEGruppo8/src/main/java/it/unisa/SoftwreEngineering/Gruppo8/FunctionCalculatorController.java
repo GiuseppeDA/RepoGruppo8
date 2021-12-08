@@ -214,9 +214,7 @@ public class FunctionCalculatorController extends CalculatorController implement
     private void restoreFunction(ActionEvent event) {
     }
 
-    @FXML
-    private void runFunction(ActionEvent event) {
-    }
+
 
 
 }

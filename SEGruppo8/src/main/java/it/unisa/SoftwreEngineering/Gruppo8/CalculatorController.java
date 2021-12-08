@@ -38,7 +38,7 @@ public abstract class CalculatorController implements Initializable{
     
     private Variables varList = new Variables();
     
-    private Functions functions = new Functions(calculator,varList);
+    private Functions functions;
     
     private ObservableList<String> functionsKeyList;
     
@@ -85,7 +85,7 @@ public abstract class CalculatorController implements Initializable{
         if(scc.getVariables() != null){
             setVarList(scc.getVariables());
         }
-        
+        functions = new Functions(calculator,varList);
         if(scc.getFunctions() != null){
             setFunctions(scc.getFunctions());
         }
@@ -183,8 +183,7 @@ public abstract class CalculatorController implements Initializable{
           }
         });
         //END FUNCTIONS TABLEVIEW SELECTION CHECK
-        
-        
+       
         
     }
     
@@ -235,6 +234,16 @@ public abstract class CalculatorController implements Initializable{
 
     @FXML
     public abstract void subVar(MouseEvent event);
+    
+    @FXML
+    private void runFunction(ActionEvent event) {
+                
+        if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
+            this.getFunctions().getFunction(this.getFunctionsKeyList().get(selectedFunIndices.get(0))).run();
+            
+        setCalculator(this.getFunctions().calc);
+    }
+    
     
     public ListView<Complex> getMemory() {
         return memory;
@@ -356,6 +365,14 @@ public abstract class CalculatorController implements Initializable{
 
     public void setFunctions(Functions functions) {
         this.functions = functions;
+    }
+
+    public ObservableList<String> getFunctionsKeyList() {
+        return functionsKeyList;
+    }
+
+    public void setFunctionsKeyList(ObservableList<String> functionsKeyList) {
+        this.functionsKeyList = functionsKeyList;
     }
     
     

@@ -305,6 +305,9 @@ public class StandardCalculatorController extends CalculatorController implement
 
     @FXML
     private void runFunction(ActionEvent event) {
+        
+        
+        
     }
     
     
