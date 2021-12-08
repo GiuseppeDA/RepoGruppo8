@@ -11,15 +11,13 @@ import java.util.ArrayList;
 public class Function {
   private ArrayList<Command> commandList;
 
-    /**
-     *
-     */
+    
     public Function() {
         commandList=new ArrayList<Command>();
     }
 
     /**
-     *
+     *esegue in ordine i comandi della funzione
      */
     public void run(){
         int i;
@@ -36,8 +34,8 @@ public class Function {
     }
 
     /**
-     *
-     * @param c
+     *aggiunge un comanda alla lista di comandi della funzione
+     * @param c il comando da aggiungere
      */
     public void add(Command c){
         commandList.add(c);
@@ -45,7 +43,7 @@ public class Function {
 
     /**
      *
-     * @return
+     * @return la lista di comandi della funzione
      */
     public ArrayList<Command> getCommandList() {
         return commandList;
