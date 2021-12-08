@@ -167,10 +167,10 @@ public class Parser {
             int index = new Variables().charToIndex(op.charAt(1));
             
             if(op.substring(0, 1).equals("<")){
-               return new VariableGetterCommand();
+               return new VariableGetterCommand(index,var,calc);
             }
             else if(op.substring(0, 1).equals(">")){
-               return new VariableSetterCommand();
+               return new VariableSetterCommand(index,var,calc);
                 
             }
             else if(op.substring(0, 1).equals("-")){
