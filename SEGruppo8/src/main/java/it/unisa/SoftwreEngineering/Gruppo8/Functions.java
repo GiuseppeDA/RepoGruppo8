@@ -69,9 +69,13 @@ public class Functions {
                 Function f=new Function();     
                 while(str.hasMoreTokens()){
                     String token=str.nextToken(" ");
-                    if(token.startsWith("("))
-                        token=str.nextToken(")");
-                    c=p.parse(token);
+                    if(token.startsWith("(")){
+                        token=token.replace(')', ' ');
+                       token=token.replace('(', ' ');
+                       c=p.isNumber(token);
+                    }
+                    else
+                       c=p.parse(token);
                     if(c!=null)     
                       f.add(c);
                     else
@@ -90,20 +94,29 @@ public class Functions {
         return map.get(name).getCommandList();       
     }
     public void stringToFunction(String name,String commands) throws InvalidCommandException{
-        String s = commands.replaceAll("\\s+"," ");
+        String s0 = commands.replaceAll("\\s+"," ");;
         Parser p=new Parser(calc,var);
         Command c;
-        StringTokenizer str= new StringTokenizer(s," ");
-                Function f=new Function();
+        StringTokenizer str0= new StringTokenizer(s0,"()",true);
+        String s="";
+        while(str0.hasMoreTokens()){
+            s=s+str0.nextToken("(");
+            if(str0.hasMoreTokens())
+                s=s+str0.nextToken(")").replaceAll("\\s+","");
+            
+        }
+        System.out.println(s);
+          
+         StringTokenizer str= new StringTokenizer(s," ");
+                Function f=new Function();     
                 while(str.hasMoreTokens()){
-                    String token=str.nextToken();
-                    if(token.startsWith("(")){
-                        token=token.replace(')', ' ');
-                       token=token.replace('(', ' ');
-                       c=p.isNumber(token);
+                    String token=str.nextToken(" ");
+                    if(token.startsWith("(")){;
+                       token=token.replace("(", "");
+                       token=token.replace(")", "");
+                       System.out.println(s);
                     }
-                    else
-                       c=p.parse(token);
+                    c=p.parse(token);
                     if(c!=null)     
                       f.add(c);
                     else if(map.containsKey(token))
@@ -113,7 +126,9 @@ public class Functions {
                     else
                         throw new InvalidCommandException();
                 }
-                setFunction(name,f);
+
+            setFunction(name,f);
+
                  
         
     }
