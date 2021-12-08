@@ -24,6 +24,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +48,20 @@ public class StandardCalculatorController extends CalculatorController implement
     private Stage stage;
     private Scene scene;
     private Parent root;
+ 
+    @FXML
+    private ContextMenu functionContextMenu;
+    @FXML
+    private MenuItem modifyFunctionContextMenuItem;
+    @FXML
+    private MenuItem deleteFunctionContextMenuItem;
+    @FXML
+    private MenuItem saveFunctionContextMenuItem;
+    @FXML
+    private MenuItem saveFunctionContextMenuItem1;
+    @FXML
+    private Button FunButton;
+
    
     
     //Initializing

@@ -159,11 +159,15 @@ public abstract class CalculatorController implements Initializable{
         // display item value (= constant)
         functionName.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
         functionName.prefWidthProperty().bind(functionTableView.widthProperty().multiply(1));
-
         
         functionTableView.getColumns().setAll(functionName);
         
         functionTableView.setItems(functionsKeyList);
+        
+        
+        
+        
+        
     }
     
     @FXML
@@ -335,8 +339,6 @@ public abstract class CalculatorController implements Initializable{
     public void setFunctions(Functions functions) {
         this.functions = functions;
     }
-    
-    
     
     
 }

@@ -3,6 +3,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.Complex;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,10 +17,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -43,6 +48,19 @@ public class FunctionCalculatorController extends CalculatorController implement
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    
+    @FXML
+    private ContextMenu functionContextMenu;
+    @FXML
+    private MenuItem modifyFunctionContextMenuItem;
+    @FXML
+    private MenuItem deleteFunctionContextMenuItem;
+    @FXML
+    private MenuItem saveFunctionContextMenuItem;
+    @FXML
+    private MenuItem saveFunctionContextMenuItem1;
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,14 +69,22 @@ public class FunctionCalculatorController extends CalculatorController implement
     
     @FXML
     public void insertComplex(ActionEvent event) {
+        
+        //DA SCRIVERE MEGLIO PER GESTIRE: NOME GIA PRESENTE E FUNZIONE NON CORRETTA
+        
+        Dialog dialog = new TextInputDialog();
+        dialog.setHeaderText("Inserisci il nome dell'operazione.");
+        Optional<String> funName = dialog.showAndWait();
+        
+        if(funName.isPresent()){
+            try {
+                this.getFunctions().stringToFunction(funName.get(), this.getInput().getText());
+            } catch (InvalidCommandException ex) {
+                ex.printStackTrace();
+            }
 
-        try {
-            this.getFunctions().stringToFunction("mario", this.getInput().getText());
-        } catch (InvalidCommandException ex) {
-            ex.printStackTrace();
         }
-        
-        
+              
     }
 
     @FXML
@@ -133,9 +159,27 @@ public class FunctionCalculatorController extends CalculatorController implement
     public void subVar(MouseEvent event) {
     }
 
-    @FXML
     private void changeToStandardController(ActionEvent event) {
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
+        scc.setCalculator(this.getCalculator());
+        scc.setVariables(this.getVarList());
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void changeToFunctionController(ActionEvent event) {
+                SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         scc.setCalculator(this.getCalculator());
         scc.setVariables(this.getVarList());
         
