@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author simon
  */
-public class VariableSetterCommandTest {
+public class VariableGetterCommandTest {
     
-    public VariableSetterCommandTest() {
+    public VariableGetterCommandTest() {
     }
     
     @BeforeAll
@@ -37,7 +37,7 @@ public class VariableSetterCommandTest {
     }
 
     /**
-     * Test of execute method, of class VariableSetterCommand.
+     * Test of execute method, of class VariableGetterCommand.
      */
     @Test
     public void testExecute() throws CommandExecuteException  {
@@ -46,19 +46,15 @@ public class VariableSetterCommandTest {
         Variables var = new Variables();
         Calculator calc = new Calculator();
         int index=0;
+        var.setVar(c1, index);
         
-        VariableSetterCommand instance = new VariableSetterCommand(index,var,calc);
-        
-        CommandExecuteException exception = assertThrows(CommandExecuteException.class, () -> instance.execute());
-        assertEquals("Comando non eseguibile",exception.getMessage());
-        
-        calc.insert(c1);
+        VariableGetterCommand instance = new VariableGetterCommand(index,var,calc);
         instance.execute();
-        assertEquals(c1,var.getVar(index).getValue());
+        assertEquals(c1,calc.removeTop());
     }
 
     /**
-     * Test of undo method, of class VariableSetterCommand.
+     * Test of undo method, of class VariableGetterCommand.
      */
     @Test
     public void testUndo() throws CommandExecuteException {
@@ -68,7 +64,7 @@ public class VariableSetterCommandTest {
         Variables var = new Variables();
         Calculator calc = new Calculator();
         int index=0;     
-        VariableSetterCommand instance = new VariableSetterCommand(index,var,calc);
+        VariableGetterCommand instance = new VariableGetterCommand(index,var,calc);
         
         calc.insert(c1);
         var.setVar(c2, index);
@@ -77,12 +73,10 @@ public class VariableSetterCommandTest {
         instance.undo();
         
         assertEquals(c1,calc.removeTop());
-        assertEquals(c2,var.getVar(index).getValue());
-        
     }
 
     /**
-     * Test of toString method, of class VariableSetterCommand.
+     * Test of toString method, of class VariableGetterCommand.
      */
     @Test
     public void testToString() {
@@ -91,8 +85,8 @@ public class VariableSetterCommandTest {
         Variables var = new Variables();
         Calculator calc = new Calculator();
         int index=0;
-        VariableSetterCommand instance = new VariableSetterCommand(index,var,calc);
-        String expResult = ">" + "A";
+        VariableGetterCommand instance = new VariableGetterCommand(index,var,calc);
+        String expResult = "<" + "A";
         String result = instance.toString();
         assertEquals(expResult, result);
     }
