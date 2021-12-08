@@ -65,11 +65,9 @@ public class Functions {
                 StringTokenizer str= new StringTokenizer(i.nextLine()," ");
                 String name=str.nextToken();
                 setFunction(name,new Function());
-                
                 while(str.hasMoreTokens()){
-                    p.parse(str.nextToken());
-                }
-                
+                   map.get(name).add(p.parse(str.nextToken()));
+                } 
             }
             
             } catch (FileNotFoundException ex) {     
