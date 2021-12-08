@@ -16,12 +16,22 @@ public class VariableGetterCommand implements Command{
     private Calculator calc;
     private Complex value;
 
+    /**
+     *
+     * @param index
+     * @param var
+     * @param calc
+     */
     public VariableGetterCommand(int index, Variables var, Calculator calc) {
         this.index = index;
         this.var = var;
         this.calc = calc;
     }
 
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         Variable v = var.getVar(index);
@@ -29,6 +39,9 @@ public class VariableGetterCommand implements Command{
         calc.insert(value);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         calc.removeTop();

@@ -17,12 +17,22 @@ public class VariableSubtracterCommand implements Command{
     private Complex old;
     private Complex pop;
 
+    /**
+     *
+     * @param index
+     * @param var
+     * @param calc
+     */
     public VariableSubtracterCommand(int index, Variables var, Calculator calc) {
         this.index = index;
         this.var = var;
         this.calc = calc;
     }
 
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         Variable v = var.getVar(index);
@@ -36,6 +46,9 @@ public class VariableSubtracterCommand implements Command{
         var.setVar(res, index);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         var.setVar(old, index);

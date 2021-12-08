@@ -26,28 +26,59 @@ public class Functions {
     Calculator calc;
     Variables var;
 
+    /**
+     *
+     * @param calc
+     * @param var
+     */
     public Functions(Calculator calc, Variables var) {
         map=FXCollections.observableHashMap();
         this.calc = calc;
         this.var = var;
     }
 
-    
-
-
+    /**
+     *
+     * @return
+     */
     public ObservableMap<String, Function> getMap() {
         return map;
     }
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Function getFunction(String name){
        return map.get(name);
     }
+
+    /**
+     *
+     * @param name
+     * @param f
+     */
     public void setFunction(String name,Function f){
         map.put(name, f);
     }
+
+    /**
+     *
+     * @param name
+     * @param f
+     * @throws FunctionDuplicateException
+     */
     public void addFunction(String name,Function f) throws FunctionDuplicateException{
         if(map.putIfAbsent(name, f)!=null)
             throw new FunctionDuplicateException();
     }
+
+    /**
+     *
+     * @param filename
+     * @return
+     */
     public boolean save(String filename){
         try(BufferedWriter writer=new BufferedWriter(new FileWriter(filename))) {
             for(String name:map.keySet()){
@@ -58,6 +89,12 @@ public class Functions {
         }
         return true;
     }
+
+    /**
+     *
+     * @param filename
+     * @return
+     */
     public boolean restore(String filename){
         Parser p=new Parser(calc,var);
         Command c;
@@ -99,6 +136,14 @@ public class Functions {
     private ArrayList<Command> functionToCommands(String name){
         return map.get(name).getCommandList();       
     }
+
+    /**
+     *
+     * @param name
+     * @param commands
+     * @throws InvalidCommandException
+     * @throws FunctionDuplicateException
+     */
     public void stringToFunction(String name,String commands) throws InvalidCommandException, FunctionDuplicateException{
         String s0 = commands.replaceAll("\\s+"," ");;
         Parser p=new Parser(calc,var);

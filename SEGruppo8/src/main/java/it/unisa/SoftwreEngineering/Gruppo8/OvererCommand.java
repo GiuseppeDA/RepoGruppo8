@@ -11,16 +11,27 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 public class OvererCommand implements Command{
     private Calculator calc;
 
+    /**
+     *
+     * @param calc
+     */
     public OvererCommand(Calculator calc) {
         this.calc = calc;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         if(calc.over()== false)
             throw new CommandExecuteException("Comando non eseguibile");
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();

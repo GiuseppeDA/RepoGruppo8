@@ -16,7 +16,9 @@ import java.util.regex.Pattern;
 public class Variables {
     private ObservableList<Variable> variablesList;
 
-    
+    /**
+     *
+     */
     public Variables() {
          variablesList= FXCollections.observableArrayList();
          Complex c;
@@ -76,6 +78,11 @@ public class Variables {
         return variablesList;
     }
     
+    /**
+     *
+     * @param a
+     * @return
+     */
     public int charToIndex(char a){
         int index = (int) a;
         
@@ -87,6 +94,11 @@ public class Variables {
         return -1;
     }
     
+    /**
+     *
+     * @param a
+     * @return
+     */
     public char indexToChar(int a){
         char c;
         

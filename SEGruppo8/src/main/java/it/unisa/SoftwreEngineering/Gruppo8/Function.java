@@ -11,9 +11,16 @@ import java.util.ArrayList;
 public class Function {
   private ArrayList<Command> commandList;
 
+    /**
+     *
+     */
     public Function() {
         commandList=new ArrayList<Command>();
     }
+
+    /**
+     *
+     */
     public void run(){
         int i;
         for(i=0;i<commandList.size();i++){
@@ -27,10 +34,19 @@ public class Function {
             }
         }   
     }
+
+    /**
+     *
+     * @param c
+     */
     public void add(Command c){
         commandList.add(c);
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Command> getCommandList() {
         return commandList;
     }

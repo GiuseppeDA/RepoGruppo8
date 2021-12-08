@@ -15,10 +15,18 @@ public class MultiplierCommand implements Command{
     private Complex pop1;
     private Complex pop2;
 
+    /**
+     *
+     * @param calc
+     */
     public MultiplierCommand(Calculator calc) {
         this.calc = calc;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         try{
@@ -33,6 +41,9 @@ public class MultiplierCommand implements Command{
             throw new CommandExecuteException("Comando non eseguibile");
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();

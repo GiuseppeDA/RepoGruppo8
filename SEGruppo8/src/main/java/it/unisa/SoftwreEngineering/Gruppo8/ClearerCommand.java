@@ -17,11 +17,19 @@ public class ClearerCommand implements Command{
     private Calculator calc;
     private ObservableList<Complex> values;
 
+    /**
+     *
+     * @param calc
+     */
     public ClearerCommand(Calculator calc) {
         this.calc = calc;
         values= FXCollections.observableArrayList();
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         values.addAll(calc.getMemory());
@@ -29,6 +37,9 @@ public class ClearerCommand implements Command{
         
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         ListIterator<Complex> li = values.listIterator(values.size());

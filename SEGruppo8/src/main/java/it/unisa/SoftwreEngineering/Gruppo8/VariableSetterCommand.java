@@ -17,12 +17,22 @@ public class VariableSetterCommand implements Command{
     private Complex pop;
     private Complex old;
 
+    /**
+     *
+     * @param index
+     * @param var
+     * @param calc
+     */
     public VariableSetterCommand(int index, Variables var, Calculator calc) {
         this.index = index;
         this.var = var;
         this.calc = calc;
     }
 
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         try{
@@ -36,6 +46,9 @@ public class VariableSetterCommand implements Command{
         var.setVar(pop, index);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         var.setVar(old, index);

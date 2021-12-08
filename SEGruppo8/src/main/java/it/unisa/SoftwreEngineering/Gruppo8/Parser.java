@@ -18,12 +18,21 @@ public class Parser {
     private Calculator calc;
     private Variables var;
 
+    /**
+     *
+     * @param calc
+     * @param var
+     */
     public Parser(Calculator calc, Variables var) {
         this.calc = calc;
         this.var = var;
     }
 
-
+    /**
+     *
+     * @param s1
+     * @return
+     */
     public Command parse(String s1) {
      
       String s = s1.replaceAll("\\s+","");
@@ -40,9 +49,12 @@ public class Parser {
       
       }
       
-    
-    
-   public Command isNumber(String s){
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public Command isNumber(String s){
        s = s.replaceAll("\\s+","");
        Double realNum;
        Double imagNum;

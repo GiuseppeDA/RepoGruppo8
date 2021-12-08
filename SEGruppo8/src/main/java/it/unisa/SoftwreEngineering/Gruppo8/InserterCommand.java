@@ -14,16 +14,28 @@ public class InserterCommand implements Command{
     private Calculator calc;
     private ComplexNumber compl;
 
+    /**
+     *
+     * @param compl
+     * @param calc
+     */
     public InserterCommand(ComplexNumber compl, Calculator calc) {
         this.calc = calc;
         this.compl = compl;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override 
     public void execute() throws CommandExecuteException {
         calc.insert(compl);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();

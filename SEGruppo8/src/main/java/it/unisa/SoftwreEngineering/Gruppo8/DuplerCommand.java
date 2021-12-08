@@ -13,16 +13,27 @@ import com.vm.jcomplex.Complex;
 public class DuplerCommand implements Command{
     private Calculator calc;
 
+    /**
+     *
+     * @param calc
+     */
     public DuplerCommand(Calculator calc) {
         this.calc = calc;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         if(calc.dup()== false)
             throw new CommandExecuteException("Comando non eseguibile");
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();

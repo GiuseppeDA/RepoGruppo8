@@ -17,12 +17,22 @@ public class VariableAdderCommand implements Command{
     private Complex old;
     private Complex pop;
 
+    /**
+     *
+     * @param index
+     * @param var
+     * @param calc
+     */
     public VariableAdderCommand(int index, Variables var, Calculator calc) {
         this.index = index;
         this.var = var;
         this.calc = calc;
     }
 
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         Variable v = var.getVar(index);
@@ -36,6 +46,9 @@ public class VariableAdderCommand implements Command{
         var.setVar(res, index);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         var.setVar(old, index);

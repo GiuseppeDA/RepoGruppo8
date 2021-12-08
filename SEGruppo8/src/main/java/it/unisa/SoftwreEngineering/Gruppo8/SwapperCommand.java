@@ -15,10 +15,18 @@ public class SwapperCommand implements Command{
     private Complex pop1;
     private Complex pop2;
 
+    /**
+     *
+     * @param calc
+     */
     public SwapperCommand(Calculator calc) {
         this.calc = calc;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         try{
@@ -33,6 +41,9 @@ public class SwapperCommand implements Command{
             throw new CommandExecuteException("Comando non eseguibile");
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();

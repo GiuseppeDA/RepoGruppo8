@@ -15,10 +15,18 @@ public class DividerCommand implements Command{
     private Complex pop1;
     private Complex pop2;
 
+    /**
+     *
+     * @param calc
+     */
     public DividerCommand(Calculator calc) {
         this.calc = calc;
     }
     
+    /**
+     *
+     * @throws CommandExecuteException
+     */
     @Override
     public void execute() throws CommandExecuteException {
         try{
@@ -37,6 +45,9 @@ public class DividerCommand implements Command{
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void undo(){
         calc.removeTop();
