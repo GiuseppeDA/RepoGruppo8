@@ -42,8 +42,8 @@ public class Parser {
       
     
     
-   private Command isNumber(String s){
-       
+   public Command isNumber(String s){
+       s = s.replaceAll("\\s+","");
        Double realNum;
        Double imagNum;
        String optionalDecimalNumber = "[0-9]\\d*(\\.\\d+)?";

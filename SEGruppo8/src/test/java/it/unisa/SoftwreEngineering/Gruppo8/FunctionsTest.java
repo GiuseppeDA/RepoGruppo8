@@ -138,8 +138,14 @@ public class FunctionsTest {
         Functions instance = new Functions(calc,variable);
         instance.stringToFunction(name, commands);
         instance.getFunction(name).run();
-        Complex c =new Complex(3,0.0);
+        Complex c =new Complex(3,0);
         assertEquals(calc.removeTop(),c);
+        commands="(2+j) +-";
+        name="prova1";
+        instance.stringToFunction(name, commands);
+        instance.getFunction(name).run();
+        Complex c1 =new Complex(-2,-1);
+        assertEquals(calc.removeTop(),c1);
     }
     
 }

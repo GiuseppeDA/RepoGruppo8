@@ -64,11 +64,14 @@ public class Functions {
         try(Scanner i = new Scanner(new BufferedReader(new FileReader(filename)))) {
             ObservableMap<String,Function> temp=FXCollections.emptyObservableMap();
             while(i.hasNextLine()){
-                StringTokenizer str= new StringTokenizer(i.nextLine(),"() ");
+                StringTokenizer str= new StringTokenizer(i.nextLine()," ");
                 String name=str.nextToken();
                 Function f=new Function();     
                 while(str.hasMoreTokens()){
-                    c=p.parse(str.nextToken());
+                    String token=str.nextToken(" ");
+                    if(token.startsWith("("))
+                        token=str.nextToken(")");
+                    c=p.parse(token);
                     if(c!=null)     
                       f.add(c);
                     else
@@ -90,11 +93,17 @@ public class Functions {
         String s = commands.replaceAll("\\s+"," ");
         Parser p=new Parser(calc,var);
         Command c;
-        StringTokenizer str= new StringTokenizer(s,"() ");
+        StringTokenizer str= new StringTokenizer(s," ");
                 Function f=new Function();
                 while(str.hasMoreTokens()){
                     String token=str.nextToken();
-                    c=p.parse(token);
+                    if(token.startsWith("(")){
+                        token=token.replace(')', ' ');
+                       token=token.replace('(', ' ');
+                       c=p.isNumber(token);
+                    }
+                    else
+                       c=p.parse(token);
                     if(c!=null)     
                       f.add(c);
                     else if(map.containsKey(token))
