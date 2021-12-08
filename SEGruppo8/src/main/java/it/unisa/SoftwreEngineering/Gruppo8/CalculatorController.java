@@ -5,6 +5,7 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Optional;
@@ -29,7 +30,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -76,6 +79,9 @@ public abstract class CalculatorController implements Initializable{
     private TableColumn<String, String> functionName;
     
     ObservableList<Integer> selectedFunIndices;
+    
+    @FXML
+    private AnchorPane rootPane;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -269,8 +275,8 @@ public abstract class CalculatorController implements Initializable{
     public void modifyFunction(ActionEvent event) {
         
         if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null){
+            
             String funName = this.getFunctionsKeyList().get(selectedFunIndices.get(0));
-            System.out.println(funName);
             Dialog dialog = new TextInputDialog(this.getFunctions().getFunction(funName).toString());
             dialog.setHeaderText("Modifica la funzione.");
             Optional<String> fun;
@@ -297,6 +303,23 @@ public abstract class CalculatorController implements Initializable{
 
     }
     
+    @FXML
+    public void saveFunction(ActionEvent event) {
+        FileChooser fc=new FileChooser();
+        fc.setTitle("save");
+        File file= fc.showSaveDialog(rootPane.getScene().getWindow());
+        
+        this.getFunctions().save(file.getAbsolutePath());
+    }
+    
+    @FXML
+    public void restoreFunction(ActionEvent event) {
+        FileChooser fc=new FileChooser();
+        fc.setTitle("save");
+        File file= fc.showOpenDialog(rootPane.getScene().getWindow());
+        
+        this.getFunctions().restore(file.getAbsolutePath());
+    }
     
     public ListView<Complex> getMemory() {
         return memory;

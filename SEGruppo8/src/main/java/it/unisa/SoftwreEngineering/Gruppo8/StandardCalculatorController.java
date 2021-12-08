@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import com.vm.jcomplex.Complex;
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,7 +33,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -63,7 +66,7 @@ public class StandardCalculatorController extends CalculatorController implement
     private MenuItem runFunctionContextMenuItem1;
     @FXML
     private MenuItem showunctionContextMenuItem11;
-
+    
    
     //Initializing
     @Override
@@ -203,69 +206,6 @@ public class StandardCalculatorController extends CalculatorController implement
         this.getVarList().subVar(getCalculator().getTop(), selectedVarIndices.get(0));
     }
 
-    private boolean isOperation(String op) throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
-        String operations[]= {"+", "-", "sqrt", "*", "+-", "drop", "dup", "over", "swap"};
-        String methodName[]= {"add", "subtract", "sqrt", "multiply", "invert", "drop", "dup", "over", "swap"};
-        
-        int i;
-        
-        for(i=0;i<operations.length;i++){
-            if(op.equals(operations[i]) == true){
-                Object obj = getCalculator().getClass().getDeclaredMethod(methodName[i]).invoke(getCalculator());
-                Boolean res = (Boolean) obj;
-                if(res == false)
-                    popupCaller(sizeMsg);
-                return true;
-            }
-        }
-        
-        if(op.equals("/")){
-            try {
-                if(!getCalculator().divide())
-                    popupCaller(sizeMsg);
-            } catch (ImpossibleDivisionException e) {
-                popupCaller(divideeMsg);
-            }
-            return true;
-        }
-        
-        if(op.equals("clear")){
-            getCalculator().clear();
-            return true;
-        }
-
-        return false;
-    }
-    
-    private boolean isVarOperation(String op){
- 
-        String opVarUp = "[a-zA-Z]";
-        
-
-        if(Pattern.matches(opVarUp,op.substring(1))){
-            int index = this.getVarList().charToIndex(op.charAt(1));
-            if(op.substring(0, 1).equals("<")){
-                Variable v = this.getVarList().getVar(index);
-        
-                getCalculator().insert(v.getValue());
-                return true;
-            }
-            else if(op.substring(0, 1).equals(">")){
-                this.getVarList().setVar(getCalculator().removeTop(),index);
-                return true;
-            }
-            else if(op.substring(0, 1).equals("-")){
-                this.getVarList().subVar(getCalculator().getTop(), index);
-                return true;
-            }else if (op.substring(0, 1).equals("+")){
-                this.getVarList().addVar(getCalculator().getTop(), index);
-                return true;
-            }
-            
-        }
-        return false;
-    }
-
     @FXML
     private void changeToFunctionController(ActionEvent event) {
         
@@ -300,11 +240,13 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void saveFunction(ActionEvent event) {
+    public void saveFunction(ActionEvent event) {
+        super.saveFunction(event);
     }
 
     @FXML
-    private void restoreFunction(ActionEvent event) {
+    public void restoreFunction(ActionEvent event) {
+        super.restoreFunction(event);
     }
 
     @FXML
