@@ -79,7 +79,7 @@ public class Parser {
               }
  
               imagNum = Double.parseDouble (sa);
-              return new InsertCommand(new ComplexNumber(realNum, imagNum),calc); 
+              return new InserterCommand(new ComplexNumber(realNum, imagNum),calc); 
           }
           else if(Pattern.matches(realPattern, s)){ //significa che è solo un numero reale
               String sa = st.nextToken();
@@ -89,7 +89,7 @@ public class Parser {
               } 
               realNum = Double.parseDouble (sa);
               
-              return new InsertCommand(new ComplexNumber(realNum, 0.0),calc);
+              return new InserterCommand(new ComplexNumber(realNum, 0.0),calc);
           }
           else if (Pattern.matches(imagPattern, s)){
               String sa = st.nextToken();
@@ -108,7 +108,7 @@ public class Parser {
               if(sa.equals ("j"))
                     sa = "1";
               imagNum = Double.parseDouble (sa);
-              return new InsertCommand(new ComplexNumber(0.0, imagNum),calc); 
+              return new InserterCommand(new ComplexNumber(0.0, imagNum),calc); 
           }
        }
        

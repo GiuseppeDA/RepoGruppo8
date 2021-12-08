@@ -10,11 +10,11 @@ package it.unisa.SoftwreEngineering.Gruppo8;
  *
  * @author giuseppe
  */
-public class InsertCommand implements Command{
+public class InserterCommand implements Command{
     private Calculator calc;
     private ComplexNumber compl;
 
-    public InsertCommand(ComplexNumber compl, Calculator calc) {
+    public InserterCommand(ComplexNumber compl, Calculator calc) {
         this.calc = calc;
         this.compl = compl;
     }
