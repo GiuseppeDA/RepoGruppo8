@@ -59,12 +59,13 @@ public class InserterCommandTest {
         ComplexNumber c1= new ComplexNumber(1,2);
         ComplexNumber c2= new ComplexNumber(2,1);
         Calculator calc = new Calculator();
-        InserterCommand instance = new InserterCommand(c2,calc);
+        InserterCommand instance1 = new InserterCommand(c1,calc);
+        InserterCommand instance2 = new InserterCommand(c2,calc);
 
         
-        calc.insert(c1);
-        instance.execute();
-        instance.undo();
+        instance1.execute();
+        instance2.execute();
+        instance2.undo();
         assertEquals(c1,calc.removeTop());
     }
 
