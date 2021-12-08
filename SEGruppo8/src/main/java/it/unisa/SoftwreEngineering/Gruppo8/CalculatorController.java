@@ -35,7 +35,7 @@ public abstract class CalculatorController implements Initializable{
     
     private Variables varList = new Variables();
     
-    private Functions functionList = new Functions();
+    private Functions functionList = new Functions(calculator,varList);
     
     @FXML
     private ListView<Complex> memory;
