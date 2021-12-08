@@ -312,8 +312,9 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void showFunction(ActionEvent event) {
-        
+    @Override
+    public void showFunction(ActionEvent event) {
+        super.showFunction(event);
     }
     
     

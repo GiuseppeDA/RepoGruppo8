@@ -244,6 +244,11 @@ public abstract class CalculatorController implements Initializable{
         setCalculator(this.getFunctions().calc);
     }
     
+    @FXML
+    public void showFunction(ActionEvent event) {
+        if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
+            screen.setText(functions.getFunction(functionsKeyList.get(selectedFunIndices.get(0))).toString());
+    }
     
     public ListView<Complex> getMemory() {
         return memory;
