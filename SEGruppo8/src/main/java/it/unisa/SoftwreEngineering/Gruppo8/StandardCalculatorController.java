@@ -46,11 +46,7 @@ public class StandardCalculatorController extends CalculatorController implement
     private Stage stage;
     private Scene scene;
     private Parent root;
-          
-    
-    @FXML
-    private Button FunButton;
-    
+   
     
     //Initializing
     @Override

@@ -7,10 +7,15 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.Complex;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +26,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -35,7 +41,9 @@ public abstract class CalculatorController implements Initializable{
     
     private Variables varList = new Variables();
     
-    private Functions functionList = new Functions(calculator,varList);
+    private Functions functions = new Functions(calculator,varList);
+    
+    private ObservableList<String> functionsKeyList;
     
     @FXML
     private ListView<Complex> memory;
@@ -63,9 +71,9 @@ public abstract class CalculatorController implements Initializable{
     @FXML
     private Button subVarButton;
     @FXML
-    private TableView<Function> functionTableView;
+    private TableView<String> functionTableView;
     @FXML
-    private TableColumn<Function, String> functionName;
+    private TableColumn<String, String> functionName;
     
     
     @Override
@@ -134,9 +142,31 @@ public abstract class CalculatorController implements Initializable{
         
         
         //Functions TableView
-        functionName.setCellValueFactory( new PropertyValueFactory<>("name"));
         
-        //functionTableView.setItems(functionList.getMap().get);
+        functionsKeyList = FXCollections.observableArrayList();
+        
+        functions.getMap().addListener((MapChangeListener.Change<? extends String, ? extends Function> change) -> {
+                boolean removed = change.wasRemoved();
+                if (removed != change.wasAdded()) {
+                    // no put for existing key
+                    if (removed) {
+                        functionsKeyList.remove(change.getKey());
+                    } else {
+                        functionsKeyList.add(change.getKey());
+                    }
+    }
+            });
+        
+        
+        functionName = new TableColumn<>("Key");
+        // display item value (= constant)
+        functionName.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
+        functionName.prefWidthProperty().bind(functionTableView.widthProperty().multiply(1));
+
+        
+        functionTableView.getColumns().setAll(functionName);
+        
+        functionTableView.setItems(functionsKeyList);
     }
     
     @FXML
@@ -291,21 +321,7 @@ public abstract class CalculatorController implements Initializable{
         this.subVarButton = subVarButton;
     }
 
-    public TableView<Function> getFunctionTableView() {
-        return functionTableView;
-    }
 
-    public void setFunctionTableView(TableView<Function> functionTableView) {
-        this.functionTableView = functionTableView;
-    }
-
-    public TableColumn<Function, String> getFunctionName() {
-        return functionName;
-    }
-
-    public void setFunctionName(TableColumn<Function, String> functionName) {
-        this.functionName = functionName;
-    }
 
     public Variables getVarList() {
         return varList;
