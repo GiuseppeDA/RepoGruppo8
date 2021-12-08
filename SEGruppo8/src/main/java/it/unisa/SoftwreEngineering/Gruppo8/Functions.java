@@ -64,7 +64,7 @@ public class Functions {
         try(Scanner i = new Scanner(new BufferedReader(new FileReader(filename)))) {
             ObservableMap<String,Function> temp=FXCollections.emptyObservableMap();
             while(i.hasNextLine()){
-                StringTokenizer str= new StringTokenizer(i.nextLine()," ");
+                StringTokenizer str= new StringTokenizer(i.nextLine(),"()\\s");
                 String name=str.nextToken();
                 Function f=new Function();     
                 while(str.hasMoreTokens()){
