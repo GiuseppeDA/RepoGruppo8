@@ -7,6 +7,7 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.Complex;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -19,11 +20,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -249,6 +252,51 @@ public abstract class CalculatorController implements Initializable{
         if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
             screen.setText(functions.getFunction(functionsKeyList.get(selectedFunIndices.get(0))).toString());
     }
+    
+    @FXML
+    public void deleteFunction(ActionEvent event) {
+        try {
+            if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null){
+                String funName = this.getFunctionsKeyList().get(selectedFunIndices.get(0));
+                this.getFunctions().removeFunction(funName);
+            }   
+        } catch (NotExistingFunctionException ex) { 
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void modifyFunction(ActionEvent event) {
+        
+        if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null){
+            String funName = this.getFunctionsKeyList().get(selectedFunIndices.get(0));
+            System.out.println(funName);
+            Dialog dialog = new TextInputDialog(this.getFunctions().getFunction(funName).toString());
+            dialog.setHeaderText("Modifica la funzione.");
+            Optional<String> fun;
+            
+            Boolean result = true;
+
+            do {
+                fun = dialog.showAndWait();
+             if(fun.isPresent()){
+                try {
+                    
+                    this.getFunctions().stringToFunctionReplace(funName, fun.get());
+
+                    result = false;
+                } catch (InvalidCommandException ex) {
+                    dialog.setHeaderText("Syntax Error.");
+                    result = true;
+                }
+             }else{
+                 result = false;
+             }
+            } while (result);
+        }
+
+    }
+    
     
     public ListView<Complex> getMemory() {
         return memory;

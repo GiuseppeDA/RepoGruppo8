@@ -290,11 +290,13 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void modifyFunction(ActionEvent event) {
+    public void modifyFunction(ActionEvent event) {
+        super.modifyFunction(event);
     }
 
     @FXML
-    private void deleteFunction(ActionEvent event) {
+    public void deleteFunction(ActionEvent event) {
+        super.deleteFunction(event);
     }
 
     @FXML

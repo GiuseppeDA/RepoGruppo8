@@ -97,7 +97,6 @@ public class FunctionCalculatorController extends CalculatorController implement
     @FXML
     public void insertComplex(ActionEvent event) {
         
-        //DA SCRIVERE MEGLIO PER GESTIRE: NOME GIA PRESENTE E FUNZIONE NON CORRETTA
         
         Dialog dialog = new TextInputDialog();
         dialog.setHeaderText("Inserisci il nome dell'operazione.");
@@ -237,14 +236,13 @@ public class FunctionCalculatorController extends CalculatorController implement
 
 
     @FXML
-    private void modifyFunction(ActionEvent event) {
-        
-        
-        
+    public void modifyFunction(ActionEvent event) {
+        super.modifyFunction(event);
     }
 
     @FXML
-    private void deleteFunction(ActionEvent event) {
+    public void deleteFunction(ActionEvent event) {
+        super.deleteFunction(event);
     }
 
     @FXML
