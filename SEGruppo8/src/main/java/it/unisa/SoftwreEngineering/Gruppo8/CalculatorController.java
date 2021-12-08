@@ -236,7 +236,7 @@ public abstract class CalculatorController implements Initializable{
     public abstract void subVar(MouseEvent event);
     
     @FXML
-    private void runFunction(ActionEvent event) {
+    public void runFunction(ActionEvent event) {
                 
         if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
             this.getFunctions().getFunction(this.getFunctionsKeyList().get(selectedFunIndices.get(0))).run();
@@ -244,6 +244,11 @@ public abstract class CalculatorController implements Initializable{
         setCalculator(this.getFunctions().calc);
     }
     
+    @FXML
+    public void showFunction(ActionEvent event) {
+        if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
+            screen.setText(functions.getFunction(functionsKeyList.get(selectedFunIndices.get(0))).toString());
+    }
     
     public ListView<Complex> getMemory() {
         return memory;
@@ -348,8 +353,6 @@ public abstract class CalculatorController implements Initializable{
     public void setSubVarButton(Button subVarButton) {
         this.subVarButton = subVarButton;
     }
-
-
 
     public Variables getVarList() {
         return varList;

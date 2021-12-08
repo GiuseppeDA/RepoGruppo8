@@ -61,6 +61,8 @@ public class StandardCalculatorController extends CalculatorController implement
     private MenuItem restoreFunctionContextMenuItem1;
     @FXML
     private MenuItem runFunctionContextMenuItem1;
+    @FXML
+    private MenuItem showunctionContextMenuItem11;
 
    
     //Initializing
@@ -304,10 +306,15 @@ public class StandardCalculatorController extends CalculatorController implement
     }
 
     @FXML
-    private void runFunction(ActionEvent event) {
-        
-        
-        
+    @Override
+    public void runFunction(ActionEvent event) {
+        super.runFunction(event);
+    }
+
+    @FXML
+    @Override
+    public void showFunction(ActionEvent event) {
+        super.showFunction(event);
     }
     
     
