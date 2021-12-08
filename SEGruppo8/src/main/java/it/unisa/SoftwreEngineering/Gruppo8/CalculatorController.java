@@ -236,7 +236,7 @@ public abstract class CalculatorController implements Initializable{
     public abstract void subVar(MouseEvent event);
     
     @FXML
-    private void runFunction(ActionEvent event) {
+    public void runFunction(ActionEvent event) {
                 
         if(this.getFunctionsKeyList().get(selectedFunIndices.get(0)) != null)
             this.getFunctions().getFunction(this.getFunctionsKeyList().get(selectedFunIndices.get(0))).run();
@@ -348,8 +348,6 @@ public abstract class CalculatorController implements Initializable{
     public void setSubVarButton(Button subVarButton) {
         this.subVarButton = subVarButton;
     }
-
-
 
     public Variables getVarList() {
         return varList;

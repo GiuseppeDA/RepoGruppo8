@@ -59,7 +59,33 @@ public class FunctionCalculatorController extends CalculatorController implement
     @FXML
     private MenuItem restoreFunctionContextMenuItem;
     @FXML
-    private MenuItem runFunctionContextMenuItem1;
+    private ListView<?> memory;
+    @FXML
+    private TextField input;
+    @FXML
+    private Button insButton;
+    @FXML
+    private Text screen;
+    @FXML
+    private Button setVarButton;
+    @FXML
+    private Button insertVarInStackButton;
+    @FXML
+    private Button addVarButton;
+    @FXML
+    private Button subVarButton;
+    @FXML
+    private TableView<?> varTableView;
+    @FXML
+    private TableColumn<?, ?> varName;
+    @FXML
+    private TableColumn<?, ?> varValue;
+    @FXML
+    private TableView<?> functionTableView;
+    @FXML
+    private MenuItem showFunctionContextMenuItem1;
+    @FXML
+    private MenuItem modifyFunctionContextMenuItem1;
 
 
     
@@ -212,6 +238,16 @@ public class FunctionCalculatorController extends CalculatorController implement
 
     @FXML
     private void restoreFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void showFunction(ActionEvent event) {
+    }
+
+    @FXML
+    @Override
+    public void runFunction(ActionEvent event) {
+        super.runFunction(event);
     }
 
 

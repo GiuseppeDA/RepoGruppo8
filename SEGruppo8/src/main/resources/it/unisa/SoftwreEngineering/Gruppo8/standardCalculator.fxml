@@ -73,6 +73,7 @@
                <contextMenu>
                   <ContextMenu fx:id="functionContextMenu">
                     <items>
+                        <MenuItem fx:id="showunctionContextMenuItem11" mnemonicParsing="false" onAction="#showFunction" text="show" />
                         <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" onAction="#runFunction" text="run" />
                         <MenuItem fx:id="runFunctionContextMenuItem1" mnemonicParsing="false" onAction="#modifyFunction" text="modify" />
                         <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" onAction="#deleteFunction" text="delete" />

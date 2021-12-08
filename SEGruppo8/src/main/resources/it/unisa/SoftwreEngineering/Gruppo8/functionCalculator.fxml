@@ -73,8 +73,9 @@
                <contextMenu>
                   <ContextMenu fx:id="functionContextMenu">
                     <items>
-                        <MenuItem fx:id="runFunctionContextMenuItem1" mnemonicParsing="false" onAction="#runFunction" text="run" />
-                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" onAction="#modifyFunction" text="modify" />
+                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" onAction="#showFunction" text="show" />
+                        <MenuItem fx:id="showFunctionContextMenuItem1" mnemonicParsing="false" onAction="#runFunction" text="run" />
+                        <MenuItem fx:id="modifyFunctionContextMenuItem1" mnemonicParsing="false" onAction="#modifyFunction" text="modify" />
                         <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" onAction="#deleteFunction" text="delete" />
                         <MenuItem fx:id="restoreFunctionContextMenuItem" mnemonicParsing="false" onAction="#saveFunction" text="save on file" />
                         <MenuItem mnemonicParsing="false" onAction="#restoreFunction" text="restore from file" />
