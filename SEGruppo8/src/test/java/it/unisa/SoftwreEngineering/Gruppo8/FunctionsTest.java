@@ -165,5 +165,21 @@ public class FunctionsTest {
         Complex c1 =new Complex(-2,-1);
         assertEquals(calc.removeTop(),c1);
     }
+
+    /**
+     * Test of removeFunction method, of class Functions.
+     */
+    @Test
+    public void testRemoveFunction() throws InvalidCommandException, FunctionDuplicateException, NotExistingFunctionException {
+        System.out.println("removeFunction");
+        String name = "prova";
+        String commands = "(2) (1) +";
+        Calculator calc=new Calculator();
+        Variables variable=new Variables();
+        Functions instance = new Functions(calc,variable);
+        instance.stringToFunction(name, commands);
+        instance.removeFunction(name);
+        NotExistingFunctionException exception = assertThrows(NotExistingFunctionException.class, () -> instance.removeFunction(name));
+    }
     
         }

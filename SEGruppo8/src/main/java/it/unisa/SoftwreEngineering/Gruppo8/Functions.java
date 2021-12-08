@@ -26,48 +26,49 @@ public class Functions {
     Calculator calc;
     Variables var;
 
-    /**
-     *
-     * @param calc
-     * @param var
-     */
+  
     public Functions(Calculator calc, Variables var) {
         map=FXCollections.observableHashMap();
         this.calc = calc;
         this.var = var;
     }
 
-    /**
-     *
-     * @return
-     */
+  
     public ObservableMap<String, Function> getMap() {
         return map;
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * restituisce una funzione daato il nome
+     * @param name nome della funzione
+     * @return la funzione corrispondente al nome dato
      */
     public Function getFunction(String name){
        return map.get(name);
     }
 
     /**
-     *
-     * @param name
-     * @param f
+     * sovrascrive o aggiunge una funzione
+     * @param name nome della funzione da settare
+     * @param f funzione da settare
      */
     public void setFunction(String name,Function f){
         map.put(name, f);
     }
+     /**
+     * rimuove una funzione dato il nome
+     * @param name nome della funzione da rimuovere
+     */
+    public void removeFunction(String name) throws NotExistingFunctionException{
+       if(map.remove(name)==null)
+           throw new NotExistingFunctionException();
+    }
 
     /**
-     *
-     * @param name
-     * @param f
-     * @throws FunctionDuplicateException
+     * aggiunge una funzione
+     * @param name nome della funzione da aggiungere
+     * @param f funzione da aggiungere
+     * @throws FunctionDuplicateException se il nome della funzione è già presente
      */
     public void addFunction(String name,Function f) throws FunctionDuplicateException{
         if(map.putIfAbsent(name, f)!=null)
@@ -75,9 +76,9 @@ public class Functions {
     }
 
     /**
-     *
-     * @param filename
-     * @return
+     *salva le funzioni su file
+     * @param filename il nome del file su cui slavare
+     * @return true se va a buon fine false altrimenti
      */
     public boolean save(String filename){
         try(BufferedWriter writer=new BufferedWriter(new FileWriter(filename))) {
@@ -91,9 +92,9 @@ public class Functions {
     }
 
     /**
-     *
-     * @param filename
-     * @return
+     *legge e setta le funzioni da file
+     * @param filename il nome del file da cui leggere
+     * @return true se va a buon fine false altrimenti
      */
     public boolean restore(String filename){
         Parser p=new Parser(calc,var);
@@ -138,11 +139,11 @@ public class Functions {
     }
 
     /**
-     *
-     * @param name
-     * @param commands
-     * @throws InvalidCommandException
-     * @throws FunctionDuplicateException
+     *inserisce una funzione partendo da una stringa di comandi
+     * @param name il nome della funzione di aggiungere
+     * @param commandsi comandi della funzione sottoforma di stringa
+     * @throws InvalidCommandException se i comandi non sono validi
+     * @throws FunctionDuplicateException se il nome è già presente
      */
     public void stringToFunction(String name,String commands) throws InvalidCommandException, FunctionDuplicateException{
         String s0 = commands.replaceAll("\\s+"," ");;
