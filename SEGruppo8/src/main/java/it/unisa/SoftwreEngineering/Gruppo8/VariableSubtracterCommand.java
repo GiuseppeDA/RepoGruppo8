@@ -33,7 +33,7 @@ public class VariableSubtracterCommand implements Command{
             throw new CommandExecuteException("Comando non eseguibile");
         }
         Complex res = old.subtract(pop);
-        calc.insert(res);
+        var.setVar(res, index);
     }
 
     @Override

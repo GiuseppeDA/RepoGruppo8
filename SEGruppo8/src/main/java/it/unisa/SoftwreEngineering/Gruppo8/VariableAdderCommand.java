@@ -33,7 +33,7 @@ public class VariableAdderCommand implements Command{
             throw new CommandExecuteException("Comando non eseguibile");
         }
         Complex res = old.add(pop);
-        calc.insert(res);
+        var.setVar(res, index);
     }
 
     @Override
