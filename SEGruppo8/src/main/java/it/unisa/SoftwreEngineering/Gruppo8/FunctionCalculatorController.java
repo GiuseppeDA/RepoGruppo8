@@ -185,19 +185,34 @@ public class FunctionCalculatorController extends CalculatorController implement
 
     @FXML
     public void setVar(MouseEvent event) {
-        
+        if(selectedVarIndices.get(0) != null){   
+            String str = ">"+getVarList().indexToChar(selectedVarIndices.get(0))+" ";           
+            this.getInput().appendText(str);
+        }
     }
 
     @FXML
     public void insertVarInStack(MouseEvent event) {
+        if(selectedVarIndices.get(0) != null){   
+            String str = "<"+getVarList().indexToChar(selectedVarIndices.get(0))+" ";           
+            this.getInput().appendText(str);
+        }
     }
 
     @FXML
     public void addVar(MouseEvent event) {
+        if(selectedVarIndices.get(0) != null){   
+            String str = "+"+getVarList().indexToChar(selectedVarIndices.get(0))+" ";           
+            this.getInput().appendText(str);
+        }
     }
 
     @FXML
     public void subVar(MouseEvent event) {
+        if(selectedVarIndices.get(0) != null){   
+            String str = "-"+getVarList().indexToChar(selectedVarIndices.get(0))+" ";           
+            this.getInput().appendText(str);
+        }
     }
 
     @FXML
