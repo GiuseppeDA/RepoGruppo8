@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import javafx.collections.FXCollections;
@@ -75,5 +76,16 @@ public class Functions {
         }
          return true;
         }
+    public ArrayList<Command> functionToCommands(String name){
+        return map.get(name).getCommandList();       
+    }
+    public void stringToFunction(String name,String commands){
+        String s = commands.replaceAll("\\s+"," ");
+        StringTokenizer str= new StringTokenizer(s,"()\\s");
+                setFunction(name,new Function());
+                while(str.hasMoreTokens()){
+                } 
+        
+    }
         
 }

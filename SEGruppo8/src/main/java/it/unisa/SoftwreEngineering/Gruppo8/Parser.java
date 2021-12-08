@@ -174,10 +174,10 @@ public class Parser {
                 
             }
             else if(op.substring(0, 1).equals("-")){
-                return new VariableSubtracterCommand();
+                return new VariableSubtracterCommand(index,var,calc);
                 
             }else if (op.substring(0, 1).equals("+")){
-                return new VariableAdderCommand();
+                return new VariableAdderCommand(index,var,calc);
                 
             }     
         }
