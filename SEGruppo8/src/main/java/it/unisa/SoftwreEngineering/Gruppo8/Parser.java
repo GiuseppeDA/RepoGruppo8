@@ -16,11 +16,11 @@ import javafx.event.ActionEvent;
  */
 public class Parser {
     private Calculator calc;
-    //private Variables var;
+    private Variables var;
 
     public Parser(Calculator calc, Variables var) {
         this.calc = calc;
-       // this.var = var;
+        this.var = var;
     }
 
    
@@ -33,6 +33,9 @@ public class Parser {
           return c;
       
       c=isOperation(s);
+      if (c!=null)
+        return c;
+      c=isVarOperation(s);
       return c;
       
       }
@@ -156,7 +159,7 @@ public class Parser {
             return null;
                     
     }
-  /*  
+    
     private Command isVarOperation(String op){
         String opVarUp = "[a-zA-Z]";
         
@@ -164,23 +167,21 @@ public class Parser {
             int index = new Variables().charToIndex(op.charAt(1));
             
             if(op.substring(0, 1).equals("<")){
-               return new VariablePusherCommand(index);
+               return new VariableGetterCommand();
             }
             else if(op.substring(0, 1).equals(">")){
-                p.setName("setVar");
+               return new VariableSetterCommand();
                 
             }
             else if(op.substring(0, 1).equals("-")){
-                p.setName("subVar");
+                return new VariableSubtracterCommand();
                 
             }else if (op.substring(0, 1).equals("+")){
-                p.setName("addVar");
+                return new VariableAdderCommand();
                 
             }     
         }
-        return p;
+        return null;
 
     }
-   */ 
-    
 }

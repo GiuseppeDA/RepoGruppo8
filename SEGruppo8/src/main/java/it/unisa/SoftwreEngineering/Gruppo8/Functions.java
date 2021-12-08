@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableMap;
 
@@ -21,10 +22,16 @@ import javafx.collections.ObservableMap;
  */
 public class Functions {
     ObservableMap<String,Function> map;
+    Calculator calc;
+    Variables var;
 
-    public Functions() {
+    public Functions(Calculator calc, Variables var) {
         map=FXCollections.emptyObservableMap();
+        this.calc = calc;
+        this.var = var;
     }
+
+    
 
 
     public ObservableMap<String, Function> getMap() {
@@ -51,11 +58,15 @@ public class Functions {
         return true;
     }
     public boolean restore(String filename){
+        Parser p=new Parser(calc,var);
         try(Scanner i = new Scanner(new BufferedReader(new FileReader(filename)))) {
             ObservableMap<String,Function> temp=FXCollections.emptyObservableMap();
-            i.useDelimiter("\\s|\\n");
-            while(i.hasNext()){
-                String name=i.next();
+            while(i.hasNextLine()){
+                StringTokenizer str= new StringTokenizer(i.nextLine()," ");
+                String name=str.nextToken();
+                while(str.hasMoreTokens()){
+                    
+                }
                 
             }
             
