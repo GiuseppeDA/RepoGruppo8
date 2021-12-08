@@ -181,5 +181,25 @@ public class FunctionsTest {
         instance.removeFunction(name);
         NotExistingFunctionException exception = assertThrows(NotExistingFunctionException.class, () -> instance.removeFunction(name));
     }
+
+    @Test
+    public void testStringToFunctionReplace() throws Exception {
+       System.out.println("stringToFunction");
+        String name = "prova";
+        String commands = "(2) (1) +";
+        Calculator calc=new Calculator();
+        Variables variable=new Variables();
+        Functions instance = new Functions(calc,variable);
+        instance.stringToFunctionReplace(name, commands);
+        instance.getFunction(name).run();
+        Complex c =new Complex(3,0);
+        assertEquals(calc.removeTop(),c);
+        commands="(2+j) +-";
+        instance.stringToFunctionReplace(name, commands);
+        
+        instance.getFunction(name).run();
+        Complex c1 =new Complex(-2,-1);
+        assertEquals(calc.removeTop(),c1);
+    }
     
         }

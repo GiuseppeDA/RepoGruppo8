@@ -182,5 +182,43 @@ public class Functions {
                  
         
     }
+    
+     public void stringToFunctionReplace (String name,String commands) throws InvalidCommandException{
+        String s0 = commands.replaceAll("\\s+"," ");;
+        Parser p=new Parser(calc,var);
+        Command c;
+        StringTokenizer str0= new StringTokenizer(s0,"()",true);
+        String s="";
+        while(str0.hasMoreTokens()){
+            s=s+str0.nextToken("(");
+            if(str0.hasMoreTokens())
+                s=s+str0.nextToken(")").replaceAll("\\s+","");
+            
+        }
+          
+         StringTokenizer str= new StringTokenizer(s," ");
+                Function f=new Function();     
+                while(str.hasMoreTokens()){
+                    String token=str.nextToken(" ");
+                    if(token.startsWith("(")){;
+                       token=token.replace("(", "");
+                       token=token.replace(")", "");
+                    }
+                    c=p.parse(token);
+                    if(c!=null)     
+                      f.add(c);
+                    else if(map.containsKey(token))
+                        for(Command com:functionToCommands(token)){
+                            f.add(com);
+                        }
+                    else
+                        throw new InvalidCommandException();
+                }
+
+            setFunction(name,f);
+
+                 
+        
+    }
         
 }
