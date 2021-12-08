@@ -99,7 +99,7 @@ public class Functions {
     private ArrayList<Command> functionToCommands(String name){
         return map.get(name).getCommandList();       
     }
-    public void stringToFunction(String name,String commands) throws InvalidCommandException{
+    public void stringToFunction(String name,String commands) throws InvalidCommandException, FunctionDuplicateException{
         String s0 = commands.replaceAll("\\s+"," ");;
         Parser p=new Parser(calc,var);
         Command c;
@@ -131,7 +131,7 @@ public class Functions {
                         throw new InvalidCommandException();
                 }
 
-            setFunction(name,f);
+            addFunction(name,f);
 
                  
         
