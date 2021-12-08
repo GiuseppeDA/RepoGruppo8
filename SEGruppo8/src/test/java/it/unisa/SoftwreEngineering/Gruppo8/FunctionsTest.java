@@ -5,6 +5,12 @@
 package it.unisa.SoftwreEngineering.Gruppo8;
 
 import com.vm.jcomplex.Complex;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 import javafx.collections.ObservableMap;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -99,30 +105,56 @@ public class FunctionsTest {
      * Test of save method, of class Functions.
      */
     @Test
-    public void testSave() {
-        System.out.println("save");
-        String filename = "";
-        Functions instance = null;
-        boolean expResult = false;
-        boolean result = instance.save(filename);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSave() throws InvalidCommandException, FunctionDuplicateException {
+        try {
+            System.out.println("restore");
+            String name = "prova";
+            String commands = "(2) (1) /";
+            Calculator calc=new Calculator();
+            Variables variable=new Variables();
+            Functions instance = new Functions(calc,variable);
+            instance.stringToFunction(name, commands);
+            File file = new File("prova.txt");
+            if (!file.exists())
+                file.createNewFile();
+            instance.save("prova.txt");
+            try(Scanner i = new Scanner(new BufferedReader(new FileReader("prova.txt")))){
+               assertEquals(i.nextLine(),"prova (2.0) (1.0) / "); 
+            }
+            // TODO review the generated test code and remove the default call to fail.
+       
+    }       catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
-
     /**
      * Test of restore method, of class Functions.
      */
     @Test
-    public void testRestore() {
+    public void testRestore() throws InvalidCommandException, FunctionDuplicateException {
         System.out.println("restore");
-        String filename = "";
-        Functions instance = null;
-        boolean expResult = false;
-        boolean result = instance.restore(filename);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "prova0";
+        String commands = "(2) (1) +";
+        Calculator calc=new Calculator();
+        Variables variable=new Variables();
+        Functions instance = new Functions(calc,variable);
+        instance.stringToFunction(name, commands);
+        File file = new File("prova0.txt");
+            if (!file.exists())
+                try {
+                    file.createNewFile();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        instance.save("prova0.txt");
+        Functions instance1 = new Functions(calc,variable);
+        instance1.restore("prova0.txt");
+        instance1.getFunction(name).run();
+        Complex c =new Complex(3,0);
+        assertEquals(calc.removeTop(),c);
+        
     }
 
     /**
@@ -142,14 +174,11 @@ public class FunctionsTest {
         assertEquals(calc.removeTop(),c);
         commands="(2+j) +-";
         String name1="ciao";
-        try {
-            instance.stringToFunction(name1, commands);
-        } catch (FunctionDuplicateException ex) {
-            ex.printStackTrace();
-        }
-        instance.getFunction(name).run();
+        instance.stringToFunction(name1, commands);
+        
+        instance.getFunction(name1).run();
         Complex c1 =new Complex(-2,-1);
         assertEquals(calc.removeTop(),c1);
     }
     
-}
+        }
