@@ -26,7 +26,7 @@ public class Functions {
     Variables var;
 
     public Functions(Calculator calc, Variables var) {
-        map=FXCollections.emptyObservableMap();
+        map=FXCollections.observableHashMap();
         this.calc = calc;
         this.var = var;
     }
@@ -64,8 +64,10 @@ public class Functions {
             while(i.hasNextLine()){
                 StringTokenizer str= new StringTokenizer(i.nextLine()," ");
                 String name=str.nextToken();
+                setFunction(name,new Function());
+                
                 while(str.hasMoreTokens()){
-                    
+                    p.parse(str.nextToken());
                 }
                 
             }
