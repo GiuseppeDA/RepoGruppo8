@@ -60,15 +60,21 @@ public class Functions {
     }
     public boolean restore(String filename){
         Parser p=new Parser(calc,var);
+        Command c;
         try(Scanner i = new Scanner(new BufferedReader(new FileReader(filename)))) {
             ObservableMap<String,Function> temp=FXCollections.emptyObservableMap();
             while(i.hasNextLine()){
                 StringTokenizer str= new StringTokenizer(i.nextLine()," ");
                 String name=str.nextToken();
-                setFunction(name,new Function());
+                Function f=new Function();     
                 while(str.hasMoreTokens()){
-                   map.get(name).add(p.parse(str.nextToken()));
-                } 
+                    c=p.parse(str.nextToken());
+                    if(c!=null)     
+                      f.add(c);
+                    else
+                        return false;
+                }
+                setFunction(name,f);
             }
             
             } catch (FileNotFoundException ex) {     
@@ -76,15 +82,30 @@ public class Functions {
         }
          return true;
         }
-    public ArrayList<Command> functionToCommands(String name){
+    
+    private ArrayList<Command> functionToCommands(String name){
         return map.get(name).getCommandList();       
     }
-    public void stringToFunction(String name,String commands){
+    public void stringToFunction(String name,String commands) throws InvalidCommandException{
         String s = commands.replaceAll("\\s+"," ");
+        Parser p=new Parser(calc,var);
+        Command c;
         StringTokenizer str= new StringTokenizer(s,"()\\s");
-                setFunction(name,new Function());
+                Function f=new Function();
                 while(str.hasMoreTokens()){
-                } 
+                    String token=str.nextToken();
+                    c=p.parse(token);
+                    if(c!=null)     
+                      f.add(c);
+                    else if(map.containsKey(token))
+                        for(Command com:functionToCommands(token)){
+                            f.add(com);
+                        }
+                    else
+                        throw new InvalidCommandException();
+                }
+                setFunction(name,f);
+                 
         
     }
         
