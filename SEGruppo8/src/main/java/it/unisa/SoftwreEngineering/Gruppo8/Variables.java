@@ -88,8 +88,6 @@ public class Variables {
         
         if( a > 64 && a < 91){
             return a-65;
-        }else if(a > 96 && a < 123){
-            return a-97;
         }
         return -1;
     }

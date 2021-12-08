@@ -173,7 +173,7 @@ public class Parser {
     }
     
     private Command isVarOperation(String op){
-        String opVarUp = "[a-zA-Z]";
+        String opVarUp = "[A-Z]";
         
         if(Pattern.matches(opVarUp,op.substring(1))){
             int index = new Variables().charToIndex(op.charAt(1));
