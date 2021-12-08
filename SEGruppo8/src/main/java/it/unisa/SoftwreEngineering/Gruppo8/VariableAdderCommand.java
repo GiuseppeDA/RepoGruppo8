@@ -4,20 +4,45 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import com.vm.jcomplex.Complex;
+
 /**
  *
  * @author simon
  */
 public class VariableAdderCommand implements Command{
+    private int index;
+    private Variables var;
+    private Calculator calc;
+    private Complex old;
+    private Complex pop;
+
+    public VariableAdderCommand(int index, Variables var, Calculator calc) {
+        this.index = index;
+        this.var = var;
+        this.calc = calc;
+    }
 
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void execute() throws CommandExecuteException {
+        Variable v = var.getVar(index);
+        old = v.getValue();
+        try{
+            pop = calc.getTop();
+        }catch(IndexOutOfBoundsException ex){
+            throw new CommandExecuteException("Comando non eseguibile");
+        }
+        Complex res = old.add(pop);
+        calc.insert(res);
     }
 
     @Override
     public void undo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        var.setVar(old, index);
     }
-    
+
+    @Override
+    public String toString() {
+        return "+" + var.indexToChar(index);
+    }
 }
