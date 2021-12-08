@@ -7,8 +7,6 @@ package it.unisa.SoftwreEngineering.Gruppo8;
 import com.vm.jcomplex.Complex;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -26,7 +24,6 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -158,7 +155,7 @@ public abstract class CalculatorController implements Initializable{
             });
         
         
-        functionName = new TableColumn<>("Key");
+        functionName = new TableColumn<>("Function");
         // display item value (= constant)
         functionName.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
         functionName.prefWidthProperty().bind(functionTableView.widthProperty().multiply(1));
@@ -330,6 +327,16 @@ public abstract class CalculatorController implements Initializable{
     public void setVarList(Variables varList) {
         this.varList = varList;
     }
+
+    public Functions getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(Functions functions) {
+        this.functions = functions;
+    }
+    
+    
     
     
 }

@@ -51,8 +51,14 @@ public class FunctionCalculatorController extends CalculatorController implement
     
     @FXML
     public void insertComplex(ActionEvent event) {
-        SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
-        System.out.println(getCalculator().getMemory().toString());
+
+        try {
+            this.getFunctions().stringToFunction("mario", this.getInput().getText());
+        } catch (InvalidCommandException ex) {
+            ex.printStackTrace();
+        }
+        
+        
     }
 
     @FXML
