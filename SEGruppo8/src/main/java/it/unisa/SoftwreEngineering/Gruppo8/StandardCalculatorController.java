@@ -58,12 +58,11 @@ public class StandardCalculatorController extends CalculatorController implement
     @FXML
     private MenuItem saveFunctionContextMenuItem;
     @FXML
-    private MenuItem saveFunctionContextMenuItem1;
+    private MenuItem restoreFunctionContextMenuItem1;
     @FXML
-    private Button FunButton;
+    private MenuItem runFunctionContextMenuItem1;
 
    
-    
     //Initializing
     @Override
     public void initialize(URL url, ResourceBundle rb) {      
@@ -271,6 +270,7 @@ public class StandardCalculatorController extends CalculatorController implement
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         scc.setCalculator(this.getCalculator());
         scc.setVariables(this.getVarList());
+        scc.setFunctions(this.getFunctions());
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("functionCalculator.fxml"));
         try {
@@ -285,6 +285,26 @@ public class StandardCalculatorController extends CalculatorController implement
         stage.setScene(scene);
         stage.show();
     
+    }
+
+    @FXML
+    private void modifyFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void saveFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void restoreFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void runFunction(ActionEvent event) {
     }
     
     

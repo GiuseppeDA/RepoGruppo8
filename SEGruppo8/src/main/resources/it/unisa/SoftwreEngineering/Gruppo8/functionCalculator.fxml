@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.FunctionCalculatorController">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.FunctionCalculatorController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="1215.0">
          <children>
@@ -68,15 +68,16 @@
                 <TableColumn fx:id="varValue" prefWidth="175.0" text="Value" />
               </columns>
             </TableView>
-            <Button fx:id="STDButton" layoutX="397.0" layoutY="419.0" mnemonicParsing="false" onAction="#changeToFunctionController" prefHeight="38.0" prefWidth="52.0" text="STD" />
+            <Button fx:id="STDButton" layoutX="397.0" layoutY="419.0" mnemonicParsing="false" onAction="#changeToStandardController" prefHeight="38.0" prefWidth="52.0" text="STD" />
             <TableView fx:id="functionTableView" layoutX="738.0" prefHeight="471.0" prefWidth="239.0">
                <contextMenu>
                   <ContextMenu fx:id="functionContextMenu">
                     <items>
-                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" text="modify" />
-                        <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" text="delete" />
-                        <MenuItem fx:id="saveFunctionContextMenuItem" mnemonicParsing="false" text="save on file" />
-                        <MenuItem fx:id="saveFunctionContextMenuItem1" mnemonicParsing="false" text="save on file" />
+                        <MenuItem fx:id="runFunctionContextMenuItem1" mnemonicParsing="false" onAction="#runFunction" text="run" />
+                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" onAction="#modifyFunction" text="modify" />
+                        <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" onAction="#deleteFunction" text="delete" />
+                        <MenuItem fx:id="restoreFunctionContextMenuItem" mnemonicParsing="false" onAction="#saveFunction" text="save on file" />
+                        <MenuItem mnemonicParsing="false" onAction="#restoreFunction" text="restore from file" />
                     </items>
                   </ContextMenu>
                </contextMenu></TableView>

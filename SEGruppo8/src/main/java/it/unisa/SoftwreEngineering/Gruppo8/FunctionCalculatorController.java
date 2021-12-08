@@ -57,9 +57,10 @@ public class FunctionCalculatorController extends CalculatorController implement
     @FXML
     private MenuItem deleteFunctionContextMenuItem;
     @FXML
-    private MenuItem saveFunctionContextMenuItem;
+    private MenuItem restoreFunctionContextMenuItem;
     @FXML
-    private MenuItem saveFunctionContextMenuItem1;
+    private MenuItem runFunctionContextMenuItem1;
+
 
     
     @Override
@@ -74,17 +75,31 @@ public class FunctionCalculatorController extends CalculatorController implement
         
         Dialog dialog = new TextInputDialog();
         dialog.setHeaderText("Inserisci il nome dell'operazione.");
-        Optional<String> funName = dialog.showAndWait();
+        Optional<String> funName;
         
-        if(funName.isPresent()){
+        Boolean result = true;
+        
+        do {
+            funName = dialog.showAndWait();
+         if(funName.isPresent()){
             try {
                 this.getFunctions().stringToFunction(funName.get(), this.getInput().getText());
+                
+                this.getInput().setText("");
+                result = false;
             } catch (InvalidCommandException ex) {
-                ex.printStackTrace();
-            }
-
-        }
-              
+                this.getScreen().setText("Syntax Error");
+                result = false;
+            } catch (FunctionDuplicateException ex) {
+                dialog.setHeaderText("Nome di funzione gia esistente!");
+                result = true;
+            } 
+         }else{
+             result = false;
+         }
+        } while (result);
+        
+        
     }
 
     @FXML
@@ -159,10 +174,12 @@ public class FunctionCalculatorController extends CalculatorController implement
     public void subVar(MouseEvent event) {
     }
 
+    @FXML
     private void changeToStandardController(ActionEvent event) {
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         scc.setCalculator(this.getCalculator());
         scc.setVariables(this.getVarList());
+        scc.setFunctions(this.getFunctions());
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
         try {
@@ -175,28 +192,31 @@ public class FunctionCalculatorController extends CalculatorController implement
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+    @FXML
+    private void modifyFunction(ActionEvent event) {
+        
+        
+        
     }
 
     @FXML
-    private void changeToFunctionController(ActionEvent event) {
-                SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
-        scc.setCalculator(this.getCalculator());
-        scc.setVariables(this.getVarList());
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("standardCalculator.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    private void deleteFunction(ActionEvent event) {
+    }
 
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    @FXML
+    private void saveFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void restoreFunction(ActionEvent event) {
+    }
+
+    @FXML
+    private void runFunction(ActionEvent event) {
     }
 
 
-
-    
 }

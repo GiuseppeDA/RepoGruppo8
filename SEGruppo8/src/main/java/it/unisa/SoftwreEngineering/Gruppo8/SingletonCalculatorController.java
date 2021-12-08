@@ -13,6 +13,7 @@ public class SingletonCalculatorController {
     private static SingletonCalculatorController instance = null;
     private Calculator calculator;
     private Variables variables;
+    private Functions functions; 
 
     private SingletonCalculatorController() {};
     
@@ -38,5 +39,15 @@ public class SingletonCalculatorController {
     public void setVariables(Variables variables) {
         this.variables = variables;
     }
+
+    public Functions getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(Functions functions) {
+        this.functions = functions;
+    }
+    
+    
     
 }

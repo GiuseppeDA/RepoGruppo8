@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.SoftwreEngineering.Gruppo8.StandardCalculatorController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="1215.0">
          <children>
@@ -73,10 +73,11 @@
                <contextMenu>
                   <ContextMenu fx:id="functionContextMenu">
                     <items>
-                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" text="modify" />
-                        <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" text="delete" />
-                        <MenuItem fx:id="saveFunctionContextMenuItem" mnemonicParsing="false" text="save on file" />
-                        <MenuItem fx:id="saveFunctionContextMenuItem1" mnemonicParsing="false" text="save on file" />
+                        <MenuItem fx:id="modifyFunctionContextMenuItem" mnemonicParsing="false" onAction="#runFunction" text="run" />
+                        <MenuItem fx:id="runFunctionContextMenuItem1" mnemonicParsing="false" onAction="#modifyFunction" text="modify" />
+                        <MenuItem fx:id="deleteFunctionContextMenuItem" mnemonicParsing="false" onAction="#deleteFunction" text="delete" />
+                        <MenuItem fx:id="saveFunctionContextMenuItem" mnemonicParsing="false" onAction="#saveFunction" text="save on file" />
+                        <MenuItem fx:id="restoreFunctionContextMenuItem1" mnemonicParsing="false" onAction="#restoreFunction" text="restore from file" />
                     </items>
                   </ContextMenu>
                </contextMenu></TableView>

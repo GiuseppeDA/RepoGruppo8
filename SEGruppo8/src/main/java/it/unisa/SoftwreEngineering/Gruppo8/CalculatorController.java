@@ -72,6 +72,7 @@ public abstract class CalculatorController implements Initializable{
     @FXML
     private TableColumn<String, String> functionName;
     
+    ObservableList<Integer> selectedFunIndices;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -85,6 +86,9 @@ public abstract class CalculatorController implements Initializable{
             setVarList(scc.getVariables());
         }
         
+        if(scc.getFunctions() != null){
+            setFunctions(scc.getFunctions());
+        }
         
         setMemory(getCalculator().getMemory());
         
@@ -109,14 +113,16 @@ public abstract class CalculatorController implements Initializable{
             }
         });
         
-        //Variables TableView
+        //FUNCTIONS TABLEVIEW INITIALIZE
         varName.setCellValueFactory( new PropertyValueFactory<>("name"));
         varValue.setCellValueFactory( new PropertyValueFactory<>("value"));
         
         varTableView.setItems(varList.getVariablesList());
+        //END FUNCTIONS TABLEVIEW INITIALIZE
         
+        //------------------------------------------------------------------------------------------//
         
-        //Variables Buttons
+        //VARIABLES BUTTON INITIALIZE
         setVarButton.setDisable(true);
         insertVarInStackButton.setDisable(true);
         addVarButton.setDisable(true);
@@ -136,12 +142,14 @@ public abstract class CalculatorController implements Initializable{
                 subVarButton.setDisable(false);                 
           }
         });
+        //END VARIABLES BUTTON INITIALIZE
         
+        //------------------------------------------------------------------------------------------//
         
-        //Functions TableView
+        //FUNCTIONS TABLEVIEW INITIALIZE
         
         functionsKeyList = FXCollections.observableArrayList();
-        
+        functionsKeyList.addAll(functions.getMap().keySet());
         functions.getMap().addListener((MapChangeListener.Change<? extends String, ? extends Function> change) -> {
                 boolean removed = change.wasRemoved();
                 if (removed != change.wasAdded()) {
@@ -151,20 +159,30 @@ public abstract class CalculatorController implements Initializable{
                     } else {
                         functionsKeyList.add(change.getKey());
                     }
-    }
+                }
             });
-        
-        
         functionName = new TableColumn<>("Function");
-        // display item value (= constant)
         functionName.setCellValueFactory(cd -> Bindings.createStringBinding(() -> cd.getValue()));
-        functionName.prefWidthProperty().bind(functionTableView.widthProperty().multiply(1));
-        
-        functionTableView.getColumns().setAll(functionName);
-        
+        functionName.prefWidthProperty().bind(functionTableView.widthProperty().multiply(1));       
+        functionTableView.getColumns().setAll(functionName);      
         functionTableView.setItems(functionsKeyList);
+        //FUNCTIONS TABLEVIEW INITIALIZE END
         
+        //------------------------------------------------------------------------------------------//
         
+        //FUNCTIONS TABLEVIEW SELECTION CHECK
+        TableView.TableViewSelectionModel selectionFunModel = functionTableView.getSelectionModel();
+        selectionFunModel.setSelectionMode(SelectionMode.SINGLE);
+        
+        selectedFunIndices = selectionFunModel.getSelectedIndices();
+
+        selectedFunIndices.addListener(new ListChangeListener<Integer>() {
+          @Override
+          public void onChanged(ListChangeListener.Change<? extends Integer> change) {
+              screen.setText(functions.getFunction(functionsKeyList.get(selectedFunIndices.get(0))).toString());
+          }
+        });
+        //END FUNCTIONS TABLEVIEW SELECTION CHECK
         
         
         
