@@ -153,11 +153,11 @@ public class Calculator {
        memory.add(0,c);
     }
     
-    protected Complex removeTop(){
+    public Complex removeTop(){
      return memory.remove(0);
     }
 
-    protected ObservableList<Complex> getMemory() {
+    public ObservableList<Complex> getMemory() {
         return memory;
     }
     
