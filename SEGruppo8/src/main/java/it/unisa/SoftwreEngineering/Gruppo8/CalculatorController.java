@@ -85,7 +85,7 @@ public abstract class CalculatorController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        //ATTRIBUTES INITIALIZE
         SingletonCalculatorController scc = SingletonCalculatorController.getIstance();
         if(scc.getCalculator() != null){
             setCalculator(scc.getCalculator());
@@ -98,7 +98,11 @@ public abstract class CalculatorController implements Initializable{
         if(scc.getFunctions() != null){
             setFunctions(scc.getFunctions());
         }
+        //END ATTRIBUTES INITIALIZE
         
+        //------------------------------------------------------------------------------------------//
+        
+        //MEMORY INITIALIZE
         setMemory(getCalculator().getMemory());
         
         getMemory().setStyle("-fx-font-size: 13px ;");
@@ -110,8 +114,11 @@ public abstract class CalculatorController implements Initializable{
                     screen.setText(getMemory().getItems().get(0).toString());
             }
         });
+        //END MEMORY INITIALIZE
         
-       
+        //------------------------------------------------------------------------------------------//
+        
+        //INSERT BUTTON INITIALIZE
         input.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> ov, Boolean oldPropertyValue, Boolean newPropertyValue) {
@@ -121,11 +128,13 @@ public abstract class CalculatorController implements Initializable{
                     insButton.setDefaultButton(false);
             }
         });
+        //INSERT BUTTON INITIALIZE
+        
+        //------------------------------------------------------------------------------------------//
         
         //FUNCTIONS TABLEVIEW INITIALIZE
         varName.setCellValueFactory( new PropertyValueFactory<>("name"));
-        varValue.setCellValueFactory( new PropertyValueFactory<>("value"));
-        
+        varValue.setCellValueFactory( new PropertyValueFactory<>("value"));       
         varTableView.setItems(varList.getVariablesList());
         //END FUNCTIONS TABLEVIEW INITIALIZE
         
@@ -391,38 +400,6 @@ public abstract class CalculatorController implements Initializable{
 
     public void setSelectedVarIndices(ObservableList<Integer> selectedVarIndices) {
         this.selectedVarIndices = selectedVarIndices;
-    }
-
-    public Button getSetVarButton() {
-        return setVarButton;
-    }
-
-    public void setSetVarButton(Button setVarButton) {
-        this.setVarButton = setVarButton;
-    }
-
-    public Button getInsertVarInStackButton() {
-        return insertVarInStackButton;
-    }
-
-    public void setInsertVarInStackButton(Button insertVarInStackButton) {
-        this.insertVarInStackButton = insertVarInStackButton;
-    }
-
-    public Button getAddVarButton() {
-        return addVarButton;
-    }
-
-    public void setAddVarButton(Button addVarButton) {
-        this.addVarButton = addVarButton;
-    }
-
-    public Button getSubVarButton() {
-        return subVarButton;
-    }
-
-    public void setSubVarButton(Button subVarButton) {
-        this.subVarButton = subVarButton;
     }
 
     public Variables getVarList() {
