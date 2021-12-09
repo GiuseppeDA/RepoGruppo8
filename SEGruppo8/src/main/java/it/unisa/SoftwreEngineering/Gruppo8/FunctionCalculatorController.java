@@ -50,18 +50,6 @@ public class FunctionCalculatorController extends CalculatorController implement
     private Scene scene;
     private Parent root;
 
-    
-    @FXML
-    private ContextMenu functionContextMenu;
-    @FXML
-    private MenuItem modifyFunctionContextMenuItem;
-    @FXML
-    private MenuItem deleteFunctionContextMenuItem;
-    @FXML
-    private MenuItem restoreFunctionContextMenuItem;
-    @FXML
-    private AnchorPane rootPane;
-
 
     
     @Override

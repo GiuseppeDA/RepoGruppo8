@@ -48,7 +48,7 @@ public class Function {
     public ArrayList<Command> getCommandList() {
         return commandList;
     }
-
+    
     @Override
     public String toString() {
         String commands=new String();
