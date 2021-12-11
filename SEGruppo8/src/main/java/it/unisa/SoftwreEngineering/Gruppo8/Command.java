@@ -4,6 +4,8 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
+
 /**
  *
  * @author 39324

@@ -4,6 +4,8 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
+import it.unisa.SoftwreEngineering.Gruppo8.command.SqrterCommand;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

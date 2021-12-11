@@ -4,6 +4,9 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.command.AdderCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.InserterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.InverterCommand;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.jupiter.api.AfterEach;

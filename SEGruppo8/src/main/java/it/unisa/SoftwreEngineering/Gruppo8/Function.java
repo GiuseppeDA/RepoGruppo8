@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
 import java.util.ArrayList;
 /**
  *

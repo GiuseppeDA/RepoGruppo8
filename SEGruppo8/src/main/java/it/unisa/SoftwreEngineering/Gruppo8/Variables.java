@@ -4,7 +4,10 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.Variable;
 import com.vm.jcomplex.Complex;
+import it.unisa.SoftwreEngineering.Gruppo8.ComplexNumber;
+import it.unisa.SoftwreEngineering.Gruppo8.ComplexNumber;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.lang.UnsupportedOperationException;

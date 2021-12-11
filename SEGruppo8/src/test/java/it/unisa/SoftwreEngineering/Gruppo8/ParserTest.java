@@ -4,6 +4,22 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.command.DividerCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.AdderCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.ClearerCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.DropperCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.DuplerCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.InserterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.InverterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.MultiplierCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.OvererCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.SqrterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.SubtracterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.VariableGetterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.VariableSetterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.VariableSubtracterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.SwapperCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.command.VariableAdderCommand;
 import com.vm.jcomplex.Complex;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;

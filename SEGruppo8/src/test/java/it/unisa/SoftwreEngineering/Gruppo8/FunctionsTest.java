@@ -4,6 +4,10 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.FunctionDuplicateException;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.NotExistingFunctionException;
+import it.unisa.SoftwreEngineering.Gruppo8.command.InserterCommand;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.InvalidCommandException;
 import com.vm.jcomplex.Complex;
 import java.io.BufferedReader;
 import java.io.File;

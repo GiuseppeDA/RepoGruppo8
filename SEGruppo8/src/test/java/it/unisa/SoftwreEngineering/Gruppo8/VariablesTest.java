@@ -117,6 +117,7 @@ public class VariablesTest {
         assertEquals(expResult, result);
         
         a='a';
+        expResult = -1;
         result = instance.charToIndex(a);
         assertEquals(expResult, result);
     }

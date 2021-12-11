@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.unisa.SoftwreEngineering.Gruppo8;
+package it.unisa.SoftwreEngineering.Gruppo8.command;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
 import com.vm.jcomplex.Complex;
+import it.unisa.SoftwreEngineering.Gruppo8.Calculator;
+import it.unisa.SoftwreEngineering.Gruppo8.Command;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.ImpossibleDivisionException;
 
 /**
  *

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.ImpossibleDivisionException;
 import com.vm.jcomplex.*;
 import static com.vm.jcomplex.Complex.NaN;
 import javafx.collections.FXCollections;

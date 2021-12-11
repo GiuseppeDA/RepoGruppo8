@@ -2,15 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.unisa.SoftwreEngineering.Gruppo8;
+package it.unisa.SoftwreEngineering.Gruppo8.command;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
 import com.vm.jcomplex.Complex;
+import it.unisa.SoftwreEngineering.Gruppo8.Calculator;
+import it.unisa.SoftwreEngineering.Gruppo8.Command;
+import it.unisa.SoftwreEngineering.Gruppo8.Variable;
+import it.unisa.SoftwreEngineering.Gruppo8.Variables;
 
 /**
  *
  * @author simon
  */
-public class VariableSubtracterCommand implements Command{
+public class VariableAdderCommand implements Command{
     private int index;
     private Variables var;
     private Calculator calc;
@@ -23,14 +28,14 @@ public class VariableSubtracterCommand implements Command{
      * @param var
      * @param calc
      */
-    public VariableSubtracterCommand(int index, Variables var, Calculator calc) {
+    public VariableAdderCommand(int index, Variables var, Calculator calc) {
         this.index = index;
         this.var = var;
         this.calc = calc;
     }
 
     /**
-     *Esegue il comando di sottrazione sulla variabile
+     *Esegue il comando di addizione sulla variabile
      * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
@@ -42,12 +47,12 @@ public class VariableSubtracterCommand implements Command{
         }catch(IndexOutOfBoundsException ex){
             throw new CommandExecuteException("Comando non eseguibile");
         }
-        Complex res = old.subtract(pop);
+        Complex res = old.add(pop);
         var.setVar(res, index);
     }
 
     /**
-     *Annulla il comando di sottrazione sulla variabile eseguito precedentemente
+     *Annulla il comando di addizione sulla variabile eseguito precedentemente
      */
     @Override
     public void undo() {
@@ -59,6 +64,6 @@ public class VariableSubtracterCommand implements Command{
      */
     @Override
     public String toString() {
-        return "-" + var.indexToChar(index);
+        return "+" + var.indexToChar(index);
     }
 }

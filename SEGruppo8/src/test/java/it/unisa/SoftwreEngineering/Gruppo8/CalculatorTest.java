@@ -4,6 +4,7 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.ImpossibleDivisionException;
 import com.vm.jcomplex.Complex;
 import static com.vm.jcomplex.Complex.NaN;
 import javafx.collections.ObservableList;

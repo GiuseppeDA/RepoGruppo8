@@ -2,48 +2,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.unisa.SoftwreEngineering.Gruppo8;
+package it.unisa.SoftwreEngineering.Gruppo8.command;
 
-import com.vm.jcomplex.Complex;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.CommandExecuteException;
+import it.unisa.SoftwreEngineering.Gruppo8.Calculator;
+import it.unisa.SoftwreEngineering.Gruppo8.Command;
 
 /**
  *
  * @author simon
  */
-public class VariableGetterCommand implements Command{
-    private int index;
-    private Variables var;
+public class OvererCommand implements Command{
     private Calculator calc;
-    private Complex value;
 
     /**
      *
-     * @param index
-     * @param var
      * @param calc
      */
-    public VariableGetterCommand(int index, Variables var, Calculator calc) {
-        this.index = index;
-        this.var = var;
+    public OvererCommand(Calculator calc) {
         this.calc = calc;
     }
-
+    
     /**
-     *Esegue il comando di inserimento nello stack da variabile
+     *Esegue il comando di over
      * @throws CommandExecuteException se il comando non è eseguibile a causa di un numero non sufficiente di elementi nello stack
      */
     @Override
     public void execute() throws CommandExecuteException {
-        Variable v = var.getVar(index);
-        value = v.getValue();
-        calc.insert(value);
+        if(calc.over()== false)
+            throw new CommandExecuteException("Comando non eseguibile");
     }
 
     /**
-     *Annulla il comando di inserimento nello stack da variabile, eseguito precedentemente
+     *Annulla il comando di over eseguito precedentemente
      */
     @Override
-    public void undo() {
+    public void undo(){
         calc.removeTop();
     }
 
@@ -52,6 +46,8 @@ public class VariableGetterCommand implements Command{
      */
     @Override
     public String toString() {
-        return "<" + var.indexToChar(index);
+        return "over";
     }
+    
+    
 }

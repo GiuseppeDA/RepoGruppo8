@@ -4,6 +4,9 @@
  */
 package it.unisa.SoftwreEngineering.Gruppo8;
 
+import it.unisa.SoftwreEngineering.Gruppo8.exception.FunctionDuplicateException;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.NotExistingFunctionException;
+import it.unisa.SoftwreEngineering.Gruppo8.exception.InvalidCommandException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
